@@ -7,8 +7,7 @@ public class GameHandler : MonoBehaviour
 {
     public float levelTimer;
     public float maxTime = 180f;
-    public static int playerHealth = 100;
-    public static float playerArmor = 0.9f; //direct multiplier to damage taken
+    
 
     void Start()
     {
