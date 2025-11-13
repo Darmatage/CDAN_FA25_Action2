@@ -27,7 +27,7 @@ public class PlayerBehavior : MonoBehaviour
     public static float attackCooldown = 3f;
     private bool isAttacking = false;
     private bool isCooldown = false;
-    float attackTimer = 0f;
+    public float attackTimer = 0f;
 
     void Start()
     {

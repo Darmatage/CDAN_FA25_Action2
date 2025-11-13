@@ -127,13 +127,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameHandler: {fileID: 0}
-  AttackHandler: {fileID: 0}
   moveSpeed: 0.74
   patrolSpeed: 0.42
   patrolFailsafe: 0
   isOnPatrol: 0
   isIdlePatrol: 0
-  player: {fileID: 0}
+  player: {fileID: 3121777425144711055, guid: 69a6de5c9046b4569ba472c43e349f88, type: 3}
   enemyLocation: {fileID: 9032897564143075174}
   isAggro: 0
   aggroRange: 10.24
@@ -145,7 +144,7 @@ MonoBehaviour:
   cooldownTime: 30
   ApproachSpeed: 0.01
   AttackRange: 2
-  Hitbox: {fileID: 0}
+  Hitbox: {fileID: 2211854982219645767}
   MaxHomeDist: 10.8
   enemyCurrentHealth: 10
   enemyArmor: 0.5
@@ -345,6 +344,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36303a975c7c61240b9c6917f8feb985, type: 3}
+--- !u!1 &2211854982219645767 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 367001661714820023, guid: 36303a975c7c61240b9c6917f8feb985, type: 3}
+  m_PrefabInstance: {fileID: 1992223201045522672}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8339288315966110834 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7502670390073070722, guid: 36303a975c7c61240b9c6917f8feb985, type: 3}

@@ -71,6 +71,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hitbox: {fileID: 0}
+  GameHandler: {fileID: 0}
   AttackHandler: {fileID: 0}
 --- !u!136 &5871539821898881951
 CapsuleCollider:
@@ -239,7 +240,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7502670390073070722, guid: 36303a975c7c61240b9c6917f8feb985, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.38
+      value: 1.22
       objectReference: {fileID: 0}
     - target: {fileID: 7502670390073070722, guid: 36303a975c7c61240b9c6917f8feb985, type: 3}
       propertyPath: m_LocalRotation.w
@@ -271,7 +272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8906865439945637461, guid: 36303a975c7c61240b9c6917f8feb985, type: 3}
       propertyPath: damageSource
-      value: 
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

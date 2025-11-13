@@ -19,7 +19,7 @@ public class EnemyBehavior_Melee : MonoBehaviour
     public bool isIdlePatrol = false;
         
     private Vector3 moveLocation;
-    public static GameObject player;
+    public GameObject player;
     public Transform enemyLocation;
 
 
@@ -92,7 +92,7 @@ public class EnemyBehavior_Melee : MonoBehaviour
             //move towards player
             Vector3 LERPposition = Vector3.Lerp(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
             transform.position = LERPposition;
-            transform.LookAt(player.transform);
+            transform.LookAt(player.transform.position);
             transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
             //Debug.Log(isAttacking);
         }
