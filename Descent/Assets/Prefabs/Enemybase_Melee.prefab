@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6935058126550177445}
   m_Layer: 0
   m_Name: Hurtbox
-  m_TagString: Untagged
+  m_TagString: Hurtbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,6 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9174eb2aaf1027245916fa6c40f7c4f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Hurtbox: {fileID: 2211854982219645767}
+  Hitbox: {fileID: 0}
 --- !u!1 &4420768128652202809
 GameObject:
   m_ObjectHideFlags: 0

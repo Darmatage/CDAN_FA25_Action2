@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - GameHandler
+  - Hurtbox
   layers:
   - Default
   - TransparentFX
