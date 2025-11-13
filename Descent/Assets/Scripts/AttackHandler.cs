@@ -2,12 +2,10 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 
-public class PlayerBehavior : MonoBehaviour
+public class AttackHandler : MonoBehaviour
 {
+    public GameObject Hurtbox;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-
-    //STATS
-
     void Start()
     {
         
@@ -19,5 +17,10 @@ public class PlayerBehavior : MonoBehaviour
         
     }
 
-    
+    public float DamageCalc(float takenDamage, float Armor) //calculates damage taken based on attacker's attack and defender's armor
+    {
+        float totalDamage = takenDamage * Armor;
+
+        return totalDamage;
+    }
 }
