@@ -36,5 +36,17 @@ public class GameHandler : MonoBehaviour
         
     }
 
-    
+    private void Update()
+    {
+        
+    }
+
+    public float DamageCalc(float takenDamage, float Armor) //calculates damage taken based on attacker's attack and defender's armor
+    {
+        float totalDamage = takenDamage * Armor;
+
+        //other things can go here, like crits or weaknesses
+
+        return totalDamage;
+    }
 }

@@ -303,18 +303,30 @@ public class EnemyBehavior_Melee : MonoBehaviour
         return moveAttempt; //return valid location
           
     }
-
+    
+    
     private void OnTriggerEnter(Collider other) //when collision with this object is detected
     {
         if(other.gameObject.tag == "Player") //if it's the player
         {
             
-            GameHandler.playerCurrentHealth -= AttackHandler.DamageCalc(enemyStrength, GameHandler.playerArmor); //calculate + apply damage
+            GameHandler.playerCurrentHealth -= GameHandler.DamageCalc(enemyStrength, GameHandler.playerArmor); //calculate + apply damage
+        }
+        if (other.gameObject.tag == "Hitbox") //if it's a hurtbox
+        {
+            GameHandler.DamageCalc(GameHandler.meleeDamage, enemyArmor);
+            GameHandler.playerCurrentHealth -= GameHandler.DamageCalc(enemyStrength, GameHandler.playerArmor); //calculate + apply damage
         }
     }
+    
     void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, aggroRange); //gizmo of aggro range
+    }
+
+    public string FetchSource()
+    {
+        return "playerMelee";
     }
 
 }
