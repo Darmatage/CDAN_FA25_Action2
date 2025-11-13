@@ -19,6 +19,7 @@ public class PlayerBehavior : MonoBehaviour
     */
 
     public GameObject Hitbox;
+    public Collider MyHurtbox;
     public GameHandler GameHandler;
     public AttackHandler AttackHandler;
 
@@ -85,12 +86,19 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
+    public void Immunity()//managing immunity frames upon hit
+    {
+
+    }
+
     private void OnTriggerEnter(Collider other) //when thing hits player
     {
         if (other.gameObject.tag == "Hitbox")
         {
             AttackHandler Hit = other.gameObject.GetComponent<AttackHandler>();
             GameHandler.playerCurrentHealth -= GameHandler.DamageCalc(Hit.damageSource, GameHandler.playerArmor); //calculate + apply damage
+            Debug.Log("Something hit me!");
+            Immunity();
 
         }
     }
