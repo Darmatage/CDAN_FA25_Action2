@@ -51,13 +51,13 @@ public class DragonFlightController : MonoBehaviour
         
         currentYaw += mouseX; //Adds mouse movement to current rotation
         currentPitch -= mouseY; //Inverted?, so moving mouse up moves character up.
-                                // The mouselook only handles updating rotation values not actual rotation
-                                //If we wanted to limit either add a Mathf.Clamp(value,min,max); to the end to prevent 360 movement.
+        // The mouselook only handles updating rotation values not actual rotation
+        //If we wanted to limit either add a Mathf.Clamp(value,min,max); to the end to prevent 360 movement.
         /*
         float rollRadians = currentRoll * Mathf.Deg2Rad;
         //From what I understand, it needs to do this math in radians, so converts roll degrees to radians
 
-        float adjustedYaw = mouseX * Mathf.Cos(rollRadians) - mouseY * Mathf.Sin(rollRadians); //I don’t fucking know at this point
+        float adjustedYaw = mouseX * Mathf.Cos(rollRadians) - mouseY * Mathf.Sin(rollRadians); //I donï¿½t fucking know at this point
 
         float adjustedPitch = mouseX * Mathf.Sin(rollRadians) + mouseY * Mathf.Cos(rollRadians); //IDK I FORGOT SIN AND COS
 
