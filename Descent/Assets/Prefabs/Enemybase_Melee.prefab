@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2211854982219645767}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.88, y: 0.105, z: 0}
+  m_LocalPosition: {x: -0, y: 0.21, z: 0.953}
   m_LocalScale: {x: 1.4829812, y: 1.4829812, z: 1.4829812}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -251,12 +251,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   patrolSpeed: 0.5
+  patrolFailsafe: 0
+  isOnPatrol: 0
+  isIdlePatrol: 0
   player: {fileID: 0}
   enemyLocation: {fileID: 0}
   isAggro: 0
   aggroRange: 0
+  windupTime: 30
+  attackTime: 30
+  cooldownTime: 30
   AttackRange: 1
   Hurtbox: {fileID: 2211854982219645767}
+  MaxHomeDist: 10
   enemyHealth: 10
   enemyArmor: 0.5
 --- !u!54 &5909163245901873662
@@ -313,13 +320,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5072640520908492465}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3, y: 0.28, z: 0}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0, y: 0.3, z: 0.391}
   m_LocalScale: {x: 0.43345, y: 0.42401, z: 0.73572}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9032897564143075174}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &5166381696521836486
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -390,7 +397,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}

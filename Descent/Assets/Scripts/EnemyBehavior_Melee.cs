@@ -10,11 +10,10 @@ public class EnemyBehavior_Melee : MonoBehaviour
     public float moveSpeed = 1f;
     public float patrolSpeed = 0.5f;
     private float patrolTimer; //controls time between move attempts
-    private float patrolFailsafe; //stops patrol if stuck
-    private bool isOnPatrol = false;
-    private bool isIdlePatrol = false;
-    private bool isMoving = false;
-
+    public float patrolFailsafe; //stops patrol if stuck
+    public bool isOnPatrol = false;
+    public bool isIdlePatrol = false;
+        
     private Vector3 moveLocation;
     public Transform player;
     public Transform enemyLocation;
@@ -51,6 +50,7 @@ public class EnemyBehavior_Melee : MonoBehaviour
 
     void Start()
     {
+        enemyLocation.localEulerAngles = new Vector3(transform.localEulerAngles.x, 90, transform.localEulerAngles.z);
         Hurtbox.SetActive(false);
         EnemyHome = new GameObject("EnemyHome"); //create home
         EnemyHome.transform.parent = transform; //home is where the me is :)
@@ -63,27 +63,28 @@ public class EnemyBehavior_Melee : MonoBehaviour
         float distToHome = Vector3.Distance(transform.position, EnemyHome.transform.position); //get distance from home point
 
         //MOVEMENT
-        if (isAggro && isAttacking) //Actively executing attack
+        if (isAttacking) //Actively executing attack
         {
             /*Vector3 LERPposition = Vector3.Lerp(transform.position, player.position, ApproachSpeed * Time.deltaTime);
             transform.position = LERPposition;
             transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);*/
             transform.LookAt(player);
         }
-        else if (isAggro) //Chase state
+        else if (isAggro && !isAttacking) //Chase state
         {
             //move towards player
             Vector3 LERPposition = Vector3.Lerp(transform.position, player.position, moveSpeed * Time.deltaTime);
             transform.position = LERPposition;
             transform.LookAt(player);
             transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+            Debug.Log(isAttacking);
         }
         else if (distToHome < MaxHomeDist) //Patrol state
         {
             float distToTarget;
             //Debug.Log("distance to home: " + distToHome);
 
-            if (!isOnPatrol && !isIdlePatrol) //not currently moving or waiting
+            if (!isOnPatrol && !isIdlePatrol && !isAttacking) //not currently moving or waiting
             {
                 moveLocation = getRandomVector();
                 isOnPatrol = true;
@@ -120,16 +121,22 @@ public class EnemyBehavior_Melee : MonoBehaviour
         }
 
         //DETECTION
-        if(distToPlayer <= AttackRange + 2) //player is in attack range
+        if(distToPlayer <= AttackRange && !isAttacking) //player is in attack range and isn't attacking
         {
             executeAttack = true;
-            //Debug.Log("Attacking!");
+            Debug.Log("Attacking!");
         }
         else if (distToPlayer <= aggroRange) //player is in aggro range
         {
             isAggro = true;
             isAttacking = false;
+            isOnPatrol = false;
+            isIdlePatrol= false;
             //Debug.Log("Distance to player: " + distToPlayer);
+        }
+        else if (isAttacking)
+        {
+            //do nothing
         }
         else
         {
@@ -138,7 +145,7 @@ public class EnemyBehavior_Melee : MonoBehaviour
         }
 
         //ATTACKING
-        if (isAttacking)
+        if (executeAttack || isAttacking)
         {
             //windup attack
             if (executeAttack)
@@ -146,13 +153,16 @@ public class EnemyBehavior_Melee : MonoBehaviour
                 isAttackWindup = true; //begin windup
                 //play the animation here also
             }
-            //attacking, activate hurtbox
-            else if (isAttackActive)
-            {
 
+            //attacking, activate hurtbox
+            if (isAttackActive)
+            {
                 Hurtbox.SetActive(true);
                 Debug.Log("Activating hurtbox!");
-                isAttackActive = true; //begin active timer
+            }
+            else
+            {
+                Hurtbox.SetActive(false);
             }
         }
     }
@@ -163,80 +173,98 @@ public class EnemyBehavior_Melee : MonoBehaviour
         if (executeAttack || isAttacking) 
         {
             isAttacking = true;
+            Debug.Log("Setting attacking to true!");
             executeAttack = false;
             //Debug.Log("Attacking!");
             if (isAttackWindup) //winding up
             {
-                while (AttackTimer <= windupTime)
+                
+                if (AttackTimer <= windupTime)
                 {
                     AttackTimer++;
+                    Debug.Log(AttackTimer);
                 }
-                Debug.Log("winding up!");
-                isAttackWindup = false;
-                isAttackActive = true;
-                AttackTimer = 0;
+                else
+                {
+                    Debug.Log("winding up!");
+                    isAttackWindup = false;
+                    isAttackActive = true;
+                    AttackTimer = 0;
+                }
             }
             if (isAttackActive) //attacking
             {
 
-                while (AttackTimer <= attackTime)
+                if (AttackTimer <= attackTime)
                 {
                     AttackTimer++;
                 }
-                Debug.Log("Attacking!");
+                else
+                {
+                    Debug.Log("Attacking!");
                 isAttackActive = false;
                 isAttackCooldown = true;
                 AttackTimer = 0;
+                }
+                    
             }
             if (isAttackCooldown) //cooling down
             {
 
-                while (AttackTimer <= cooldownTime)
+                if (AttackTimer <= cooldownTime)
                 {
                     AttackTimer++;
                 }
-
-                Hurtbox.SetActive(false);
-                Debug.Log("Deactivating hurtbox!");
+                else
+                {
                 isAttackCooldown = false;
                 isAttacking = false; //done attacking
-                AttackTimer = 0;
+                    Debug.Log("Setting attacking to false!");
+                    AttackTimer = 0;
                 //check if this hit the player
                 EnemyHome.transform.position = transform.position;
                 Debug.Log("Setting new home at: x - " + EnemyHome.transform.position.x + " y - " + EnemyHome.transform.position.y + " z - " + EnemyHome.transform.position.z);
                 //if attack hit player, set home to current position
                 //this is to prevent the enemy from taking a walk of shame back to their spawn if they chased the player far away
+                }
+                    
             }
         }
 
         //patrol movement timer
         if (isIdlePatrol) 
         {
-            while(patrolTimer > 0)
+            if(patrolTimer > 0)
             {
                 patrolTimer -= Time.deltaTime; //countdown seconds until 0
                 //Debug.Log("Waitin for " + patrolTimer);
             }
-
-            isIdlePatrol = false; //done waitin
+            else
+            {
+                isIdlePatrol = false; //done waitin
+            }
+                
         }
 
         //patrol failsafe
         if (isOnPatrol)
         {
-
-            while (patrolFailsafe > 0)
+            if (patrolFailsafe > 0)
             {
                 patrolFailsafe -= Time.deltaTime; //countdown seconds until 0
                 
             }
-            Debug.Log("Whoops!" + patrolFailsafe);
-
-            isOnPatrol = false;
+            else
+            {
+                isOnPatrol = false;
+            }
         }
     }
 
+    private void Attack()
+    {
 
+    }
     private Vector3 getRandomVector() //get point within home range to move to
     {
         bool attemptValid = false;
@@ -256,8 +284,8 @@ public class EnemyBehavior_Melee : MonoBehaviour
             }
         } while (!attemptValid); //keep checking until valid location is found
         Debug.Log("Attempt succeded! Target position: x - " + moveAttempt.x + " y - " + moveAttempt.y + " z - " + moveAttempt.z);
-        GameObject targetlocation = new GameObject("Target location");
-        targetlocation.transform.position = moveAttempt;
+        //GameObject targetlocation = new GameObject("Target location");
+        //targetlocation.transform.position = moveAttempt;
         return moveAttempt; //return valid location
           
     }
