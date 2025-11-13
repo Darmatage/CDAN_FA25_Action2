@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DragonFlightController : MonoBehaviour
 {
@@ -43,12 +44,26 @@ public class DragonFlightController : MonoBehaviour
 
     void HandleMouseLook()
     {
+        
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity; //Gets the input of how left/right the mouse was moved in the frame, (Negative/Positive), and then multiplies by the mouseSensitivity value so Higher mouse sensitivity = More input onto the Yaw.
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;  //Gets the input of how down/up the mouse was moved in the frame, (Negative/Positive), and then multiplies by the mouseSensitivity value so Higher mouse sensitivity = More input onto the Pitch.
+        
+        
         currentYaw += mouseX; //Adds mouse movement to current rotation
         currentPitch -= mouseY; //Inverted?, so moving mouse up moves character up.
                                 // The mouselook only handles updating rotation values not actual rotation
                                 //If we wanted to limit either add a Mathf.Clamp(value,min,max); to the end to prevent 360 movement.
+        /*
+        float rollRadians = currentRoll * Mathf.Deg2Rad;
+        //From what I understand, it needs to do this math in radians, so converts roll degrees to radians
+
+        float adjustedYaw = mouseX * Mathf.Cos(rollRadians) - mouseY * Mathf.Sin(rollRadians); //I don’t fucking know at this point
+
+        float adjustedPitch = mouseX * Mathf.Sin(rollRadians) + mouseY * Mathf.Cos(rollRadians); //IDK I FORGOT SIN AND COS
+
+        currentYaw += adjustedYaw;
+        currentPitch += adjustedPitch;
+        */
     }
 
     void HandleRoll()

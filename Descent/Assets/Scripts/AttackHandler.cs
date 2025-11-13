@@ -4,7 +4,7 @@ using System.Collections;
 
 public class AttackHandler : MonoBehaviour
 {
-    public string damageSource;
+    public float damageSource;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

@@ -1,13 +1,14 @@
 using JetBrains.Annotations;
-using UnityEngine;
-using System.Collections.Generic;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class EnemyBehavior_Melee : MonoBehaviour
 {
 
     public GameHandler GameHandler;
-    public AttackHandler AttackHandler;
+    //public AttackHandler AttackHandler;
 
     [Header("Movement")]
     public float moveSpeed = 1f;
@@ -18,7 +19,7 @@ public class EnemyBehavior_Melee : MonoBehaviour
     public bool isIdlePatrol = false;
         
     private Vector3 moveLocation;
-    public Transform player;
+    public static GameObject player;
     public Transform enemyLocation;
 
 
@@ -40,29 +41,39 @@ public class EnemyBehavior_Melee : MonoBehaviour
     private bool isAttacking = false; //in the middle of the attack
     public float ApproachSpeed = 0.01f; //movespeed while attacking
     public float AttackRange = 0.5f; //distance when attack will be executed
-    public GameObject Hurtbox; //attack collider
+    public GameObject Hitbox; //attack collider
     private float AttackTimer; //controls attack length
 
     private GameObject EnemyHome;
     public float MaxHomeDist = 10f;
 
     [Header("Stats")]
-    public float enemyHealth = 10f;
+    public static float enemyMaxHealth = 10f;
+    public float enemyCurrentHealth = enemyMaxHealth;
     public static float enemyStrength = 5f;
     public float enemyArmor = .5f; //multiplier to damage taken? 
 
     void Start()
     {
-        enemyLocation.localEulerAngles = new Vector3(transform.localEulerAngles.x, 90, transform.localEulerAngles.z);
-        Hurtbox.SetActive(false);
+        //enemyLocation.localEulerAngles = new Vector3(transform.localEulerAngles.x, 90, transform.localEulerAngles.z);
+        Hitbox.SetActive(false);
         EnemyHome = new GameObject("EnemyHome"); //create home
         EnemyHome.transform.parent = transform; //home is where the me is :)
         Debug.Log("Setting new home at: x - " + EnemyHome.transform.position.x + " y - " + EnemyHome.transform.position.y + " z - " + EnemyHome.transform.position.z);
+
+        player = GameObject.Find("Player");
+
+        AttackHandler script = GetComponentInChildren<AttackHandler>(true);
+        script.damageSource = enemyStrength; //assign strength to hitbox damage
     }
 
     void Update()
     {
-        float distToPlayer = Vector3.Distance(transform.position, player.position); //get distance to player
+        player = GameObject.Find("Player");
+        if (player == null){
+            Debug.Log("FUCK");
+        }
+        float distToPlayer = Vector3.Distance(transform.position, player.transform.position); //get distance to player
         float distToHome = Vector3.Distance(transform.position, EnemyHome.transform.position); //get distance from home point
 
         //MOVEMENT
@@ -70,18 +81,18 @@ public class EnemyBehavior_Melee : MonoBehaviour
         {
             if (isAttackActive)
             {
-                Vector3 LERPposition = Vector3.Lerp(transform.position, player.position, ApproachSpeed * Time.deltaTime);
+                Vector3 LERPposition = Vector3.Lerp(transform.position, player.transform.position, ApproachSpeed * Time.deltaTime);
                 transform.position = LERPposition;
                 transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
             }
-            transform.LookAt(player);
+            transform.LookAt(player.transform);
         }
         else if (isAggro && !isAttacking) //Chase state
         {
             //move towards player
-            Vector3 LERPposition = Vector3.Lerp(transform.position, player.position, moveSpeed * Time.deltaTime);
+            Vector3 LERPposition = Vector3.Lerp(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
             transform.position = LERPposition;
-            transform.LookAt(player);
+            transform.LookAt(player.transform);
             transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
             //Debug.Log(isAttacking);
         }
@@ -165,12 +176,12 @@ public class EnemyBehavior_Melee : MonoBehaviour
             //attacking, activate hurtbox
             if (isAttackActive)
             {
-                Hurtbox.SetActive(true);
+                Hitbox.SetActive(true);
                 //Debug.Log("Activating hurtbox!");
             }
             else
             {
-                Hurtbox.SetActive(false);
+                Hitbox.SetActive(false);
             }
         }
     }
@@ -305,28 +316,19 @@ public class EnemyBehavior_Melee : MonoBehaviour
     }
     
     
-    private void OnTriggerEnter(Collider other) //when collision with this object is detected
-    {
-        if(other.gameObject.tag == "Player") //if it's the player
-        {
-            
-            GameHandler.playerCurrentHealth -= GameHandler.DamageCalc(enemyStrength, GameHandler.playerArmor); //calculate + apply damage
-        }
-        if (other.gameObject.tag == "Hitbox") //if it's a hurtbox
-        {
-            GameHandler.DamageCalc(GameHandler.meleeDamage, enemyArmor);
-            GameHandler.playerCurrentHealth -= GameHandler.DamageCalc(enemyStrength, GameHandler.playerArmor); //calculate + apply damage
-        }
-    }
-    
     void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, aggroRange); //gizmo of aggro range
     }
 
-    public string FetchSource()
+    private void OnTriggerEnter(Collider other) //when thing hits me
     {
-        return "playerMelee";
+        if (other.gameObject.tag == "Hitbox")
+        {
+            AttackHandler Hit = other.gameObject.GetComponent<AttackHandler>();
+            enemyCurrentHealth -= GameHandler.DamageCalc(Hit.damageSource, enemyArmor); //calculate + apply damage
+
+        }
     }
 
 }

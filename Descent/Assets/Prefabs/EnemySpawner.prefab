@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyBasic: {fileID: 4420768128652202809, guid: 2a7180042333b76439132b7a85814330, type: 3}
-  spawnRangeStart: 0.5
-  spawnRangeEnd: 1.2
+  spawnRangeStart: 7.69
+  spawnRangeEnd: 36.3

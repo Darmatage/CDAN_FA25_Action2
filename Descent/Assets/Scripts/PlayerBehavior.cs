@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class PlayerBehavior : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class PlayerBehavior : MonoBehaviour
     */
 
     public GameObject Hitbox;
+    public GameHandler GameHandler;
     public AttackHandler AttackHandler;
 
     [Header("Behavior")]
@@ -29,6 +31,8 @@ public class PlayerBehavior : MonoBehaviour
 
     void Start()
     {
+        AttackHandler script = GetComponentInChildren<AttackHandler>(true);
+        script.damageSource = GameHandler.meleeDamage; //assign strength to hitbox damage
         Hitbox.SetActive(false);
     }
 
@@ -81,11 +85,13 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) //when thing hits player
     {
-        if ( other.gameObject.tag = "Hitbox")
+        if (other.gameObject.tag == "Hitbox")
         {
-            
+            AttackHandler Hit = other.gameObject.GetComponent<AttackHandler>();
+            GameHandler.playerCurrentHealth -= GameHandler.DamageCalc(Hit.damageSource, GameHandler.playerArmor); //calculate + apply damage
+
         }
     }
 
