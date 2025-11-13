@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3996924625104628345}
   - component: {fileID: 8040987089562699301}
+  - component: {fileID: 6955956297700385704}
   m_Layer: 0
   m_Name: GameHandler
   m_TagString: Untagged
@@ -44,3 +45,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c730ca0703716b44aacf668b9bd056ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelTimer: 0
+  maxTime: 180
+--- !u!114 &6955956297700385704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4528665132662724383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9174eb2aaf1027245916fa6c40f7c4f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hurtbox: {fileID: 0}
+  Hitbox: {fileID: 0}

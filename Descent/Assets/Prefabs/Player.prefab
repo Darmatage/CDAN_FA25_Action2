@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 284869219651810260}
   - component: {fileID: 8783718819460694262}
+  - component: {fileID: 210943767916082413}
   - component: {fileID: 5871539821898881951}
   m_Layer: 0
   m_Name: Player
@@ -56,6 +57,18 @@ MonoBehaviour:
   rotationSpeed: 5
   rollSpeed: 90
   maxTurnRate: 150
+--- !u!114 &210943767916082413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3121777425144711055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2d530023e0fe9e4ab4b1f6274447975, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &5871539821898881951
 CapsuleCollider:
   m_ObjectHideFlags: 0

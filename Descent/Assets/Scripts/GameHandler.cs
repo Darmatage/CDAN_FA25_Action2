@@ -7,7 +7,15 @@ public class GameHandler : MonoBehaviour
 {
     public float levelTimer;
     public float maxTime = 180f;
-    
+
+    [Header("Player Stats")]
+    public static float playerCurrentHealth = 100f;
+    public static float playerMaxHealth = 100f;
+    public static float playerArmor = 0.9f; //direct multiplier to damage taken
+    public static float IFrames = 30f; //frames of immunity after taking damage
+
+    public static float meleeDamage = 10f; //damage of bite
+    public static float projectileDamage = 5f; //damage of projectile
 
     void Start()
     {
@@ -18,18 +26,15 @@ public class GameHandler : MonoBehaviour
     {
         levelTimer = Time.timeSinceLevelLoad; //seconds since scene load
 
-        if (levelTimer > maxTime) //like 3 minutes
+        if (levelTimer > maxTime || playerCurrentHealth <= 0) //like 3 minutes or death
         {
             SceneManager.LoadScene("EndLose");
             //game over!!
             //probably play an animation before this in the final game
         }
+
+        
     }
 
-    public void PlayerHurt(int damageTaken)
-    {
-        //when collision with an enemy hurtbox is detected
-        //attack strength * player's armor value
-        //subtract from health
-    }
+    
 }
