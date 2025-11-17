@@ -14,6 +14,8 @@ public class GateScript : MonoBehaviour
 
     //Next level scene (string?) next shop scene
     public float interactionRange = 2f;
+    
+    private bool inRange;
     private bool bossDefeated;
 
     
@@ -25,6 +27,7 @@ public class GateScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // if player range < interactionRange, then inRange = true;
         //Find distance between here and player, if it's within the interaction range to 0 then allows for interaction
         //Interaction pops up as small tooltip (canvas) saying "F to Summon" or something like that
         //Finds out if boss is dead (bosshealth?)
