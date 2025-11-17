@@ -13,6 +13,7 @@ public class DragonFlightController : MonoBehaviour
 	[Header("Mouse Settings")]
 	public float lookRateSpeed = 90f; //How fast it turns
 	public float mouseSensitivity = 1f; //How much the mouse tells it to turn
+	public float mouseReturnSpeed = 3f; //how fast realmouse returns to center
 
 	[Header("Roll Speed")]
 	public float rollSpeed = 90f; //How many degrees per second it rolls
@@ -24,24 +25,24 @@ public class DragonFlightController : MonoBehaviour
 	private Vector3 currentVelocity = Vector3.zero; //Track of speed/direction, starts at (0,0,0)
 	private float rollInput = 0f; //Current Rollinput
 	private float accumulatedRoll = 0f; //Current Roll (Intentional)
-	
-	private Vector2 lookInput, screenCenter, mouseDistance; //Mouseinput, where the screen center is, how far the mouse is from it.
+	private Vector2 realMouseDistance = Vector2.zero; //Mouseinput, where the screen center is, how far the mouse is from it. Switched to delta so it can always input, unlike previous version which broke whenever mouse was locked.
 
 	void Start()
 	{
-		screenCenter.x = Screen.width * 0.5f;
-		screenCenter.y = Screen.height * 0.5f;
-		//Calculates Screen Middle
-		Cursor.lockState = CursorLockMode.Locked;
-		Cursor.visible = false;
+		
+		LockCursor();
 		//Sets cursor invisible/Locked.
 		
 		accumulatedRoll = 0f;
 		//Starts with 0 Roll
 	}
-
+	
 	void Update()
 	{
+		if (Time.frameCount <=5)
+        {
+            LockCursor(); //Locks cursor if it isn't
+        }
 		HandleMouseLook(); //Mouse looking movement
 		HandleRoll(); //Rolls control :) Redone
 		HandleMovement(); // Movement Controls
@@ -53,17 +54,22 @@ public class DragonFlightController : MonoBehaviour
 		if (Cursor.lockState != CursorLockMode.Locked)
 			return; //Don't move if unlocked
 
-		lookInput.x = Input.mousePosition.x; //Where mouse x
-		lookInput.y = Input.mousePosition.y; // Where mouse y
+		float mouseDeltaX = Input.GetAxis("Mouse X")* mouseSensitivity; //Where mouse x
+		float mouseDeltaY = Input.GetAxis("Mouse Y")* mouseSensitivity; // Where mouse y
+		//mosue delta (movement per frame)
+		realMouseDistance.x += mouseDeltaX * Time.deltaTime * 60f;
+		realMouseDistance.y += mouseDeltaY * Time.deltaTime * 60f;
+		//adds delta to position 
+		
+		realMouseDistance = Vector2.ClampMagnitude(realMouseDistance, 1f); //If mouse isn't on 'screen', it's still the max value as if you were at the screen edge.
+		
+		if (Mathf.Abs(mouseDeltaX)<0.01f && Mathf.Abs (mouseDeltaY)<0.01f)
+        {
+            realMouseDistance = Vector2.Lerp(realMouseDistance, Vector2.zero, mouseReturnSpeed*Time.deltaTime);
+        } //Returns to center when not moving
 
-		mouseDistance.x = (lookInput.x - screenCenter.x) / screenCenter.y;
-		mouseDistance.y = (lookInput.y - screenCenter.y) / screenCenter.y;
-		//How far the mouse is from center of screen, in a 'circle' (both divided by screenCenter.y)
-		mouseDistance = Vector2.ClampMagnitude(mouseDistance, 1f); //If mouse isn't on 'screen', it's still the max value as if you were at the screen edge.
-		mouseDistance *= mouseSensitivity;
-
-		float pitchAmount = -mouseDistance.y * lookRateSpeed * Time.deltaTime; //Inverts Y mouse so up goes up * MouseLookSpeed
-		float yawAmount = mouseDistance.x * lookRateSpeed * Time.deltaTime; //Same but with X
+		float pitchAmount = -realMouseDistance.y * lookRateSpeed * Time.deltaTime; //Inverts Y mouse so up goes up * MouseLookSpeed
+		float yawAmount = realMouseDistance.x * lookRateSpeed * Time.deltaTime; //Same but with X
 
 		
 		transform.Rotate(pitchAmount, 0f, 0f, Space.Self); // Pitch around local X ((Controls so not World Y, dragons OWN updown axis.)
@@ -138,16 +144,27 @@ void CursorToggle()
 {
 if (Input.GetKeyDown(KeyCode.Escape))
 {
-Cursor.lockState = CursorLockMode.None;
-Cursor.visible = true;
+UnlockCursor();
 } //If Escape is pressed, frees cursor and makes it visible
 if (Input.GetMouseButtonDown(0) && Cursor.lockState == CursorLockMode.None)
 {
-Cursor.lockState = CursorLockMode.Locked;
-Cursor.visible = false;
+LockCursor();
 } //When user presses the mouse button while it's unlocked, it relocks and invisi's the cursor.
 }
 
+
+void LockCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = false;
+		realMouseDistance = Vector2.zero; //Sets mouse to center
+    }
+
+void UnlockCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+		Cursor.visible=true;
+    }
 
 	public float GetCurrentSpeed()
 	{
