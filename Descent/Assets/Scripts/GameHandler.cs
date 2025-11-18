@@ -1,14 +1,22 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement; 
 
 public class GameHandler : MonoBehaviour
 {
     public float levelTimer;
     public float maxTime = 180f;
+	private string sceneName;
+	public static string lastLevelDied;  //allows replaying the Level where you died
 
     [Header("Player Stats")]
+
+	private GameObject player;
+	public TMP_Text healthText;
+
     public static float playerCurrentHealth = 100f;
     public static float playerMaxHealth = 100f;
     public static float playerArmor = 0.9f; //direct multiplier to damage taken
@@ -52,4 +60,54 @@ public class GameHandler : MonoBehaviour
 
         return totalDamage;
     }
+
+
+/*
+	public void playerDies(){
+            player.GetComponent<PlayerHurt>().playerDead();       //play Death animation
+            lastLevelDied = sceneName;       //allows replaying the Level where you died
+            StartCoroutine(DeathPause());
+      }
+
+      IEnumerator DeathPause(){
+            player.GetComponent<PlayerMove>().isAlive = false;
+            player.GetComponent<PlayerJump>().isAlive = false;
+            yield return new WaitForSeconds(1.0f);
+            SceneManager.LoadScene("EndLose");
+      }
+*/
+      public void StartGame() {
+            SceneManager.LoadScene("Level1");
+      }
+
+      // Return to MainMenu
+      public void RestartGame() {
+            Time.timeScale = 1f;
+            SceneManager.LoadScene("MainMenu");
+             // Reset all static variables here, for new games:
+            playerCurrentHealth = playerMaxHealth;
+      }
+
+      // Replay the Level where you died
+      public void ReplayLastLevel() {
+            Time.timeScale = 1f;
+            SceneManager.LoadScene(lastLevelDied);
+             // Reset all static variables here, for new games:
+            playerCurrentHealth = playerMaxHealth;
+      }
+
+      public void QuitGame() {
+                #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+                #else
+                Application.Quit();
+                #endif
+      }
+
+      public void Credits() {
+            SceneManager.LoadScene("Credits");
+      } 
+
+
+
 }
