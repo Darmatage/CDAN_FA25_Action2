@@ -328,7 +328,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2894494177292003140, guid: ea046dbbbb5a34991b8b7b2a527fca77, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -35.11
       objectReference: {fileID: 0}
     - target: {fileID: 2894494177292003140, guid: ea046dbbbb5a34991b8b7b2a527fca77, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1170,9 +1170,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7021648808843361677, guid: bf34544452a22f44298cdfa5293ba935, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7154662080193455756, guid: bf34544452a22f44298cdfa5293ba935, type: 3}
       propertyPath: m_Name
       value: GATE_SYSTEM
+      objectReference: {fileID: 0}
+    - target: {fileID: 7902192961150506439, guid: bf34544452a22f44298cdfa5293ba935, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 19.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
