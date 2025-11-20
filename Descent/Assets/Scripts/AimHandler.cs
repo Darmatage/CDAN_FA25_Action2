@@ -16,7 +16,7 @@ public class AimHandler : MonoBehaviour
 
     void MouseLook()
     {
-        float mouseDeltaX = Input.GetAxis("Mouse X") * mouseSensitivity; //Where mouse x
-        float mouseDeltaY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+        //float mouseDeltaX = Input.GetAxis("Mouse X") * mouseSensitivity; //Where mouse x
+        //float mouseDeltaY = Input.GetAxis("Mouse Y") * mouseSensitivity;
     }
 }

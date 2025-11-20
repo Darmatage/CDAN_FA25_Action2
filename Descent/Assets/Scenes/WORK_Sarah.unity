@@ -1248,7 +1248,7 @@ GameObject:
   m_Component:
   - component: {fileID: 779088100}
   m_Layer: 3
-  m_Name: Environment - Coral Reef
+  m_Name: Environment - Coral Reef SKETCH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

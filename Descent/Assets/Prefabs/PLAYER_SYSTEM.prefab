@@ -264,7 +264,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9174eb2aaf1027245916fa6c40f7c4f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageSource: 0
 --- !u!1 &5153403813527265674
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,12 +315,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd8eaa75ffcdc412c81a2129a6094db7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardSpeed: 25
+  forwardSpeed: 30
   strafeSpeed: 12
   backwardSpeed: 6
   verticalSpeed: 12
   acceleration: 1
   drag: 2
+  dashSpeed: 0
+  dashFalloffTimer: 0
+  isDashing: 0
   lookRateSpeed: 60
   mouseSensitivity: 2
   mouseReturnSpeed: 3
@@ -341,10 +343,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hitbox: {fileID: 3199043941286494011}
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  FaceTarget: {fileID: 0}
+  FaceDirection: {x: 0, y: 0, z: 0}
   MyHurtbox: {fileID: 303260450164538870}
   GameHandler: {fileID: 0}
   AttackHandler: {fileID: 0}
-  attackTimer: 0
+  attackTimerMelee: 0
+  immuneTimer: 60
 --- !u!136 &4444418595135290778
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -465,7 +473,7 @@ Transform:
   m_GameObject: {fileID: 6796844036791646149}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -591,13 +599,13 @@ MonoBehaviour:
   followDistance: 3
   followHeight: 4
   sideDistance: 0
-  lookOffset: {x: 0, y: 0, z: 1.5}
+  lookOffset: {x: 0, y: 0, z: 2}
   positionSmoothing: 8
   rotationSmoothing: 12
   positionPrediction: 0.5
   dynamicDistance: 1
   speedDistanceMultiplier: 0.5
-  minDistance: 4
+  minDistance: 3
   maxDistance: 5
   avoidClipping: 1
   collisionLayers:
