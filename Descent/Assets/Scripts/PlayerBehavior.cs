@@ -94,11 +94,13 @@ public class PlayerBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) //when thing hits player
     {
+        Debug.Log("Something hit me, the player!");
+
         if (other.gameObject.tag == "Hitbox")
         {
             AttackHandler Hit = other.gameObject.GetComponent<AttackHandler>();
             GameHandler.playerCurrentHealth -= GameHandler.DamageCalc(Hit.damageSource, GameHandler.playerArmor); //calculate + apply damage
-            Debug.Log("Something hit me!");
+            Debug.Log("Something hit me! Current health: " + GameHandler.playerCurrentHealth);
             Immunity();
 
         }

@@ -323,11 +323,13 @@ public class EnemyBehavior_Melee : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) //when thing hits me
     {
+        Debug.Log("Something hit me, the enemy!");
+
         if (other.gameObject.tag == "Hitbox")
         {
             AttackHandler Hit = other.gameObject.GetComponent<AttackHandler>(); //asks for damage value of the hitbox
             enemyCurrentHealth -= GameHandler.DamageCalc(Hit.damageSource, enemyArmor); //calculate + apply damage
-
+            Debug.Log("Something hit me! Current health: " + enemyCurrentHealth);
         }
     }
 

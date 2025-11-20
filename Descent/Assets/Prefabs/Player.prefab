@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 284869219651810260}
   - component: {fileID: 8783718819460694262}
   - component: {fileID: 210943767916082413}
-  - component: {fileID: 5871539821898881951}
   - component: {fileID: 7557951343894289395}
   m_Layer: 0
   m_Name: Player
@@ -55,9 +54,13 @@ MonoBehaviour:
   verticalSpeed: 8
   acceleration: 3
   drag: 2
+  dashFalloffTimer: 0
+  isDashing: 0
+  lookRateSpeed: 90
   mouseSensitivity: 2.3
-  rotationSpeed: 5
+  mouseReturnSpeed: 3
   rollSpeed: 90
+  rollAcceleration: 0.5
   maxTurnRate: 150
 --- !u!114 &210943767916082413
 MonoBehaviour:
@@ -76,29 +79,7 @@ MonoBehaviour:
   GameHandler: {fileID: 0}
   AttackHandler: {fileID: 0}
   attackTimer: 0
---- !u!136 &5871539821898881951
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3121777425144711055}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  immuneTimer: 60
 --- !u!136 &7557951343894289395
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -137,7 +118,7 @@ GameObject:
   - component: {fileID: 4485374184730512604}
   m_Layer: 0
   m_Name: Hitbox
-  m_TagString: Hurtbox
+  m_TagString: Hitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -243,7 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9174eb2aaf1027245916fa6c40f7c4f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageSource: 0
+  damageSource: 10
 --- !u!1 &5472320710261967688
 GameObject:
   m_ObjectHideFlags: 0

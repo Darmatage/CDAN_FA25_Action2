@@ -10,7 +10,7 @@ public class DragonFlightController : MonoBehaviour
 	public float verticalSpeed = 8f; //Up/Down speed 
 	public float acceleration = 3f; //How fast does it speed up?
 	public float drag = 2f; //'Water Resistance', slowing down when you stop moving
-	//public float dashSpeed = 1.5f; //boost to movement speed
+	public float dashSpeed = 0f; //boost to movement speed
 	public float dashFalloffTimer = 0f; //time since dash was initiated
 	public bool isDashing = false;
 
@@ -49,8 +49,10 @@ public class DragonFlightController : MonoBehaviour
         }
 		HandleMouseLook(); //Mouse looking movement
 		HandleRoll(); //Rolls control :) Redone
-		HandleMovement(); // Movement Controls
+		HandleDash(); //dash detectinator
+        HandleMovement(); // Movement Controls
 		CursorToggle(); //Escape to view Cursor/unlock it
+
 	}
 
 	void HandleMouseLook()
@@ -115,6 +117,25 @@ public class DragonFlightController : MonoBehaviour
 		}
 	}
 	
+	void HandleDash()
+	{
+		//begin dash
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            dashFalloffTimer = 0f;
+        }
+		//during dash
+        if (Input.GetKey(KeyCode.LeftShift))
+		{
+			isDashing = true;
+			dashFalloffTimer += Time.deltaTime; //increment falloff timer
+		}
+		else
+		{
+			isDashing = false;
+            dashFalloffTimer = 0f;
+        }
+	}
 	void HandleMovement()
 	{
 		float forward = 0f;
@@ -122,8 +143,12 @@ public class DragonFlightController : MonoBehaviour
 		float vertical = 0f;
 		//States initial float values
 
-		float dashSpeed = 0f;
-		dashSpeed = (1/(dashFalloffTimer + 0.5f)) + 1.5f; //add dash speed based on a curve 
+		dashSpeed = isDashing ? (0.6f / (0.5f * dashFalloffTimer + 0.1f)) : 1; //dash speed based on a curve if dashing, else set to 1
+		
+		if (dashSpeed < 1f) 
+		{ 
+		  dashSpeed = 1f;
+		} //if less than 1, set to 1
 		
 
 		if (Input.GetKey(KeyCode.W)) forward = 1f; //Forwards movement

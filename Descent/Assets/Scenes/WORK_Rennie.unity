@@ -334,6 +334,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2211854982219645767, guid: 2a7180042333b76439132b7a85814330, type: 3}
+      propertyPath: m_TagString
+      value: Hitbox
+      objectReference: {fileID: 0}
     - target: {fileID: 3745409360446228052, guid: 2a7180042333b76439132b7a85814330, type: 3}
       propertyPath: player
       value: 
@@ -341,6 +345,10 @@ PrefabInstance:
     - target: {fileID: 4420768128652202809, guid: 2a7180042333b76439132b7a85814330, type: 3}
       propertyPath: m_Name
       value: Enemybase_Melee
+      objectReference: {fileID: 0}
+    - target: {fileID: 6935058126550177445, guid: 2a7180042333b76439132b7a85814330, type: 3}
+      propertyPath: damageSource
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9032897564143075174, guid: 2a7180042333b76439132b7a85814330, type: 3}
       propertyPath: m_LocalPosition.x
@@ -643,7 +651,7 @@ GameObject:
   - component: {fileID: 793760302}
   - component: {fileID: 793760301}
   m_Layer: 0
-  m_Name: Terrain
+  m_Name: Terrain_Abyss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
