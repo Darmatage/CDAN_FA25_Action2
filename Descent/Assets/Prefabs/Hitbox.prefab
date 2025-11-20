@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7502670390073070722}
   - component: {fileID: 6318923467969618346}
-  - component: {fileID: 8906865439945637461}
   m_Layer: 0
   m_Name: Hitbox
   m_TagString: Hurtbox
@@ -28,8 +27,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4829812, y: 1.4829812, z: 1.4829812}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8404576714225749328}
   m_Father: {fileID: 0}
@@ -53,20 +52,8 @@ SphereCollider:
   m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8906865439945637461
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 367001661714820023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9174eb2aaf1027245916fa6c40f7c4f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3094758563682210268
 GameObject:
   m_ObjectHideFlags: 0
