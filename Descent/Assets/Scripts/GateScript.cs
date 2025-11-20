@@ -34,7 +34,9 @@ public class GateScript : MonoBehaviour
        bossesToDefeat = bossSpwnPnts.Length;
 	   LightColumn.SetActive(false);
 	   MSG_NotActivated.SetActive(false);
+       Debug.Log("LightColumn set false, bosses = bosslength, msg set false.");
 	   CheckGate();
+       Debug.Log("CheckGate Ran");
     }
 
   
@@ -58,6 +60,7 @@ public class GateScript : MonoBehaviour
 		{
 			gateActivated=true;
 			LightColumn.SetActive(true);
+            Debug.Log("Gate has been activated, 0 bosses found. Light column activated");
 		}
 	} 
 	
@@ -65,10 +68,12 @@ public class GateScript : MonoBehaviour
 //go through gate if gate activated:
 	void OnCollisionEnter(Collision other)
 	{
-		if (other.gameObject.tag=="Player"){
+		if (other.gameObject.tag=="Player")
+        {
+            Debug.Log("Collision other with Player tag");
 			if (gateActivated)
 			{
-				SceneManager.LoadScene("Level1");
+				SceneManager.LoadScene(nextLevel);
 			} 
 		}
 	}
@@ -76,10 +81,13 @@ public class GateScript : MonoBehaviour
 //spawn bosses when first touching gate range
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.gameObject.tag=="Player"){
+		if (other.gameObject.tag=="Player")
+        {
+            Debug.Log("Collider other with player tag");
 			if (!gateTriggered1)
 			{
 				SpawnBosses();
+                gateTriggered1 = true; //Bosses have been spawned
 			}
 			
 			if (!gateActivated)
@@ -91,7 +99,9 @@ public class GateScript : MonoBehaviour
 
 	void OnTriggerExit(Collider other)
 	{
-		if (other.gameObject.tag=="Player"){
+		if (other.gameObject.tag=="Player")
+        {
+            Debug.Log("Player exit trigger");
 			MSG_NotActivated.SetActive(false);
 		}
 	}
@@ -101,7 +111,9 @@ public class GateScript : MonoBehaviour
 	{
 		for (int i=0; i<bossSpwnPnts.Length; i++){
 			Instantiate(bossPrefab, bossSpwnPnts[i].position, Quaternion.identity);
+            Debug.Log("Bosses spawned");
 		}
+    
 	}
 
 }

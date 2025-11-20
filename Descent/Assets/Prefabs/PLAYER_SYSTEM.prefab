@@ -278,6 +278,8 @@ GameObject:
   - component: {fileID: 7943000970861105896}
   - component: {fileID: 4444418595135290778}
   - component: {fileID: 303260450164538870}
+  - component: {fileID: 3322288686599941487}
+  - component: {fileID: 1115042721366511614}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -322,6 +324,7 @@ MonoBehaviour:
   drag: 2
   lookRateSpeed: 60
   mouseSensitivity: 2
+  mouseReturnSpeed: 3
   rollSpeed: 60
   rollAcceleration: 0.5
   maxTurnRate: 150
@@ -388,6 +391,51 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &3322288686599941487
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5153403813527265674}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 0
+  m_ImplicitTensor: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &1115042721366511614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5153403813527265674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 908bdc4ec98d74a10a5eccd0f7661e1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sonarKey: 116
+  sonarTime: 10
+  drawBehind: {fileID: 11400000, guid: f288ae1f4751b564a96ac7587541f7a2, type: 2}
+  detectionDistanceMin: 10
+  player: {fileID: 8008058169675994577}
+  gate: {fileID: 0}
 --- !u!1 &6796844036791646149
 GameObject:
   m_ObjectHideFlags: 0
