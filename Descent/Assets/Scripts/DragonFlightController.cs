@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class DragonFlightController : MonoBehaviour
@@ -9,6 +10,9 @@ public class DragonFlightController : MonoBehaviour
 	public float verticalSpeed = 8f; //Up/Down speed 
 	public float acceleration = 3f; //How fast does it speed up?
 	public float drag = 2f; //'Water Resistance', slowing down when you stop moving
+	//public float dashSpeed = 1.5f; //boost to movement speed
+	public float dashFalloffTimer = 0f; //time since dash was initiated
+	public bool isDashing = false;
 
 	[Header("Mouse Settings")]
 	public float lookRateSpeed = 90f; //How fast it turns
@@ -110,14 +114,17 @@ public class DragonFlightController : MonoBehaviour
 			accumulatedRoll += rollInput * rollSpeed * Time.deltaTime; //currentroll = rollinput * howfastroll * time
 		}
 	}
-
+	
 	void HandleMovement()
 	{
 		float forward = 0f;
 		float strafe = 0f;
 		float vertical = 0f;
-
 		//States initial float values
+
+		float dashSpeed = 0f;
+		dashSpeed = (1/(dashFalloffTimer + 0.5f)) + 1.5f; //add dash speed based on a curve 
+		
 
 		if (Input.GetKey(KeyCode.W)) forward = 1f; //Forwards movement
 		if (Input.GetKey(KeyCode.S)) forward = -1f; //Backwards movement
@@ -129,6 +136,8 @@ public class DragonFlightController : MonoBehaviour
 		float currentForwardSpeed = forward > 0 ? forwardSpeed : backwardSpeed; // If forward is positive (More than zero), use forwardspeed, otherwise use backward speed.
 		
 Vector3 targetVelocity = new Vector3(strafe*strafeSpeed, vertical*verticalSpeed,forward*currentForwardSpeed); //Velocity (Direction/Speed) vector3, to tell where it's going and how fast
+
+		targetVelocity *= dashSpeed;
 
 targetVelocity = transform.TransformDirection(targetVelocity); //Changes from local to world. Wasn't sure about this, but it acts really bad without it, without it it navigates strangley. I really don't get the logic behind it, I thought it was backwards? Anyways, makes it so that forwards is always the front of the target. targetVelocity starts in local space relative to dragon so moves according to dragons coordinates until it's changed.
 

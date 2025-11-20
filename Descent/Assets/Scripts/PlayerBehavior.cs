@@ -29,6 +29,7 @@ public class PlayerBehavior : MonoBehaviour
     private bool isAttacking = false;
     private bool isCooldown = false;
     public float attackTimer = 0f;
+    public float immuneTimer = 60f;
 
     void Start()
     {
