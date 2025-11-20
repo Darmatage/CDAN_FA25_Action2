@@ -19,16 +19,20 @@ public class PlayerBehavior : MonoBehaviour
     */
 
     public GameObject Hitbox;
+    public GameObject FaceTarget; //direction player is facing
+    public Vector3 FaceDirection;
     public Collider MyHurtbox;
     public GameHandler GameHandler;
     public AttackHandler AttackHandler;
 
     [Header("Behavior")]
-    public static float attackLength = 3f;
-    public static float attackCooldown = 3f;
+    [Tooltip("Length of attack in seconds.")]
+    public static float attackLength = 1f;
+    [Tooltip("Length of attack cooldown in seconds.")]
+    public static float attackCooldown = 0.5f;
     private bool isAttacking = false;
     private bool isCooldown = false;
-    public float attackTimer = 0f;
+    public float attackTimerMelee = 0f;
     public float immuneTimer = 60f;
 
     void Start()
@@ -41,7 +45,9 @@ public class PlayerBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HandleAttack();
+        HandleAttackBite();
+        HandleAttackProjectile();
+        Debug.DrawRay(transform.position, FaceTarget.transform.position, Color.red);
     }
 
     private void FixedUpdate()
@@ -52,12 +58,12 @@ public class PlayerBehavior : MonoBehaviour
         if (isAttacking)
         {
             Hitbox.SetActive(true);
-            attackTimer += Time.deltaTime;
+            attackTimerMelee += Time.deltaTime;
 
-            if(attackTimer >= attackLength)
+            if(attackTimerMelee >= attackLength)
             {
                 isCooldown = true;
-                attackTimer = 0f;
+                attackTimerMelee = 0f;
 
                 isAttacking = false;
             }
@@ -65,25 +71,33 @@ public class PlayerBehavior : MonoBehaviour
         if (isCooldown)
         {
             Hitbox.SetActive(false);
-            attackTimer += Time.deltaTime;
+            attackTimerMelee += Time.deltaTime;
 
-            if (attackTimer >= attackCooldown)
+            if (attackTimerMelee >= attackCooldown)
             {
                 isCooldown = false;
-                attackTimer = 0f;
+                attackTimerMelee = 0f;
             }
         }
         
     }
 
-    void HandleAttack()
+    void HandleAttackBite()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0)) //detect left mouse click
         {
             if (!isCooldown)
             {
                 isAttacking = true;
             }
+        }
+    }
+
+    void HandleAttackProjectile()
+    {
+        if (Input.GetMouseButton(1)) //detect right mouse click
+        {
+            
         }
     }
 

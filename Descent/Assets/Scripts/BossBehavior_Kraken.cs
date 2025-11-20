@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class BossBehavior_Kraken : MonoBehaviour
 {
+    //this script should be attached to the kraken itself. The tentacle should track the player's horizontal position, while remaining on the ground.
+    //After locking onto the player, it should pause briefly, before attacking straight up.
+    //While it seems easily avoided, the boss could shoot arcing projectiles that make staying above the boss dangerous (higher relative to boss = less warning on shots)
+
     [Header("Behavior")]
     public bool isAggro = false;
     public float aggroRange = 3f; //player detection range

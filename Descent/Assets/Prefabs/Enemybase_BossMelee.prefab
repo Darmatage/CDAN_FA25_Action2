@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3745409360446228052}
   - component: {fileID: 5909163245901873662}
   m_Layer: 0
-  m_Name: Enemybase_Melee
+  m_Name: Enemybase_BossMelee
   m_TagString: Hurtbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,8 +30,8 @@ Transform:
   m_GameObject: {fileID: 4420768128652202809}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.44343}
+  m_LocalScale: {x: 1.7425, y: 1.7425, z: 1.7425}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8339288315966110834}
@@ -127,15 +127,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameHandler: {fileID: 0}
-  moveSpeed: 0.74
-  patrolSpeed: 0.42
+  moveSpeed: 0.26
+  patrolSpeed: 0.12
   patrolFailsafe: 0
   isOnPatrol: 0
   isIdlePatrol: 0
   player: {fileID: 0}
   enemyLocation: {fileID: 9032897564143075174}
   isAggro: 0
-  aggroRange: 10.24
+  aggroRange: 14.65
   isAttackWindup: 0
   isAttackCooldown: 0
   isAttackActive: 0
@@ -337,7 +337,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8906865439945637461, guid: 36303a975c7c61240b9c6917f8feb985, type: 3}
       propertyPath: damageSource
-      value: 0
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

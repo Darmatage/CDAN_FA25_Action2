@@ -269,6 +269,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 210943767916082413, guid: 69a6de5c9046b4569ba472c43e349f88, type: 3}
+      propertyPath: FaceTarget
+      value: 
+      objectReference: {fileID: 321039234}
+    - target: {fileID: 210943767916082413, guid: 69a6de5c9046b4569ba472c43e349f88, type: 3}
       propertyPath: GameHandler
       value: 
       objectReference: {fileID: 972198970}
@@ -278,7 +282,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 284869219651810260, guid: 69a6de5c9046b4569ba472c43e349f88, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.71
       objectReference: {fileID: 0}
     - target: {fileID: 284869219651810260, guid: 69a6de5c9046b4569ba472c43e349f88, type: 3}
       propertyPath: m_LocalPosition.z
@@ -395,6 +399,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a7180042333b76439132b7a85814330, type: 3}
+--- !u!1 &321039234 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4332433393229758979, guid: 69a6de5c9046b4569ba472c43e349f88, type: 3}
+  m_PrefabInstance: {fileID: 186316172}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &431024531
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,7 +659,7 @@ GameObject:
   - component: {fileID: 793760303}
   - component: {fileID: 793760302}
   - component: {fileID: 793760301}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Terrain_Abyss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
