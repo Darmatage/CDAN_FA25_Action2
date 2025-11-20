@@ -28,8 +28,20 @@ public class GameHandler : MonoBehaviour
 
     [Header("Mutation handler")]
 
-    public static int MeleeType; //tracks what "main weapon" currently is
-    public static int extraHP;
+    public static int MeleeType = 0; //tracks what "main weapon" currently is
+    /*
+     * 0 = bite, default
+     * 1 = claws, bleed effect, faster attack speed, shorter range
+     * 2 = tail whip, huge range that scales off max hp, slow speed
+     */
+    public static int RangedType = 0; //tracks current ranged weapon
+    /*
+     * 0 = steam shot, default
+     * idkkk
+     */
+    public static int extraHP; //stacks of extra hp
+    public static bool Vampirism = false;
+
 
     void Start()
     {
@@ -69,8 +81,22 @@ public class GameHandler : MonoBehaviour
 
     public float MeleeCalc()
     {
-        float totalDamage = meleeDamage;
         
+
+        switch (MeleeType)
+        {
+            case 0: //bite
+                meleeDamage = 10f;
+                critRate = 0.1f;
+                break;
+            case 1: //claws
+                meleeDamage = 5f;
+                critRate = 0.3f;
+                break;
+        }
+
+        float totalDamage = meleeDamage;
+
         if (critRate > Random.value)
         {
             totalDamage *= 1.5f; //critical hits increase damage by 50%. effects can also be added here :3

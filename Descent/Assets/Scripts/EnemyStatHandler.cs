@@ -10,8 +10,22 @@ public class EnemyStatHandler : MonoBehaviour
     public float enemyCurrentHealth = enemyMaxHealth;
     public static float enemyStrength = 5f;
     public static float enemyArmor = .5f; //multiplier to damage taken? 
-     public void EnemyDamage(float damageSource)
+
+    private void Update()
+    {
+        enemyDeath();
+    }
+
+    public void EnemyDamage(float damageSource)
     {
         enemyCurrentHealth -= gameHandler.DamageCalc(damageSource, enemyArmor); //calculate + apply damage
+    }
+
+    void enemyDeath()
+    {
+        if (enemyCurrentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

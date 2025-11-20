@@ -30,7 +30,7 @@ public class PlayerBehavior : MonoBehaviour
     [Tooltip("Length of attack in seconds.")]
     public static float attackLength = 1f;
     [Tooltip("Length of attack cooldown in seconds.")]
-    public static float attackCooldown = 0.5f;
+    public static float attackCooldown = 1f;
     private bool isAttacking = false;
     private bool isCooldown = false;
     public float attackTimerMelee = 0f;
@@ -46,7 +46,13 @@ public class PlayerBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HandleAttackBite();
+        if (Time.time >= attackTimerMelee)
+            if (Input.GetMouseButton(0)) //detect left mouse click
+            {
+                HandleAttackBite();
+                attackTimerMelee = Time.time + 1f / attackCooldown;
+            }
+
         HandleAttackProjectile();
         Debug.DrawRay(transform.position, FaceTarget.transform.position, Color.red);
     }
@@ -55,17 +61,12 @@ public class PlayerBehavior : MonoBehaviour
     {
         //attack timers
         
-
+        
+        /*
         if (isAttacking)
         {
             //Hitbox.SetActive(true);
-            Collider[] hitEnemies = Physics.OverlapSphere(Hitbox.transform.position, Hitbox.GetComponent<SphereCollider>().radius, enemyLayers);
-
-            foreach (Collider enemy in hitEnemies)
-            {
-                Debug.Log("We hit " + enemy.name);
-                enemy.GetComponent<EnemyStatHandler>().EnemyDamage(GameHandler.MeleeCalc());
-            }
+            
                 
             attackTimerMelee += Time.deltaTime; //increment attack timer
 
@@ -77,6 +78,7 @@ public class PlayerBehavior : MonoBehaviour
                 isAttacking = false;
             }
         }
+        
         if (isCooldown)
         {
             //Hitbox.SetActive(false);
@@ -88,21 +90,19 @@ public class PlayerBehavior : MonoBehaviour
                 attackTimerMelee = 0f;
             }
         }
-
+        */
     }
 
     void HandleAttackBite()
     {
-        if (Input.GetMouseButton(0)) //detect left mouse click
-        {
-            
-            if (!isCooldown)
+        Debug.Log("attacking!");
+        Collider[] hitEnemies = Physics.OverlapSphere(Hitbox.transform.position, Hitbox.GetComponent<SphereCollider>().radius, enemyLayers);
+
+            foreach (Collider enemy in hitEnemies)
             {
-                isAttacking = true;
+                Debug.Log("We hit " + enemy.name);
+                enemy.GetComponent<EnemyStatHandler>().EnemyDamage(GameHandler.MeleeCalc());
             }
-            
-            
-        }
     }
 
     void HandleAttackProjectile()

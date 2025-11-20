@@ -432,7 +432,7 @@ MonoBehaviour:
   gateActivated: 0
   MSG_NotActivated: {fileID: 2589158605224399362}
   LightColumn: {fileID: 8976465361532427164}
-  bossPrefab: {fileID: 4420768128652202809, guid: 2a7180042333b76439132b7a85814330, type: 3}
+  bossPrefab: {fileID: 4420768128652202809, guid: fa02c2b8c2bc56a46bad5cf0908dec5d, type: 3}
   bossSpwnPnts:
   - {fileID: 7902192961150506439}
 --- !u!1 &8943442918856518757
