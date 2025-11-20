@@ -41,7 +41,8 @@ public class EnemyBehavior_Melee : MonoBehaviour
     private bool isAttacking = false; //in the middle of the attack
     public float ApproachSpeed = 0.01f; //movespeed while attacking
     public float AttackRange = 1f; //distance when attack will be executed
-    public GameObject Hitbox; //attack collider
+    public GameObject Hitbox; //attack collider guide
+    private Collider hitCollider;
     private float AttackTimer; //controls attack length
 
     private GameObject EnemyHome;
@@ -57,10 +58,13 @@ public class EnemyBehavior_Melee : MonoBehaviour
         EnemyHome.transform.parent = transform; //home is where the me is :)
         //Debug.Log("Setting new home at: x - " + EnemyHome.transform.position.x + " y - " + EnemyHome.transform.position.y + " z - " + EnemyHome.transform.position.z);
 
+
         player = GameObject.Find("Player");
 
-        AttackHandler script = GetComponentInChildren<AttackHandler>(true);
+        //AttackHandler script = GetComponentInChildren<AttackHandler>(true);
         //script.damageSource = enemyStrength; //assign strength to hitbox damage
+
+        //hitCollider = new Collider.SphereCollider();
 
         if (GameObject.FindWithTag("GameHandler") != null){
             gameHandler = GameObject.FindWithTag("GameHandler").GetComponent<GameHandler>();
@@ -341,7 +345,10 @@ public class EnemyBehavior_Melee : MonoBehaviour
             }
     }
 
-
+    void AttackCollision()
+    {
+         //Debug.Log("Player Attacks");
+    }
 
  void OnDrawGizmosSelected()
     {
