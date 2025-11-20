@@ -55,7 +55,7 @@ public class EnemyBehavior_Melee : MonoBehaviour
         Hitbox.SetActive(false);
         EnemyHome = new GameObject("EnemyHome"); //create home
         EnemyHome.transform.parent = transform; //home is where the me is :)
-        Debug.Log("Setting new home at: x - " + EnemyHome.transform.position.x + " y - " + EnemyHome.transform.position.y + " z - " + EnemyHome.transform.position.z);
+        //Debug.Log("Setting new home at: x - " + EnemyHome.transform.position.x + " y - " + EnemyHome.transform.position.y + " z - " + EnemyHome.transform.position.z);
 
         player = GameObject.Find("Player");
 
@@ -106,7 +106,7 @@ public class EnemyBehavior_Melee : MonoBehaviour
                 moveLocation = getRandomVector();
                 isOnPatrol = true;
                 patrolFailsafe = 100f;
-                Debug.Log("Going on patrol!");
+                //Debug.Log("Going on patrol!");
             }
             else if (isOnPatrol) //actively moving, checking for target reach
             {
@@ -168,7 +168,7 @@ public class EnemyBehavior_Melee : MonoBehaviour
             {
 
                 isAttackWindup = true;
-                Debug.Log("Setting windup to true!");
+                //Debug.Log("Setting windup to true!");
                 //begin windup
                 //play the animation here also
             }
@@ -245,7 +245,7 @@ public class EnemyBehavior_Melee : MonoBehaviour
             }
             else
             {
-                Debug.Log("winding up!");
+                //Debug.Log("winding up!");
                 isAttackActive = true;
                 AttackTimer = 0;
                 isAttackWindup = false;
@@ -260,7 +260,7 @@ public class EnemyBehavior_Melee : MonoBehaviour
             }
             else
             {
-                Debug.Log("Attacking!");
+                //Debug.Log("Attacking!");
                 isAttackCooldown = true;
                 AttackTimer = 0;
                 isAttackActive = false;
@@ -277,11 +277,11 @@ public class EnemyBehavior_Melee : MonoBehaviour
             else
             {
                 isAttacking = false; //done attacking
-                Debug.Log("Setting attacking to false!");
+                //Debug.Log("Setting attacking to false!");
                 AttackTimer = 0;
                 //check if this hit the player
                 EnemyHome.transform.position = transform.position;
-                Debug.Log("Setting new home at: x - " + EnemyHome.transform.position.x + " y - " + EnemyHome.transform.position.y + " z - " + EnemyHome.transform.position.z);
+                //Debug.Log("Setting new home at: x - " + EnemyHome.transform.position.x + " y - " + EnemyHome.transform.position.y + " z - " + EnemyHome.transform.position.z);
                 //if attack hit player, set home to current position
                 //this is to prevent the enemy from taking a walk of shame back to their spawn if they chased the player far away
                 isAttackCooldown = false;

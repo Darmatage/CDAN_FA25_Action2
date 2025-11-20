@@ -12,6 +12,9 @@ public class EnemySpawner : MonoBehaviour
     private float timeToSpawn;
     private float spawnTimer = 0f;
 
+    private int maxEnemiesSpawned = 20;
+    private int enemiesSpawned = 0;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,11 +26,16 @@ public class EnemySpawner : MonoBehaviour
     {
         timeToSpawn = Random.Range(spawnRangeStart, spawnRangeEnd);
         spawnTimer += 0.01f;
-        if (spawnTimer >= timeToSpawn)
+        if (enemiesSpawned < maxEnemiesSpawned)
         {
-            spawnBasicEnemy();
-            spawnTimer = 0f;
+            if (spawnTimer >= timeToSpawn)
+                    {
+                        spawnBasicEnemy();
+                        enemiesSpawned++;
+                        spawnTimer = 0f;
+                    }
         }
+        
     }
 
     void spawnBasicEnemy()

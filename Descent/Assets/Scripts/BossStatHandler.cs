@@ -2,21 +2,24 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class EnemyStatHandler : MonoBehaviour
+public class BossStatHandler : MonoBehaviour
 {
     //private Animator anim; 
+    //private gameHandler
 
     [Header("Stats")]
     public float enemyMaxHealth = 10f;
     public float enemyCurrentHealth;
     public float enemyArmor = 0.5f; //multiplier to damage taken!
 
+    private GateScript gate;
     public Renderer enemyRenderer;
     public Color whiteColor;
     public Color redColor;
 
     void Start(){
          enemyCurrentHealth = enemyMaxHealth;
+         gate = GameObject.FindWithTag("door").GetComponent<GateScript>();
          //anim = GetComponentInChildren<Animator>();
          //Renderer enemyRenderer = GetComponent<Renderer>();
     }
@@ -41,10 +44,10 @@ public class EnemyStatHandler : MonoBehaviour
         if (enemyCurrentHealth <= 0)
         {
             //anim.SetBool("EnemyDead", true);
-            GameHandler.enemiesKilled += 1;
+            //GameHandler.enemiesKilled += 1;
             //if (GameHandler.enemiesKilled >= GameHandler.enemyGoal)
             //{
-            //    
+                
             //}
 
             StartCoroutine(EnemyDeath());
@@ -53,6 +56,7 @@ public class EnemyStatHandler : MonoBehaviour
 
     IEnumerator EnemyDeath()
     {
+        gate.defeatABoss();
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }

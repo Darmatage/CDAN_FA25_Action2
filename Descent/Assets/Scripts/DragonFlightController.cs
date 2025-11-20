@@ -17,7 +17,7 @@ public class DragonFlightController : MonoBehaviour
 
 	[Header("Mouse Settings")]
 	public float lookRateSpeed = 90f; //How fast it turns
-	public float mouseSensitivity = 1f; //How much the mouse tells it to turn
+	public float mouseSensitivity = 3f; //How much the mouse tells it to turn
 	public float mouseReturnSpeed = 3f; //how fast realmouse returns to center
 
 	[Header("Roll Speed")]
