@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class DragonFlightController : MonoBehaviour
 {
+
 	[Header("Movement Settings")]
 	public float forwardSpeed = 10f; //Forward should be fastest
 	public float strafeSpeed = 8f; //Side/Side movement :)
@@ -31,6 +32,9 @@ public class DragonFlightController : MonoBehaviour
 	private float accumulatedRoll = 0f; //Current Roll (Intentional)
 	private Vector2 realMouseDistance = Vector2.zero; //Mouseinput, where the screen center is, how far the mouse is from it. Switched to delta so it can always input, unlike previous version which broke whenever mouse was locked.
 
+	float boostFOV = 60f;
+	//float defaultFOV = 60f;
+	float FOVtimer = 0f;
 	void Start()
 	{
 		
@@ -39,11 +43,15 @@ public class DragonFlightController : MonoBehaviour
 		
 		accumulatedRoll = 0f;
 		//Starts with 0 Roll
+
+		FOVtimer = 100f;
 	}
 	
 	void Update()
 	{
-		if (Time.frameCount <=5)
+        //Camera.main.fieldOfView = (defaultFOV + boostFOV);
+        Camera.main.fieldOfView = boostFOV;
+        if (Time.frameCount <=5)
         {
             LockCursor(); //Locks cursor if it isn't
         }
@@ -123,19 +131,22 @@ public class DragonFlightController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             dashFalloffTimer = 0f;
+            FOVtimer = 0f;
         }
 		//during dash
         if (Input.GetKey(KeyCode.LeftShift))
 		{
 			isDashing = true;
 			dashFalloffTimer += Time.deltaTime; //increment falloff timer
-		}
+            
+        }
 		else
 		{
 			isDashing = false;
             dashFalloffTimer = 0f;
         }
-	}
+        FOVtimer += Time.deltaTime;
+    }
 	void HandleMovement()
 	{
 		float forward = 0f;
@@ -144,8 +155,10 @@ public class DragonFlightController : MonoBehaviour
 		//States initial float values
 
 		dashSpeed = isDashing ? (0.6f / (0.5f * dashFalloffTimer + 0.1f)) : 1; //dash speed based on a curve if dashing, else set to 1
-		
-		if (dashSpeed < 1f) 
+		boostFOV = (0.7f / (0.2f * FOVtimer + 0.4f)) + 60;
+
+
+        if (dashSpeed < 1f) 
 		{ 
 		  dashSpeed = 1f;
 		} //if less than 1, set to 1

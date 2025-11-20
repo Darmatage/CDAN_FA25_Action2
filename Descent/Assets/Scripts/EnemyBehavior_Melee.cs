@@ -127,7 +127,7 @@ public class EnemyBehavior_Melee : MonoBehaviour
         }
         else //if outside of home range and player is out of aggro range
         {
-            Debug.Log("Returning home! Distance to home: " + distToHome);
+            //Debug.Log("Returning home! Distance to home: " + distToHome);
             Vector3 LERPposition = Vector3.Lerp(transform.position, EnemyHome.transform.position, patrolSpeed * Time.deltaTime);
             transform.position = LERPposition;
             transform.LookAt(EnemyHome.transform.position);

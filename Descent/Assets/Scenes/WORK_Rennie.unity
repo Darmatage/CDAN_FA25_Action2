@@ -350,6 +350,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemybase_Melee
       objectReference: {fileID: 0}
+    - target: {fileID: 4420768128652202809, guid: 2a7180042333b76439132b7a85814330, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6935058126550177445, guid: 2a7180042333b76439132b7a85814330, type: 3}
       propertyPath: damageSource
       value: 10
@@ -881,6 +885,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2105566766297566540, guid: e6c2ab1d9dc204d17a011e5adde55162, type: 3}
+      propertyPath: field of view
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 4939758416893271620, guid: e6c2ab1d9dc204d17a011e5adde55162, type: 3}
       propertyPath: m_Name
       value: Main Camera
