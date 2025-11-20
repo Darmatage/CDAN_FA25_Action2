@@ -7,7 +7,7 @@ using static UnityEngine.Rendering.DebugUI;
 public class EnemyBehavior_Melee : MonoBehaviour
 {
 
-    public GameHandler GameHandler;
+    private GameHandler gameHandler;
     //public AttackHandler AttackHandler;
 
     [Header("Movement")]
@@ -22,7 +22,7 @@ public class EnemyBehavior_Melee : MonoBehaviour
     public GameObject player;
     public Transform enemyLocation;
 
-
+    public int damageMelee = 5;
 
     [Header("Behavior")]
     public bool isAggro = false;
@@ -40,7 +40,7 @@ public class EnemyBehavior_Melee : MonoBehaviour
     private bool executeAttack = false; //start the attack
     private bool isAttacking = false; //in the middle of the attack
     public float ApproachSpeed = 0.01f; //movespeed while attacking
-    public float AttackRange = 0.5f; //distance when attack will be executed
+    public float AttackRange = 1f; //distance when attack will be executed
     public GameObject Hitbox; //attack collider
     private float AttackTimer; //controls attack length
 
@@ -61,6 +61,10 @@ public class EnemyBehavior_Melee : MonoBehaviour
 
         AttackHandler script = GetComponentInChildren<AttackHandler>(true);
         //script.damageSource = enemyStrength; //assign strength to hitbox damage
+
+        if (GameObject.FindWithTag("GameHandler") != null){
+            gameHandler = GameObject.FindWithTag("GameHandler").GetComponent<GameHandler>();
+        }
     }
 
     void Update()
@@ -272,7 +276,6 @@ public class EnemyBehavior_Melee : MonoBehaviour
             }
             else
             {
-                
                 isAttacking = false; //done attacking
                 Debug.Log("Setting attacking to false!");
                 AttackTimer = 0;
@@ -312,10 +315,7 @@ public class EnemyBehavior_Melee : MonoBehaviour
     }
     
     
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawWireSphere(transform.position, aggroRange); //gizmo of aggro range
-    }
+   
 
     
 
@@ -332,4 +332,23 @@ public class EnemyBehavior_Melee : MonoBehaviour
         }
     }
     */
+
+
+    void OnCollisionEnter(Collision other){
+        if (other.gameObject.tag=="Player")
+            if (isAttackActive){
+                gameHandler.playerGetHit(damageMelee); 
+            }
+    }
+
+
+
+ void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, aggroRange); //gizmo of aggro range
+        Gizmos.DrawWireSphere(transform.position, AttackRange); //gizmo of aggro range
+    }
+
+
+
 }

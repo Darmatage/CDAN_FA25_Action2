@@ -13,6 +13,11 @@ public class PlayerSonar : MonoBehaviour
     void Start()
     {
         drawBehind.rendererFeatures[^2].SetActive(false);
+
+        if (GameObject.FindWithTag("Door")!=null){
+            gate = GameObject.FindWithTag("Door").GetComponent<Transform>();
+        }
+
     }
 
     // Update is called once per frame

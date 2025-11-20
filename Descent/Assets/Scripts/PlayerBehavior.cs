@@ -49,12 +49,13 @@ public class PlayerBehavior : MonoBehaviour
         if (Time.time >= attackTimerMelee)
             if (Input.GetMouseButton(0)) //detect left mouse click
             {
+                Debug.Log("I hit left mouse button");
                 HandleAttackBite();
                 attackTimerMelee = Time.time + 1f / attackCooldown;
             }
 
         HandleAttackProjectile();
-        Debug.DrawRay(transform.position, FaceTarget.transform.position, Color.red);
+        //Debug.DrawRay(transform.position, FaceTarget.transform.position, Color.red);
     }
 
     private void FixedUpdate()
@@ -95,7 +96,7 @@ public class PlayerBehavior : MonoBehaviour
 
     void HandleAttackBite()
     {
-        Debug.Log("attacking!");
+        Debug.Log("Player Attacks");
         Collider[] hitEnemies = Physics.OverlapSphere(Hitbox.transform.position, Hitbox.GetComponent<SphereCollider>().radius, enemyLayers);
 
             foreach (Collider enemy in hitEnemies)

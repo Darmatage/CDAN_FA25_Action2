@@ -7,15 +7,20 @@ using UnityEngine.SceneManagement;
 
 public class GameHandler : MonoBehaviour
 {
+    [Header("Level Stats")]
     public float levelTimer;
     public float maxTime = 180f;
 	private string sceneName;
+    public static int enemiesKilled = 0; //current enemies killed
+    public int enemyGoal = 25; //enemies to kill for gate unlocking
 	public static string lastLevelDied;  //allows replaying the Level where you died
 
     [Header("Player Stats")]
 
 	private GameObject player;
 	public TMP_Text healthText;
+    public static int gotCoins = 0;
+    public TMP_Text coinsText;
 
     public static float playerCurrentHealth = 100f;
     public static float playerMaxHealth = 100f;
@@ -45,7 +50,7 @@ public class GameHandler : MonoBehaviour
 
     void Start()
     {
-        
+        updateStatsDisplay();
     }
 
     void FixedUpdate()
@@ -67,19 +72,48 @@ public class GameHandler : MonoBehaviour
         
     }
 
-    
-
-    
-    public float DamageCalc(float takenDamage, float Armor) //calculates damage taken based on attacker's attack and defender's armor
-    {
-        float totalDamage = takenDamage * Armor;
-
-        //other things can go here, like crits or weaknesses
-
-        Debug.Log("Total Damage: " + totalDamage);
-
-        return totalDamage;
+    public void playerGetCoins(int newCoins){
+            gotCoins += newCoins;
+            updateStatsDisplay();
     }
+
+    public void updateStatsDisplay(){
+            healthText.text = "HEALTH: " + playerCurrentHealth;
+            coinsText.text = "COINS: " + gotCoins;
+    }
+
+
+    public void playerGetHit(int damage){
+           //if (isDefending == false){
+                  playerCurrentHealth -= damage;
+                  if (playerCurrentHealth >=0){
+                        updateStatsDisplay();
+                  }
+                  if (damage > 0){
+                        //play GetHit animation:
+                        //player.GetComponent<PlayerHurt>().playerHit();
+                  }
+            //}
+
+           if (playerCurrentHealth > playerMaxHealth){
+                  playerCurrentHealth = playerMaxHealth;
+                  updateStatsDisplay();
+            }
+
+           if (playerCurrentHealth <= 0){
+                  playerCurrentHealth = 0;
+                  updateStatsDisplay();
+                  //playerDies();
+            }
+      }
+
+
+
+
+
+
+//FOR PLAYER AND ENEMIES: calculates damage taken based on attacker's attack and defender's armor
+    
 
     public float MeleeCalc()
     {
