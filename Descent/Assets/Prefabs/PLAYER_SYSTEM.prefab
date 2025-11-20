@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 4096526057336603080}
   - component: {fileID: 7111806243373571425}
   - component: {fileID: 4551684955376555472}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Dragon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 646630412119906408}
   - component: {fileID: 9134356644052284710}
   - component: {fileID: 5974334416643418841}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hitbox
   m_TagString: Hurtbox
   m_Icon: {fileID: 0}
@@ -280,7 +280,7 @@ GameObject:
   - component: {fileID: 303260450164538870}
   - component: {fileID: 3322288686599941487}
   - component: {fileID: 1115042721366511614}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -316,11 +316,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd8eaa75ffcdc412c81a2129a6094db7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardSpeed: 20
+  forwardSpeed: 25
   strafeSpeed: 12
   backwardSpeed: 6
   verticalSpeed: 12
-  acceleration: 4
+  acceleration: 1
   drag: 2
   lookRateSpeed: 60
   mouseSensitivity: 2
@@ -407,7 +407,7 @@ Rigidbody:
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -416,7 +416,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &1115042721366511614
 MonoBehaviour:
@@ -433,7 +433,7 @@ MonoBehaviour:
   sonarKey: 116
   sonarTime: 10
   drawBehind: {fileID: 11400000, guid: f288ae1f4751b564a96ac7587541f7a2, type: 2}
-  detectionDistanceMin: 10
+  detectionDistanceMin: 100
   player: {fileID: 8008058169675994577}
   gate: {fileID: 0}
 --- !u!1 &6796844036791646149
@@ -602,5 +602,5 @@ MonoBehaviour:
   avoidClipping: 1
   collisionLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 72
   collisionBuffer: 0.5
