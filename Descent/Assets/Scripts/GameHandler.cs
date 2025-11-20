@@ -82,7 +82,6 @@ public class GameHandler : MonoBehaviour
             coinsText.text = "COINS: " + gotCoins;
     }
 
-
     public void playerGetHit(int damage){
            //if (isDefending == false){
                   playerCurrentHealth -= damage;
@@ -156,7 +155,7 @@ public class GameHandler : MonoBehaviour
       }
 */
       public void StartGame() {
-            SceneManager.LoadScene("Level1");
+            SceneManager.LoadScene("WORK_Rennie");
       }
 
       // Return to MainMenu
