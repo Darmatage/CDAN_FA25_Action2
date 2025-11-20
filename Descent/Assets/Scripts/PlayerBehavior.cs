@@ -39,7 +39,7 @@ public class PlayerBehavior : MonoBehaviour
     void Start()
     {
         AttackHandler script = GetComponentInChildren<AttackHandler>(true);
-        script.damageSource = GameHandler.meleeDamage; //assign strength to hitbox damage
+        //script.damageSource = GameHandler.meleeDamage; //assign strength to hitbox damage
         Hitbox.SetActive(false);
     }
 
@@ -101,8 +101,9 @@ public class PlayerBehavior : MonoBehaviour
             foreach (Collider enemy in hitEnemies)
             {
                 Debug.Log("We hit " + enemy.name);
-                enemy.GetComponent<EnemyStatHandler>().EnemyDamage(GameHandler.MeleeCalc());
-            }
+                //enemy.GetComponent<EnemyStatHandler>().EnemyDamage(GameHandler.MeleeCalc());
+                enemy.GetComponent<EnemyStatHandler>().EnemyDamage(10);
+             }
     }
 
     void HandleAttackProjectile()
@@ -117,7 +118,8 @@ public class PlayerBehavior : MonoBehaviour
     {
 
     }
-
+    
+    /*
     private void OnTriggerEnter(Collider other) //when thing hits player
     {
         Debug.Log("Something hit me, the player!");
@@ -131,5 +133,6 @@ public class PlayerBehavior : MonoBehaviour
 
         }
     }
+    */
 
 }

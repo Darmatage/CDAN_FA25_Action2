@@ -76,6 +76,8 @@ public class GameHandler : MonoBehaviour
 
         //other things can go here, like crits or weaknesses
 
+        Debug.Log("Total Damage: " + totalDamage);
+
         return totalDamage;
     }
 
@@ -101,7 +103,7 @@ public class GameHandler : MonoBehaviour
         {
             totalDamage *= 1.5f; //critical hits increase damage by 50%. effects can also be added here :3
         }
-
+         Debug.Log("Sent Damage: " + totalDamage);
         return totalDamage;
     }
 

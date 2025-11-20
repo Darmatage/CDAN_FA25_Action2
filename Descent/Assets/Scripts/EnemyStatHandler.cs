@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyStatHandler : MonoBehaviour
 {
 
-    GameHandler gameHandler;
+    public GameHandler gameHandler;
 
     [Header("Stats")]
     public static float enemyMaxHealth = 10f;
@@ -18,6 +18,8 @@ public class EnemyStatHandler : MonoBehaviour
 
     public void EnemyDamage(float damageSource)
     {
+        Debug.Log(damageSource);
+        Debug.Log(enemyArmor);
         enemyCurrentHealth -= gameHandler.DamageCalc(damageSource, enemyArmor); //calculate + apply damage
     }
 
