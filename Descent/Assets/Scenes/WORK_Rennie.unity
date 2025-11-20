@@ -930,8 +930,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 186316173}
     - target: {fileID: 8940624212355378074, guid: e6c2ab1d9dc204d17a011e5adde55162, type: 3}
-      propertyPath: lookOffset.z
-      value: 0
+      propertyPath: lookOffset.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8940624212355378074, guid: e6c2ab1d9dc204d17a011e5adde55162, type: 3}
+      propertyPath: positionSmoothing
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8940624212355378074, guid: e6c2ab1d9dc204d17a011e5adde55162, type: 3}
+      propertyPath: rotationSmoothing
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

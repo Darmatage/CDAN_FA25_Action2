@@ -24,6 +24,12 @@ public class GameHandler : MonoBehaviour
 
     public static float meleeDamage = 10f; //damage of bite
     public static float projectileDamage = 5f; //damage of projectile
+    public static float critRate = 0.2f; //critical rate, 1 = 100%, 0.5 = 50% etc
+
+    [Header("Mutation handler")]
+
+    public static int MeleeType; //tracks what "main weapon" currently is
+    public static int extraHP;
 
     void Start()
     {
@@ -61,6 +67,17 @@ public class GameHandler : MonoBehaviour
         return totalDamage;
     }
 
+    public float MeleeCalc()
+    {
+        float totalDamage = meleeDamage;
+        
+        if (critRate > Random.value)
+        {
+            totalDamage *= 1.5f; //critical hits increase damage by 50%. effects can also be added here :3
+        }
+
+        return totalDamage;
+    }
 
 /*
 	public void playerDies(){

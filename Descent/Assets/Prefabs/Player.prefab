@@ -77,11 +77,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hitbox: {fileID: 4662088671795943742}
-  FaceDirection: {fileID: 4332433393229758979}
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  FaceTarget: {fileID: 0}
+  FaceDirection: {x: 0, y: 0, z: 0}
   MyHurtbox: {fileID: 7557951343894289395}
   GameHandler: {fileID: 0}
   AttackHandler: {fileID: 0}
-  attackTimer: 0
+  attackTimerMelee: 0
   immuneTimer: 60
 --- !u!136 &7557951343894289395
 CapsuleCollider:

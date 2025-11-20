@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7593922429117092342}
   - component: {fileID: 3745409360446228052}
   - component: {fileID: 5909163245901873662}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemybase_BossMelee
   m_TagString: Hurtbox
   m_Icon: {fileID: 0}

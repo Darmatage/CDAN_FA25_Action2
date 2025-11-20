@@ -19,6 +19,7 @@ public class PlayerBehavior : MonoBehaviour
     */
 
     public GameObject Hitbox;
+    public LayerMask enemyLayers;
     public GameObject FaceTarget; //direction player is facing
     public Vector3 FaceDirection;
     public Collider MyHurtbox;
@@ -57,8 +58,16 @@ public class PlayerBehavior : MonoBehaviour
 
         if (isAttacking)
         {
-            Hitbox.SetActive(true);
-            attackTimerMelee += Time.deltaTime;
+            //Hitbox.SetActive(true);
+            Collider[] hitEnemies = Physics.OverlapSphere(Hitbox.transform.position, Hitbox.GetComponent<SphereCollider>().radius, enemyLayers);
+
+            foreach (Collider enemy in hitEnemies)
+            {
+                Debug.Log("We hit " + enemy.name);
+                enemy.GetComponent<EnemyStatHandler>().EnemyDamage(GameHandler.MeleeCalc());
+            }
+                
+            attackTimerMelee += Time.deltaTime; //increment attack timer
 
             if(attackTimerMelee >= attackLength)
             {
@@ -70,7 +79,7 @@ public class PlayerBehavior : MonoBehaviour
         }
         if (isCooldown)
         {
-            Hitbox.SetActive(false);
+            //Hitbox.SetActive(false);
             attackTimerMelee += Time.deltaTime;
 
             if (attackTimerMelee >= attackCooldown)
@@ -79,17 +88,20 @@ public class PlayerBehavior : MonoBehaviour
                 attackTimerMelee = 0f;
             }
         }
-        
+
     }
 
     void HandleAttackBite()
     {
         if (Input.GetMouseButton(0)) //detect left mouse click
         {
+            
             if (!isCooldown)
             {
                 isAttacking = true;
             }
+            
+            
         }
     }
 

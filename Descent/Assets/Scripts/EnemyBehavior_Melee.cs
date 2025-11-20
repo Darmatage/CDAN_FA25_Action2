@@ -47,13 +47,9 @@ public class EnemyBehavior_Melee : MonoBehaviour
     private GameObject EnemyHome;
     public float MaxHomeDist = 10f;
 
-    [Header("Stats")]
-    public static float enemyMaxHealth = 10f;
-    public float enemyCurrentHealth = enemyMaxHealth;
-    public static float enemyStrength = 5f;
-    public float enemyArmor = .5f; //multiplier to damage taken? 
+    
 
-    void Start()
+    void Start()    
     {
         //enemyLocation.localEulerAngles = new Vector3(transform.localEulerAngles.x, 90, transform.localEulerAngles.z);
         Hitbox.SetActive(false);
@@ -64,7 +60,7 @@ public class EnemyBehavior_Melee : MonoBehaviour
         player = GameObject.Find("Player");
 
         AttackHandler script = GetComponentInChildren<AttackHandler>(true);
-        script.damageSource = enemyStrength; //assign strength to hitbox damage
+        //script.damageSource = enemyStrength; //assign strength to hitbox damage
     }
 
     void Update()
@@ -321,16 +317,19 @@ public class EnemyBehavior_Melee : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, aggroRange); //gizmo of aggro range
     }
 
-    private void OnTriggerEnter(Collider other) //when thing hits me
+    
+
+    /*
+     * private void OnTriggerEnter(Collider other) //when thing hits me
     {
         Debug.Log("Something hit me, the enemy!");
 
         if (other.gameObject.tag == "Hitbox")
         {
             AttackHandler Hit = other.gameObject.GetComponent<AttackHandler>(); //asks for damage value of the hitbox
-            enemyCurrentHealth -= GameHandler.DamageCalc(Hit.damageSource, enemyArmor); //calculate + apply damage
+            
             Debug.Log("Something hit me! Current health: " + enemyCurrentHealth);
         }
     }
-
+    */
 }
