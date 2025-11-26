@@ -254,6 +254,7 @@ GameObject:
   - component: {fileID: 1526809109643683571}
   - component: {fileID: 7943000970861105896}
   - component: {fileID: 1115042721366511614}
+  - component: {fileID: 1471472501413185845}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -396,6 +397,62 @@ MonoBehaviour:
   detectionDistanceMin: 100
   player: {fileID: 8008058169675994577}
   gate: {fileID: 0}
+--- !u!114 &1471472501413185845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5153403813527265674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 433ca237cc68e4bde9ee320cb6162e01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodySegmentPrefab: {fileID: 6221625176079834765, guid: d25ceaa927b41499dbac52c56990a691, type: 3}
+  neckSegmentPrefab: {fileID: 0}
+  frontLegSegmentPrefab: {fileID: 0}
+  backLegSegmentPrefab: {fileID: 0}
+  tailSegmentPrefab: {fileID: 0}
+  tailStartScale: 1
+  tailEndScale: 0.2
+  tailEndPrefab: {fileID: 0}
+  tailScaleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  neckSegmentCount: 1
+  useFrontLegs: 1
+  useBackLegs: 1
+  bodySegmentCount: 5
+  tailSegmentCount: 20
+  useTailEnd: 1
+  neckSpacing: 0.4
+  bodySpacing: 0.4
+  tailSpacing: 0.4
+  animationTimeOffset: 0.2
+  dragonHead: {fileID: 8008058169675994577}
+  bodySegments: []
 --- !u!1 &6796844036791646149
 GameObject:
   m_ObjectHideFlags: 0

@@ -1336,7 +1336,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1526809109643683571, guid: ea046dbbbb5a34991b8b7b2a527fca77, type: 3}
       propertyPath: mouseSensitivity
-      value: 2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 1526809109643683571, guid: ea046dbbbb5a34991b8b7b2a527fca77, type: 3}
       propertyPath: rollAcceleration
