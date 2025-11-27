@@ -1310,6 +1310,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PLAYER_SYSTEM
       objectReference: {fileID: 0}
+    - target: {fileID: 1471472501413185845, guid: ea046dbbbb5a34991b8b7b2a527fca77, type: 3}
+      propertyPath: tailSegmentCount
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1526809109643683571, guid: ea046dbbbb5a34991b8b7b2a527fca77, type: 3}
       propertyPath: rollSpeed
       value: 60
