@@ -6,6 +6,7 @@ public class DragonBodyManager : MonoBehaviour
 {
 
 	[Header("Prefabs")]
+    public GameObject dragonHeadPrefab;
 	public GameObject bodySegmentPrefab;
 	public GameObject neckSegmentPrefab;
 	public GameObject frontLegSegmentPrefab;
@@ -21,6 +22,7 @@ public class DragonBodyManager : MonoBehaviour
 
 
 	[Header("Body Composition")]
+    public bool isHead = true;
 	public int neckSegmentCount = 1;
 	public bool useFrontLegs = true;
 	public bool useBackLegs = true;
@@ -29,6 +31,7 @@ public class DragonBodyManager : MonoBehaviour
 	public bool useTailEnd = true;
 
 	[Header("Spacing")]
+    public float headSpacing = 0.3f;
 	public float neckSpacing = 0.4f;
 	public float bodySpacing = 0.4f;
 	public float tailSpacing = 0.4f;
@@ -49,6 +52,10 @@ public class DragonBodyManager : MonoBehaviour
 
 	void CreateDragonBody()
 	{
+        if (isHead && dragonHeadPrefab != null) //Head
+        {
+            AddSegment(dragonHeadPrefab,headSpacing, "Head");
+        }
 		for (int i =0; i < neckSegmentCount; i++) //Neck 
 		{
 			GameObject prefab = neckSegmentPrefab !=null ? neckSegmentPrefab : bodySegmentPrefab; //Loops to create neck segments, if no neck segment uses bodySegment.
