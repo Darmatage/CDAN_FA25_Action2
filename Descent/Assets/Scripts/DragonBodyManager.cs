@@ -39,6 +39,7 @@ public class DragonBodyManager : MonoBehaviour
 	[Header("Other")]
 	public float animationTimeOffset = 0.2f;
 	public Transform dragonHead;
+    public Transform dragonHeadNeckAttachPoint;
 	public List<DragonBodySegment> bodySegments = new List<DragonBodySegment>();
 
 	void Start()
@@ -47,6 +48,10 @@ public class DragonBodyManager : MonoBehaviour
 		{
 			dragonHead = transform; //Uses own gameobject if no head assigned
 		}
+        if (dragonHeadNeckAttachPoint == null)
+        {
+            dragonHeadNeckAttachPoint = dragonHead; //Uses head if no neck
+        }
 		Invoke("CreateDragonBody",0.1f);//Calls method after delay
 	}
 
@@ -119,9 +124,9 @@ if (useTailEnd && tailEndPrefab != null) //tail end exist
 
 		if (bodySegments.Count == 0)
 		{
-			targetToFollow = dragonHead;
-			spawnPosition = dragonHead.position - dragonHead.forward * spacing;
-			spawnRotation = dragonHead.rotation; // Follows head if theres no segments, behind.
+			targetToFollow = dragonHeadNeckAttachPoint;
+			spawnPosition = dragonHeadNeckAttachPoint.position - dragonHeadNeckAttachPoint.forward * spacing;
+			spawnRotation = dragonHeadNeckAttachPoint.rotation; // Follows head if theres no segments, behind.
 		}
 
 		else

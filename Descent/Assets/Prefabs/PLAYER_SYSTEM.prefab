@@ -409,7 +409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 433ca237cc68e4bde9ee320cb6162e01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragonHeadPrefab: {fileID: 6221625176079834765, guid: b0e930179100a417ab9f81fd0ec1b991, type: 3}
+  dragonHeadPrefab: {fileID: 0}
   bodySegmentPrefab: {fileID: 6221625176079834765, guid: d25ceaa927b41499dbac52c56990a691, type: 3}
   neckSegmentPrefab: {fileID: 0}
   frontLegSegmentPrefab: {fileID: 0}
@@ -455,6 +455,7 @@ MonoBehaviour:
   tailSpacing: 0.5
   animationTimeOffset: 0.2
   dragonHead: {fileID: 8008058169675994577}
+  dragonHeadNeckAttachPoint: {fileID: 7874455726750238754}
   bodySegments: []
 --- !u!1 &6796844036791646149
 GameObject:
@@ -624,6 +625,37 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 72
   collisionBuffer: 0.5
+--- !u!1 &7779283853599994215
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7874455726750238754}
+  m_Layer: 7
+  m_Name: DragonHeadFollow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7874455726750238754
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7779283853599994215}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.53}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1887623821720385481}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &8648084660441466250
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,6 +685,70 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1588717478383822352}
   - {fileID: 7321067798597660420}
+  - {fileID: 7874455726750238754}
   m_Father: {fileID: 8008058169675994577}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1262973119912002043
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1887623821720385481}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: e4420159451844fa6a4a8b92c9220dca, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e4420159451844fa6a4a8b92c9220dca, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e4420159451844fa6a4a8b92c9220dca, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e4420159451844fa6a4a8b92c9220dca, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e4420159451844fa6a4a8b92c9220dca, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e4420159451844fa6a4a8b92c9220dca, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e4420159451844fa6a4a8b92c9220dca, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e4420159451844fa6a4a8b92c9220dca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e4420159451844fa6a4a8b92c9220dca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e4420159451844fa6a4a8b92c9220dca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e4420159451844fa6a4a8b92c9220dca, type: 3}
+      propertyPath: m_Name
+      value: DragonHead
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e4420159451844fa6a4a8b92c9220dca, type: 3}
+--- !u!4 &1588717478383822352 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e4420159451844fa6a4a8b92c9220dca, type: 3}
+  m_PrefabInstance: {fileID: 1262973119912002043}
+  m_PrefabAsset: {fileID: 0}

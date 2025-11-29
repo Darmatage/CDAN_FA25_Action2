@@ -11,6 +11,8 @@ public class DragonBodySegment : MonoBehaviour
 	public float rotationSmoothness = 0.15f; //Smoothing to target rotation
 	public float minDistance = 0.2f; //Minimum distance
 	public float maxDistance = 0.8f; //Max distance. Might need to change if model does.
+    
+
 	[Header("Collisions")]
 	public bool preventSelfCollision = true; //turns on/off for testing.
 	public float selfCollisionRadius = 0.5f; //How large is the self collider
@@ -87,6 +89,8 @@ public class DragonBodySegment : MonoBehaviour
 
 	void UpdatePosition()
 	{
+
+
 		Vector3 directionToTarget = followTarget.position - smoothedPosition; //smooths direction to target 
 		Vector3 desiredPosition = followTarget.position - directionToTarget.normalized * segmentDistance; //Finds position it wants behind target.
 		smoothedPosition = Vector3.Lerp(smoothedPosition,desiredPosition,positionSmoothness);
@@ -153,6 +157,9 @@ public class DragonBodySegment : MonoBehaviour
 
 	void UpdateRotation()
 	{
+     
+        
+
 		Vector3 directionToTarget = (followTarget.position - transform.position).normalized; //Pointing to target
 		if (directionToTarget.magnitude>0.01f) //only rotate if there's enough change
 		{
