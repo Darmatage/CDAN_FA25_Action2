@@ -450,10 +450,10 @@ MonoBehaviour:
   tailSegmentCount: 20
   useTailEnd: 1
   headSpacing: 0.8
-  neckSpacing: 0.5
-  bodySpacing: 0.5
-  tailSpacing: 0.5
-  animationTimeOffset: 0.2
+  neckSpacing: 0.4
+  bodySpacing: 0.4
+  tailSpacing: 0.4
+  animationTimeOffset: 0.3
   dragonHead: {fileID: 8008058169675994577}
   dragonHeadNeckAttachPoint: {fileID: 7874455726750238754}
   bodySegments: []
