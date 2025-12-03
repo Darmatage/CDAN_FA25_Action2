@@ -8,6 +8,7 @@ TagManager:
   - Hurtbox
   - Hitbox
   - Door
+  - PauseMenuSlider
   layers:
   - Default
   - TransparentFX
