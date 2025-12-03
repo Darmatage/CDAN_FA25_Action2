@@ -30,6 +30,7 @@ public class GameHandler : MonoBehaviour
     public static float meleeDamage = 10f; //damage of bite
     public static float projectileDamage = 5f; //damage of projectile
     public static float critRate = 0.2f; //critical rate, 1 = 100%, 0.5 = 50% etc
+    public static float attackRadius = 1f;
 
     [Header("Mutation handler")]
 
@@ -123,10 +124,12 @@ public class GameHandler : MonoBehaviour
             case 0: //bite
                 meleeDamage = 10f;
                 critRate = 0.1f;
+                attackRadius = 1f;
                 break;
             case 1: //claws
                 meleeDamage = 5f;
                 critRate = 0.3f;
+                attackRadius = 0.8f;
                 break;
         }
 
@@ -186,6 +189,7 @@ public class GameHandler : MonoBehaviour
             SceneManager.LoadScene("Credits");
       } 
 
-
+      //item info on hover
+      
 
 }

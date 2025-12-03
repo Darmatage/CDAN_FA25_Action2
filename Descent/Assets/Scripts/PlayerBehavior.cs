@@ -97,7 +97,8 @@ public class PlayerBehavior : MonoBehaviour
     void HandleAttackBite()
     {
         Debug.Log("Player Attacks");
-        Collider[] hitEnemies = Physics.OverlapSphere(Hitbox.transform.position, Hitbox.GetComponent<SphereCollider>().radius, enemyLayers);
+
+        Collider[] hitEnemies = Physics.OverlapSphere(Hitbox.transform.position, Hitbox.GetComponent<SphereCollider>().radius * GameHandler.attackRadius, enemyLayers);
 
             foreach (Collider enemy in hitEnemies)
             {
