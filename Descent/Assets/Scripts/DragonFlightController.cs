@@ -52,6 +52,10 @@ public class DragonFlightController : MonoBehaviour
 	
 	void Update()
 	{
+		if (PauseMenuHandler.GameisPaused)
+		{ 
+			return; //no move if pause
+		}
         //Camera.main.fieldOfView = (defaultFOV + boostFOV);
         Camera.main.fieldOfView = boostFOV;
         if (Time.frameCount <=5)
@@ -206,14 +210,22 @@ transform.position += currentVelocity * Time.deltaTime; //Moves based on current
 
 void CursorToggle()
 {
-if (Input.GetKeyDown(KeyCode.Escape))
-{
-UnlockCursor();
-} //If Escape is pressed, frees cursor and makes it visible
-if (Input.GetMouseButtonDown(0) && Cursor.lockState == CursorLockMode.None)
-{
-LockCursor();
-} //When user presses the mouse button while it's unlocked, it relocks and invisi's the cursor.
+		if (Input.GetKeyDown(KeyCode.Tab) && !PauseMenuHandler.GameisPaused) //Changed to Tab due to Conflict
+		{
+			if (Cursor.lockState == CursorLockMode.Locked)
+			{
+				UnlockCursor();
+			} //If Tab is pressed with cursor locked, frees cursor and makes it visible
+			else
+			{
+				LockCursor();
+			}
+		}
+
+		if (Input.GetMouseButtonDown(0) && Cursor.lockState == CursorLockMode.None && !PauseMenuHandler.GameisPaused)
+		{
+			LockCursor();
+		} //When user presses the mouse button while it's unlocked, it relocks and invisi's the cursor, only if game is not paused.
 }
 
 
