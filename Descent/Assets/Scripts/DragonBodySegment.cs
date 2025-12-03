@@ -30,6 +30,7 @@ public class DragonBodySegment : MonoBehaviour
 
 	public Collider hitboxCollider; //Hitbox collider (for attacks, not physics)
 
+	private Vector3 idealTarget; //Where it's TRYING to go (added for smoothness, testing)
 	private Vector3 smoothedPosition; //Stores position moving towards
 	private Quaternion smoothedRotation; //Stores rotation
 	private Vector3 displayVelocity; //Velocity value for animation
@@ -45,6 +46,7 @@ public class DragonBodySegment : MonoBehaviour
 		smoothedPosition = transform.position; //Match current pos
 		smoothedRotation = transform.rotation; //Same with rotation
 		displayVelocity = Vector3.zero; //Sets to 0,0,0, but can change.
+		idealTarget = transform.position; //initialzie
 		initialized = true; //Start has run.
 		
 		bodyManager = GetComponentInParent<DragonBodyManager>(); //Searches gameobject and parents for component, finds script that manages segments
@@ -76,6 +78,7 @@ public class DragonBodySegment : MonoBehaviour
 			smoothedPosition = transform.position; 
 			smoothedRotation = transform.rotation; 
 			displayVelocity = Vector3.zero; 
+			idealTarget = transform.position; //initialize if it didn't
 			initialized = true; //Basically runs start again just in case
 		}
 		Vector3 oldPosition = transform.position; //old position before movement
@@ -90,13 +93,32 @@ public class DragonBodySegment : MonoBehaviour
 	void UpdatePosition()
 	{
 
+        //Marked out as I test a smoother one, and left in for archival purposes
+        //Vector3 directionToTarget = followTarget.position - smoothedPosition; //smooths direction to target  
+        //Vector3 desiredPosition = followTarget.position - directionToTarget.normalized * segmentDistance; //Finds position it wants behind target.
+        //if (directionToTarget.magnitude > 0.001f)
+        //{
+        //    desiredPosition = followTarget.position - directionToTarget.normalized * segmentDistance;
+        //}
+        //smoothedPosition = Vector3.Lerp(smoothedPosition,desiredPosition,positionSmoothness);
+        //Vector3 finalDirection = followTarget.position - smoothedPosition; //Finds direction after smoothing
+		//Gradually moves towards desired position
+        //float finalDistance = finalDirection.magnitude;//distance to target after smoothing
+		// (From "Vector3 directionToFollow -> if (finalDistance < minDistance)" is where this script part used to go. Script went from calculating where you should be based on smoothed position, which was a weird loop,
+		// since smoothedPosition was calculated also based on smoothed. Basically the target would change based on where the part was and thats a nono, also lead to weird jittering. Now it only follows a spot which has a defined place.)
 
-		Vector3 directionToTarget = followTarget.position - smoothedPosition; //smooths direction to target 
-		Vector3 desiredPosition = followTarget.position - directionToTarget.normalized * segmentDistance; //Finds position it wants behind target.
-		smoothedPosition = Vector3.Lerp(smoothedPosition,desiredPosition,positionSmoothness);
-	//Gradually moves towards desired position
-		Vector3 finalDirection = followTarget.position - smoothedPosition; //Finds direction after smoothing
-		float finalDistance = finalDirection.magnitude;//distance to target after smoothing
+		 Vector3 directionToFollow = followTarget.position - idealTarget; //Tracks followtarget at segment distance
+
+        if (directionToFollow.magnitude > 0.001f)
+        {
+            idealTarget = followTarget.position - directionToFollow.normalized * segmentDistance;
+        }
+
+		smoothedPosition = Vector3.Lerp(transform.position, idealTarget, positionSmoothness); //Moves towards 'ideal target'
+
+		Vector3 finalDirection = followTarget.position - smoothedPosition; //constraint applied of smoothing where follow
+		float finalDistance = finalDirection.magnitude;
+
 		if (finalDistance < minDistance) //if we're too close
 		{
 			smoothedPosition = followTarget.position - finalDirection.normalized * minDistance;
@@ -105,6 +127,9 @@ public class DragonBodySegment : MonoBehaviour
 		{
 			smoothedPosition = followTarget.position - finalDirection.normalized * maxDistance;
 		}
+
+		//Collisions
+
 		if (preventWorldCollision) //Earlier bool, set bool for testing
 		{
 			smoothedPosition = CheckWorldCollision(smoothedPosition); //gives method the smoothedPosition and gets it back
@@ -121,7 +146,9 @@ public class DragonBodySegment : MonoBehaviour
 		Vector3 currentPos = transform.position; //current position
 		Vector3 moveDirection = (targetPosition-currentPos).normalized; //Finds were we're trying tp gp
 		float moveDistance = Vector3.Distance(currentPos, targetPosition);//How far we're trying to go
+
 		if (moveDistance < 0.001f) return targetPosition; //Skip check if not moving that much.
+
 		RaycastHit hit; //variable to store collision info
 		if (Physics.SphereCast(currentPos,worldCollisionRadius,moveDirection, out hit,moveDistance, worldCollisionLayers)) //from starting point, cast's a sphere thats worldCollisionRadius radius wide, which way it's being cast (movedirection), puts collision data into hit variable, how far to cast, and which layers to check.
         {
@@ -140,7 +167,9 @@ public class DragonBodySegment : MonoBehaviour
         {
 	        if (otherSegment == this) continue; //no collision with self, next loop iteration
 	        if (otherSegment == null) continue; //if no segment skip
+
 	        int indexDifference = Mathf.Abs(otherSegment.segmentIndex - segmentIndex); //finds distance in chain (ie segment 5 checking segment 3 = 2)
+
 	        if (indexDifference <=1) continue; //skips adjacent segments bc those should overlap some
 	        Vector3 toOther = otherSegment.transform.position - targetPosition; //Vector from this segments position to other
 	        float distance = toOther.magnitude; //distance between them
@@ -185,7 +214,7 @@ public class DragonBodySegment : MonoBehaviour
 
 void OnDrawGizmos() //Test
 {
-	if (!Application.isPlaying || followTarget ==null) return; //only during play mode and if it exists
+	if (!Application.isPlaying || followTarget ==null) return; //only during play mode and if it exists draws line
 	float distance = Vector3.Distance(transform.position,followTarget.position);
 	Gizmos.DrawLine(transform.position,followTarget.position);
 }
