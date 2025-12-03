@@ -356,6 +356,11 @@ MonoBehaviour:
   rollSpeed: 60
   rollAcceleration: 0.5
   maxTurnRate: 150
+  collisionLayers:
+    serializedVersion: 2
+    m_Bits: 8
+  collisionCheckDistance: 2
+  collisionPushbackForce: 5
 --- !u!114 &7943000970861105896
 MonoBehaviour:
   m_ObjectHideFlags: 0

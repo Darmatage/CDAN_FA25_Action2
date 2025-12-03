@@ -26,6 +26,9 @@ public class DragonFlightController : MonoBehaviour
 
 	[Header("Constraints")]
 	public float maxTurnRate = 150f; //Degrees for max turn rate to prevent weird movement
+	public LayerMask collisionLayers; //What layers you can't go through.
+	public float collisionCheckDistance = 2f; //How far it checks for walls
+	public float collisionPushbackForce = 5f; //How hard it pushes from walls
 
 	private Vector3 currentVelocity = Vector3.zero; //Track of speed/direction, starts at (0,0,0)
 	private float rollInput = 0f; //Current Rollinput
@@ -183,6 +186,20 @@ currentVelocity = Vector3.Lerp(currentVelocity,targetVelocity,acceleration * Tim
 
 currentVelocity = Vector3.Lerp(currentVelocity,Vector3.zero,drag*Time.deltaTime); //Drag. Vector3.zero is (0,0,0) so no movement, which means it's slowly going to pause based on drag amount when you aren't pressing something else.
 
+		//Collision Detection yippee
+		Vector3 intendedPosition = transform.position + currentVelocity * Time.deltaTime; //Where you are planning/going to be
+		Vector3 moveDirection = (intendedPosition - transform.position).normalized; //direction u move
+		float moveDistance = (intendedPosition -transform.position).magnitude; //how far player is trying to move
+
+		if (Physics.Raycast(transform.position,moveDirection,out RaycastHit hit, moveDistance + collisionCheckDistance,collisionLayers)) //Shoots ray from position to move direction,  checks intended movement + collisioncheck, and hits objects on collision layers
+		{
+			//if hit something
+			Vector3 slideDirection = Vector3.ProjectOnPlane(currentVelocity, hit.normal); //Slides along where going and hit normal, no longer goes into wall but along (perpendicular to hit surface)
+			currentVelocity = slideDirection; //where you're sliding :P
+
+			transform.position += hit.normal * collisionPushbackForce * Time.deltaTime; //pushes back (prevents getting stuck)
+		}
+		// end collision detection.
 transform.position += currentVelocity * Time.deltaTime; //Moves based on currentVelocity (+= to current position).
 	}
 

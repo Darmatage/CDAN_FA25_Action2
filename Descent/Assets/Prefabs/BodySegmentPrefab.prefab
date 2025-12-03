@@ -109,11 +109,11 @@ MonoBehaviour:
   preventSelfCollision: 1
   selfCollisionRadius: 0.3
   preventWorldCollision: 1
-  worldCollisionRadius: 0.7
+  worldCollisionRadius: 1
   worldCollisionLayers:
     serializedVersion: 2
     m_Bits: 72
-  collisionPushStrength: 0.5
+  collisionPushStrength: 1
   animator: {fileID: 2075495326945620361}
   segmentIndex: 0
   animationTimeOffset: 0.3
