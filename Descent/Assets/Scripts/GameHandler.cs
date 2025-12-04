@@ -27,11 +27,13 @@ public class GameHandler : MonoBehaviour
     public static float playerMaxHealth = 100f;
     public static float playerMaxHealthBase = 100f;
     public static float playerArmor = 1f; //direct multiplier to damage taken
-    public static float playerArmorBase = 1f; //direct multiplier to damage taken
+    public static float playerArmorBase = 1f; //default armor value
     public static float IFrames = 30f; //frames of immunity after taking damage
 
     public static float meleeDamage; //damage of bite
+    public static float meleeCD = 1f; //cooldown of bite
     public static float projectileDamage; //damage of projectile
+    public static float projectileCD = 1f; //cooldown of projectile
     public static float critRate = 0.2f; //critical rate, 1 = 100%, 0.5 = 50% etc
     public static float attackRadius = 1f;
 
@@ -97,7 +99,7 @@ public class GameHandler : MonoBehaviour
 
     //COIN COUNTING
     public void playerGetCoins(int newCoins){ //gettin coins
-            gotCoins += newCoins;
+            gotCoins += Mathf.RoundToInt(newCoins * (1 + (extraGreed * 0.05f))); //multiply gained coins by 5% per greed stack
             updateStatsDisplay();
     }
 
@@ -112,7 +114,8 @@ public class GameHandler : MonoBehaviour
             coinsText.text = "COINS: " + gotCoins;
             
     }
-
+    
+    //DAMAGE CALCULATION
     public void playerGetHit(int damage){ //player gets hit
            //if (isDefending == false){
                   playerCurrentHealth -= damage;
@@ -137,8 +140,6 @@ public class GameHandler : MonoBehaviour
             }
       }
 
-
-    //DAMAGE CALCULATION
     public float MeleeCalc() //calculates player's melee damage
     {
         
@@ -147,11 +148,13 @@ public class GameHandler : MonoBehaviour
         {
             case 1: //bite
                 meleeDamage = 30f;
+                meleeCD = 2f;
                 critRate = 0.1f;
                 attackRadius = 1f;
                 break;
             case 2: //claws
                 meleeDamage = 15f;
+                meleeCD = 3f;
                 critRate = 0.3f;
                 attackRadius = 0.8f;
                 break;
@@ -172,11 +175,13 @@ public class GameHandler : MonoBehaviour
     {
         switch (RangedType) //Get stats of current weapon
         {
-            case 1: //shot
+            case 11: //shot
                 projectileDamage = 20f;
+                projectileCD = 2f;
                 break;
-            case 2: //beam
+            case 12: //beam
                 projectileDamage = 15f;
+                projectileCD = 3f;
                 break;
         }
 

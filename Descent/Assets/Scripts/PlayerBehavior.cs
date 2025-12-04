@@ -20,20 +20,22 @@ public class PlayerBehavior : MonoBehaviour
 
     public GameObject Hitbox;
     public LayerMask enemyLayers;
-    public GameObject FaceTarget; //direction player is facing
-    public Vector3 FaceDirection;
+    //public GameObject FaceTarget; //direction player is facing
+    //public Vector3 FaceDirection;
     public Collider MyHurtbox;
     public GameHandler GameHandler;
+    public PlayerShoot_Shot Shoot_Shot;
     
 
     [Header("Behavior")]
     [Tooltip("Length of attack in seconds.")]
     public static float attackLength = 1f;
     [Tooltip("Length of attack cooldown in seconds.")]
-    public static float attackCooldown = 1f;
-    private bool isAttacking = false;
-    private bool isCooldown = false;
+    //public static float attackCooldown = 1f;
+    //private bool isAttacking = false;
+    //private bool isCooldown = false;
     public float attackTimerMelee = 0f;
+    public float attackTimerProj = 0f;
     public float immuneTimer = 60f;
 
     void Start()
@@ -41,6 +43,7 @@ public class PlayerBehavior : MonoBehaviour
         
         //script.damageSource = GameHandler.meleeDamage; //assign strength to hitbox damage
         Hitbox.SetActive(false);
+        GameHandler = GameObject.FindWithTag("GameHandler").GetComponent<GameHandler>();
     }
 
     // Update is called once per frame
@@ -51,10 +54,17 @@ public class PlayerBehavior : MonoBehaviour
             {
                 Debug.Log("I hit left mouse button");
                 AttackBite();
-                attackTimerMelee = Time.time + 1f / attackCooldown;
+                attackTimerMelee = Time.time + 1f / GameHandler.meleeCD;
             }
-
-        AttackProjectile();
+        if (Time.time >= attackTimerProj)
+        {
+            if (Input.GetMouseButton(1)) //detect right mouse click
+            {
+                AttackProjectile();
+                attackTimerProj = Time.time + 1f / GameHandler.projectileCD;
+            }
+        }
+        
         //Debug.DrawRay(transform.position, FaceTarget.transform.position, Color.red);
     }
 
@@ -110,17 +120,16 @@ public class PlayerBehavior : MonoBehaviour
 
     void AttackProjectile()
     {
-        if (Input.GetMouseButton(1)) //detect right mouse click
+        switch (GameHandler.RangedType)
         {
-            switch (GameHandler.RangedType)
-            {
-                case 11: //shot
-                    break;
-                case 12: //beam
-                    break;
-                case 13: //bomb
-                    break;
-            }
+            case 11: //shot
+                //Debug.Log("running attackprojectile!");
+                Shoot_Shot.playerFireShot();
+                break;
+            case 12: //beam
+                break;
+            case 13: //bomb
+                break;
         }
     }
 

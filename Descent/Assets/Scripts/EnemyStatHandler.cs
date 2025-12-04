@@ -5,11 +5,13 @@ using System.Collections.Generic;
 public class EnemyStatHandler : MonoBehaviour
 {
     //private Animator anim; 
+    public GameHandler GameHandler;
 
     [Header("Stats")]
     public float enemyMaxHealth = 10f;
     public float enemyCurrentHealth;
     public float enemyArmor = 0.5f; //multiplier to damage taken!
+    public int enemyReward = 5; //amount of coins dropped
 
     public Renderer enemyRenderer;
     public Color whiteColor;
@@ -17,8 +19,9 @@ public class EnemyStatHandler : MonoBehaviour
 
     void Start(){
          enemyCurrentHealth = enemyMaxHealth;
-         //anim = GetComponentInChildren<Animator>();
-         //Renderer enemyRenderer = GetComponent<Renderer>();
+        GameHandler = GameObject.FindWithTag("GameHandler").GetComponent<GameHandler>();
+        //anim = GetComponentInChildren<Animator>();
+        //Renderer enemyRenderer = GetComponent<Renderer>();
     }
 
     private void Update()
@@ -45,13 +48,14 @@ public class EnemyStatHandler : MonoBehaviour
             //{
             //    
             //}
-
+            GameHandler.playerGetCoins(enemyReward);
             StartCoroutine(EnemyDeath());
         }
     }
 
     IEnumerator EnemyDeath()
     {
+        enemyRenderer.material.color = Color.black;
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }

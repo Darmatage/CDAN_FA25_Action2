@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4788367761409192498}
   - component: {fileID: 7379051019847175364}
   - component: {fileID: 6795118866952855234}
-  - component: {fileID: 3576027052968160307}
   m_Layer: 0
   m_Name: KrakenHitbox
   m_TagString: Hitbox
@@ -112,19 +111,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &3576027052968160307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2857894387704093333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9174eb2aaf1027245916fa6c40f7c4f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageSource: 0
 --- !u!1 &4587228734852874378
 GameObject:
   m_ObjectHideFlags: 0
