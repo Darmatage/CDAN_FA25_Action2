@@ -300,7 +300,7 @@ public class GameHandler : MonoBehaviour
         inShop = false;
     }
     public void StartGame() {
-            SceneManager.LoadScene("WORK_Rennie");
+            SceneManager.LoadScene("Level1");
       }
 
       // Return to MainMenu

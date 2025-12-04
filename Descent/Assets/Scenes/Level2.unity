@@ -20174,7 +20174,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5689388169616430107, guid: bf34544452a22f44298cdfa5293ba935, type: 3}
       propertyPath: nextLevel
-      value: Level3
+      value: Shop
       objectReference: {fileID: 0}
     - target: {fileID: 5689388169616430107, guid: bf34544452a22f44298cdfa5293ba935, type: 3}
       propertyPath: gateActivated
