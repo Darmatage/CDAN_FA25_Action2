@@ -7,8 +7,7 @@ using UnityEngine.SceneManagement;
 public class AudioManager : MonoBehaviour {
 
         public AudioSource abyss_ambient;
-        public AudioSource abyss_boss1;
-        public AudioSource abyss_boss2;
+        public AudioSource abyss_boss;
         public AudioSource caves_ambient;
         public AudioSource caves_boss;
         public AudioSource coral_ambient;
@@ -25,8 +24,7 @@ public class AudioManager : MonoBehaviour {
                 //set the music based on the scene
                 if (SceneManager.GetActiveScene().name == "MainMenu") {theMusic = main_menu;} 
                 else if (SceneManager.GetActiveScene().name == "Abyss") {theMusic = abyss_ambient;} 
-                else if (SceneManager.GetActiveScene().name == "Abyss") {theMusic = abyss_boss1;}
-                else if (SceneManager.GetActiveScene().name == "Abyss") {theMusic = abyss_boss2;}
+                else if (SceneManager.GetActiveScene().name == "Abyss") {theMusic = abyss_boss;}
                 else if (SceneManager.GetActiveScene().name == "Caves") {theMusic = caves_ambient;}
                 else if (SceneManager.GetActiveScene().name == "Caves") {theMusic = caves_boss;}
                 else if (SceneManager.GetActiveScene().name == "Coral") {theMusic = coral_ambient;}
