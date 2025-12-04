@@ -52,7 +52,7 @@ public class PlayerBehavior : MonoBehaviour
         if (Time.time >= attackTimerMelee)
             if (Input.GetMouseButton(0)) //detect left mouse click
             {
-                Debug.Log("I hit left mouse button");
+                //Debug.Log("I hit left mouse button");
                 AttackBite();
                 attackTimerMelee = Time.time + 1f / GameHandler.meleeCD;
             }
@@ -106,7 +106,7 @@ public class PlayerBehavior : MonoBehaviour
 
     void AttackBite()
     {
-        Debug.Log("Player Attacks");
+        //Debug.Log("Player Attacks");
 
         Collider[] hitEnemies = Physics.OverlapSphere(Hitbox.transform.position, Hitbox.GetComponent<SphereCollider>().radius * GameHandler.attackRadius, enemyLayers);
 

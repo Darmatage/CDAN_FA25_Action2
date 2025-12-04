@@ -75,7 +75,7 @@ public class EnemyBehavior_Melee : MonoBehaviour
     {
         player = GameObject.Find("Player");
         if (player == null){
-            Debug.Log("FUCK");
+            //Debug.Log("FUCK");
         }
         float distToPlayer = Vector3.Distance(transform.position, player.transform.position); //get distance to player
         float distToHome = Vector3.Distance(transform.position, EnemyHome.transform.position); //get distance from home point
@@ -308,10 +308,10 @@ public class EnemyBehavior_Melee : MonoBehaviour
             }
             else
             {
-                Debug.Log("Move attempt invalid!");
+                //Debug.Log("Move attempt invalid!");
             }
         } while (!attemptValid); //keep checking until valid location is found
-        Debug.Log("Attempt succeded! Target position: x - " + moveAttempt.x + " y - " + moveAttempt.y + " z - " + moveAttempt.z);
+        //Debug.Log("Attempt succeded! Target position: x - " + moveAttempt.x + " y - " + moveAttempt.y + " z - " + moveAttempt.z);
         //GameObject targetlocation = new GameObject("Target location");
         //targetlocation.transform.position = moveAttempt;
         return moveAttempt; //return valid location

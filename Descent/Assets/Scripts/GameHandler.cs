@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameHandler : MonoBehaviour
 {
     [Header("Level Stats")]
-    public static int currentLevel = 0;//current level
+    public static int currentLevel = 0; //current level
     public float levelTimer; //current time elapsed in level
     public float maxTime = 180f; //time limit for level
 	private string sceneName;
