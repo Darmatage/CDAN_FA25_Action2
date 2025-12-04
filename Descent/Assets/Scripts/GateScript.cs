@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GateScript : MonoBehaviour
 {
-    [Header("GateKeyBinds")]
+    GameHandler GameHandler;
+	
+	[Header("GateKeyBinds")]
     //public KeyCode summonKey = KeyCode.F;
     //public KeyCode nextLevelKey = KeyCode.F;
     //public KeyCode shopKey = KeyCode.S;
@@ -70,10 +72,12 @@ public class GateScript : MonoBehaviour
 	{
 		if (other.gameObject.tag=="Player")
         {
-            Debug.Log("Collision other with Player tag");
+            Debug.Log("Collision other with Player tag. " + gateActivated);
 			if (gateActivated)
 			{
-				SceneManager.LoadScene(nextLevel);
+                Debug.Log("Loading scene!");
+                GameHandler.currentLevel++;
+                SceneManager.LoadScene("Shop");
 			} 
 		}
 	}

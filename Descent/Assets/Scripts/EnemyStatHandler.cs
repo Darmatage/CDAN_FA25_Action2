@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.InputSystem.LowLevel;
 
 public class EnemyStatHandler : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class EnemyStatHandler : MonoBehaviour
     public float enemyCurrentHealth;
     public float enemyArmor = 0.5f; //multiplier to damage taken!
     public int enemyReward = 5; //amount of coins dropped
+    public bool isBoss = false;
 
     public Renderer enemyRenderer;
     public Color whiteColor;
@@ -48,6 +50,12 @@ public class EnemyStatHandler : MonoBehaviour
             //{
             //    
             //}
+            if (isBoss) //if enemy is a boss
+            {
+                GateScript gate;
+                gate = GameObject.FindWithTag("Door").GetComponent<GateScript>();
+                gate.defeatABoss();
+            }
             GameHandler.playerGetCoins(enemyReward);
             StartCoroutine(EnemyDeath());
         }

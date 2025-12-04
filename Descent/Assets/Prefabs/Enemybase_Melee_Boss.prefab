@@ -131,9 +131,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91aac2fd46c9c694184cd9372ffe00bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameHandler: {fileID: 0}
   enemyMaxHealth: 100
   enemyCurrentHealth: 0
   enemyArmor: 0.5
+  enemyReward: 5
+  isBoss: 1
   enemyRenderer: {fileID: 6732193897011076446}
   whiteColor: {r: 1, g: 1, b: 1, a: 1}
   redColor: {r: 1, g: 0, b: 0, a: 1}

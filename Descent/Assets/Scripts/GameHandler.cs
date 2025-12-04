@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameHandler : MonoBehaviour
 {
     [Header("Level Stats")]
+    public static int currentLevel = 0;//current level
     public float levelTimer; //current time elapsed in level
     public float maxTime = 180f; //time limit for level
 	private string sceneName;
@@ -92,10 +93,7 @@ public class GameHandler : MonoBehaviour
         
     }
 
-    private void Update()
-    {
-        
-    }
+    
 
     //COIN COUNTING
     public void playerGetCoins(int newCoins){ //gettin coins
@@ -110,8 +108,8 @@ public class GameHandler : MonoBehaviour
     }
 
     public void updateStatsDisplay(){ //update totals
-            healthText.text = "HEALTH: " + playerCurrentHealth;
-            coinsText.text = "COINS: " + gotCoins;
+            healthText.text = playerCurrentHealth + "/" + playerMaxHealth;
+            coinsText.text = gotCoins.ToString();
             
     }
     
@@ -168,6 +166,14 @@ public class GameHandler : MonoBehaviour
             totalDamage *= 1.5f; //critical hits increase damage by 50%. effects can also be added here :3
         }
          Debug.Log("Sent Damage: " + totalDamage);
+
+        //lifesteal
+        if(lifesteal != 0)
+        {
+            playerCurrentHealth += totalDamage * (lifesteal * 0.05f); // heal 5% damage dealt(additive) for each stack
+            if (playerCurrentHealth > playerMaxHealth) { playerCurrentHealth = playerMaxHealth; } //make sure it doesnt go over
+        }
+
         return totalDamage;
     }
 
@@ -265,15 +271,21 @@ public class GameHandler : MonoBehaviour
     {
         float healthRatio = playerCurrentHealth / playerMaxHealth; 
         playerMaxHealth += 20;
-        playerCurrentHealth = playerCurrentHealth * healthRatio;
+        playerCurrentHealth = playerMaxHealth * healthRatio;
         
     }
 
     //STATE CHANGES
     
-    public void EnterShop()
+    public void EnterShop() //entering a shop
     {
-       inShop = true;
+        inShop = true;
+    }
+    public void LoadLevel() //exiting shop, entering level
+    {
+        //SceneManager.LoadScene("Level" + currentLevel);
+        SceneManager.LoadScene("WORK_Rennie");
+        inShop = false;
     }
     public void StartGame() {
             SceneManager.LoadScene("WORK_Rennie");
