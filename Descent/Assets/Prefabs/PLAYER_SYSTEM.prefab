@@ -549,6 +549,7 @@ GameObject:
   - component: {fileID: 5275911078925536535}
   - component: {fileID: 5478860948768771587}
   - component: {fileID: 7407801134995931675}
+  - component: {fileID: 4354360355580368848}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -704,6 +705,23 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 72
   collisionBuffer: 0.5
+--- !u!114 &4354360355580368848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6796844036791646149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c88207ca253fe4fbfac96ebdc95de4ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 7085648858279325616}
+  depth: 150
+  postProcessingVolume: {fileID: 0}
+  surfacePostProcessing: {fileID: 11400000, guid: ab09877e2e707104187f6f83e2f62510, type: 2}
+  underwaterPostProcessing: {fileID: 11400000, guid: fa9c82b5fff6a4b2486a1851d5294d39, type: 2}
 --- !u!1 &7346054542434430601
 GameObject:
   m_ObjectHideFlags: 0
