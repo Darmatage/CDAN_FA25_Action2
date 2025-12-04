@@ -35,6 +35,11 @@ public class ShopButton : MonoBehaviour
     public Sprite upgrade_greed;
     public Sprite upgrade_lifesteal;
     public Sprite upgrade_armor;
+    //decrease detection range
+    //armor pierce?
+    //regeration
+
+
     void Start()
     {
         getUpgradeNum();

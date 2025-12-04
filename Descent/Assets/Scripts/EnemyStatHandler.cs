@@ -45,7 +45,7 @@ public class EnemyStatHandler : MonoBehaviour
         if (enemyCurrentHealth <= 0)
         {
             //anim.SetBool("EnemyDead", true);
-            GameHandler.enemiesKilled += 1;
+            GameHandler.enemiesKilled++;
             //if (GameHandler.enemiesKilled >= GameHandler.enemyGoal)
             //{
             //    

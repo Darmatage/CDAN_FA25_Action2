@@ -4,6 +4,8 @@ using UnityEngine;
 public class DragonFlightController : MonoBehaviour
 {
 
+	public GameHandler GameHandler;
+
 	[Header("Movement Settings")]
 	public float forwardSpeed = 10f; //Forward should be fastest
 	public float strafeSpeed = 8f; //Side/Side movement :)
@@ -13,6 +15,7 @@ public class DragonFlightController : MonoBehaviour
 	public float drag = 2f; //'Water Resistance', slowing down when you stop moving
 	public float dashSpeed = 0f; //boost to movement speed
 	public float dashFalloffTimer = 0f; //time since dash was initiated
+	public float dashCDTimer = 3f; //time since last dash
 	public bool isDashing = false;
 
 	[Header("Mouse Settings")]
@@ -48,6 +51,8 @@ public class DragonFlightController : MonoBehaviour
 		//Starts with 0 Roll
 
 		FOVtimer = 100f;
+
+		GameHandler = GameObject.FindWithTag("GameHandler").GetComponent<GameHandler>();
 	}
 	
 	void Update()
@@ -134,25 +139,33 @@ public class DragonFlightController : MonoBehaviour
 	
 	void HandleDash()
 	{
-		//begin dash
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            dashFalloffTimer = 0f;
-            FOVtimer = 0f;
-        }
-		//during dash
-        if (Input.GetKey(KeyCode.LeftShift))
+		if(dashCDTimer >= GameHandler.dashCD || isDashing)
 		{
-			isDashing = true;
-			dashFalloffTimer += Time.deltaTime; //increment falloff timer
-            
-        }
-		else
-		{
-			isDashing = false;
-            dashFalloffTimer = 0f;
-        }
+			//begin dash
+			if (Input.GetKeyDown(KeyCode.LeftShift))
+			{
+				dashFalloffTimer = 0f;
+				FOVtimer = 0f;
+				dashCDTimer = 0f;
+				
+			}
+			//during dash
+			if (Input.GetKey(KeyCode.LeftShift))
+			{
+				isDashing = true;
+				dashFalloffTimer += Time.deltaTime; //increment falloff timer
+				
+			}
+			else
+			{
+				isDashing = false;
+				dashFalloffTimer = 0f;
+			}
+		}
+			
+		//increment timers
         FOVtimer += Time.deltaTime;
+		dashCDTimer += Time.deltaTime;
     }
 	void HandleMovement()
 	{
@@ -161,7 +174,7 @@ public class DragonFlightController : MonoBehaviour
 		float vertical = 0f;
 		//States initial float values
 
-		dashSpeed = isDashing ? (0.6f / (0.5f * dashFalloffTimer + 0.1f)) : 1; //dash speed based on a curve if dashing, else set to 1
+		dashSpeed = isDashing ? (2.5f / (0.5f * dashFalloffTimer + 0.4f)) - 0.1f : 1; //dash speed based on a curve if dashing, else set to 1
 		boostFOV = (0.7f / (0.2f * FOVtimer + 0.4f)) + 60;
 
 
