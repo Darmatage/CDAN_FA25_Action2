@@ -136,6 +136,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SJ_Terrain_L_'SandyLift'
       objectReference: {fileID: 0}
+    - target: {fileID: 4934271791215953615, guid: 2421ba97d4d58fe478549cb51b6f5eda, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7040101305830541939, guid: 2421ba97d4d58fe478549cb51b6f5eda, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.4133
@@ -249,6 +253,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coral_04
       objectReference: {fileID: 0}
+    - target: {fileID: 6456715196780646115, guid: eb3dd94a6c74fb54a9beb04fb21fc898, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -266,7 +274,7 @@ GameObject:
   - component: {fileID: 159021484}
   - component: {fileID: 159021483}
   - component: {fileID: 159021482}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlantLocations(Main) (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -374,7 +382,7 @@ GameObject:
   - component: {fileID: 234195113}
   - component: {fileID: 234195112}
   - component: {fileID: 234195111}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlantLocations(Main) (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -482,7 +490,7 @@ GameObject:
   - component: {fileID: 268186277}
   - component: {fileID: 268186276}
   - component: {fileID: 268186275}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlantLocations(Main)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -626,6 +634,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 779088100}
     m_Modifications:
+    - target: {fileID: 4360289721787430316, guid: 02e2dc83eb5bdbe4baac68b39868170f, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4526438536817060365, guid: 02e2dc83eb5bdbe4baac68b39868170f, type: 3}
       propertyPath: m_Name
       value: Coral_07 (1)
@@ -699,7 +711,7 @@ GameObject:
   - component: {fileID: 331952652}
   - component: {fileID: 331952651}
   - component: {fileID: 331952650}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlantLocations(Main) (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1017,6 +1029,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7150780479851137505, guid: cc9e7a7a97bb04936bbe01bf6ef09796, type: 3}
   m_PrefabInstance: {fileID: 723472183}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &403751033 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7f6377592b6cc4f8ab82dca6b9a94748, type: 3}
+  m_PrefabInstance: {fileID: 1345354643}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &410550004
 GameObject:
   m_ObjectHideFlags: 0
@@ -1203,6 +1220,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1379389840481182598, guid: 2976089d728684674a2e2c27cb326b73, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4166017612249350593, guid: 2976089d728684674a2e2c27cb326b73, type: 3}
       propertyPath: m_Name
       value: Grouped_Rocks_02 (2)
@@ -1313,6 +1334,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1379389840481182598, guid: 2976089d728684674a2e2c27cb326b73, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4166017612249350593, guid: 2976089d728684674a2e2c27cb326b73, type: 3}
       propertyPath: m_Name
       value: Grouped_Rocks_02
@@ -1362,7 +1387,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: fa9c82b5fff6a4b2486a1851d5294d39, type: 2}
+  sharedProfile: {fileID: 11400000, guid: ab09877e2e707104187f6f83e2f62510, type: 2}
 --- !u!23 &495020836
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1643,10 +1668,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mountains
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cd8692d0a211a4ddcaf97d7ef09c6761, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cd8692d0a211a4ddcaf97d7ef09c6761, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1700167069}
   m_SourcePrefab: {fileID: 100100000, guid: cd8692d0a211a4ddcaf97d7ef09c6761, type: 3}
 --- !u!1001 &536870000
 PrefabInstance:
@@ -1712,6 +1744,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coral_04 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6456715196780646115, guid: eb3dd94a6c74fb54a9beb04fb21fc898, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1730,6 +1766,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 779088100}
     m_Modifications:
+    - target: {fileID: 3946556208720560829, guid: cc9e7a7a97bb04936bbe01bf6ef09796, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5331926071073444065, guid: cc9e7a7a97bb04936bbe01bf6ef09796, type: 3}
       propertyPath: m_Name
       value: Coral_10 (1)
@@ -1922,6 +1962,10 @@ PrefabInstance:
     - target: {fileID: 122756712665341525, guid: 2976089d728684674a2e2c27cb326b73, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 156.681
+      objectReference: {fileID: 0}
+    - target: {fileID: 1379389840481182598, guid: 2976089d728684674a2e2c27cb326b73, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4166017612249350593, guid: 2976089d728684674a2e2c27cb326b73, type: 3}
       propertyPath: m_Name
@@ -2126,7 +2170,7 @@ GameObject:
   - component: {fileID: 868288196}
   - component: {fileID: 868288195}
   - component: {fileID: 868288194}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlantLocations(Main) (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2658,6 +2702,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 10.946
       objectReference: {fileID: 0}
+    - target: {fileID: 2277138595917972534, guid: f3d041c07e1f48d46a236c4b093a9213, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8851826020658655706, guid: f3d041c07e1f48d46a236c4b093a9213, type: 3}
       propertyPath: m_Name
       value: SJ_Terrain_L_'ShortPlateaus' (1)
@@ -2675,6 +2723,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 779088100}
     m_Modifications:
+    - target: {fileID: 3946556208720560829, guid: cc9e7a7a97bb04936bbe01bf6ef09796, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5331926071073444065, guid: cc9e7a7a97bb04936bbe01bf6ef09796, type: 3}
       propertyPath: m_Name
       value: Coral_10
@@ -2754,6 +2806,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 779088100}
     m_Modifications:
+    - target: {fileID: 3946556208720560829, guid: cc9e7a7a97bb04936bbe01bf6ef09796, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5331926071073444065, guid: cc9e7a7a97bb04936bbe01bf6ef09796, type: 3}
       propertyPath: m_Name
       value: Coral_10 (2)
@@ -2835,6 +2891,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7f6377592b6cc4f8ab82dca6b9a94748, type: 3}
   m_PrefabInstance: {fileID: 1345354643}
   m_PrefabAsset: {fileID: 0}
+--- !u!64 &1321342184
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403751033}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1752453588618891607, guid: 7f6377592b6cc4f8ab82dca6b9a94748, type: 3}
 --- !u!1 &1334722058
 GameObject:
   m_ObjectHideFlags: 0
@@ -3011,10 +3089,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sand
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7f6377592b6cc4f8ab82dca6b9a94748, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7f6377592b6cc4f8ab82dca6b9a94748, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1321342184}
   m_SourcePrefab: {fileID: 100100000, guid: 7f6377592b6cc4f8ab82dca6b9a94748, type: 3}
 --- !u!4 &1351493268 stripped
 Transform:
@@ -3330,6 +3415,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 779088100}
     m_Modifications:
+    - target: {fileID: 1386427414241894788, guid: 993836878260f4641b7473f24822ba04, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8760338728675048426, guid: 993836878260f4641b7473f24822ba04, type: 3}
       propertyPath: m_Name
       value: Rock_10 (2)
@@ -3404,6 +3493,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 779088100}
     m_Modifications:
+    - target: {fileID: 4360289721787430316, guid: 02e2dc83eb5bdbe4baac68b39868170f, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4526438536817060365, guid: 02e2dc83eb5bdbe4baac68b39868170f, type: 3}
       propertyPath: m_Name
       value: Coral_07
@@ -3477,7 +3570,7 @@ GameObject:
   - component: {fileID: 1541941309}
   - component: {fileID: 1541941308}
   - component: {fileID: 1541941307}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlantLocations(Main) (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3776,6 +3869,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_06
       objectReference: {fileID: 0}
+    - target: {fileID: 429919268988810535, guid: dedca19d6c1dc492f920852483740c27, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7083332650703288963, guid: dedca19d6c1dc492f920852483740c27, type: 3}
       propertyPath: m_LocalScale.x
       value: 20.844
@@ -3971,6 +4068,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1682472126}
   m_CullTransparentMesh: 1
+--- !u!1 &1700167066 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: cd8692d0a211a4ddcaf97d7ef09c6761, type: 3}
+  m_PrefabInstance: {fileID: 526577936}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1700167069
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700167066}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 795307909900652610, guid: cd8692d0a211a4ddcaf97d7ef09c6761, type: 3}
 --- !u!1001 &1720627328
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3979,6 +4103,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 779088100}
     m_Modifications:
+    - target: {fileID: 4360289721787430316, guid: 02e2dc83eb5bdbe4baac68b39868170f, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4526438536817060365, guid: 02e2dc83eb5bdbe4baac68b39868170f, type: 3}
       propertyPath: m_Name
       value: Coral_07 (2)
@@ -4350,6 +4478,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2277138595917972534, guid: f3d041c07e1f48d46a236c4b093a9213, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8851826020658655706, guid: f3d041c07e1f48d46a236c4b093a9213, type: 3}
       propertyPath: m_Name
       value: SJ_Terrain_L_'ShortPlateaus'
@@ -4475,6 +4607,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 779088100}
     m_Modifications:
+    - target: {fileID: 1386427414241894788, guid: 993836878260f4641b7473f24822ba04, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8760338728675048426, guid: 993836878260f4641b7473f24822ba04, type: 3}
       propertyPath: m_Name
       value: Rock_10 (1)
@@ -4665,6 +4801,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 779088100}
     m_Modifications:
+    - target: {fileID: 1150832660290524428, guid: 45475e45e271d4b34a229fc1e228c1de, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4602459783859484411, guid: 45475e45e271d4b34a229fc1e228c1de, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -4734,6 +4874,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 779088100}
     m_Modifications:
+    - target: {fileID: 1386427414241894788, guid: 993836878260f4641b7473f24822ba04, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8760338728675048426, guid: 993836878260f4641b7473f24822ba04, type: 3}
       propertyPath: m_Name
       value: Rock_10
@@ -4995,6 +5139,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5236561881110965795, guid: c85dfa1f45d1a4cfd9f907776bdd8691, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5119,6 +5267,10 @@ PrefabInstance:
     - target: {fileID: 1197623392531245494, guid: 004ca8d789cc3d948ab397da9f36fb87, type: 3}
       propertyPath: m_Name
       value: Coral_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1600666077292360041, guid: 004ca8d789cc3d948ab397da9f36fb87, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3998605983832896649, guid: 004ca8d789cc3d948ab397da9f36fb87, type: 3}
       propertyPath: m_LocalScale.x
@@ -5304,6 +5456,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1379389840481182598, guid: 2976089d728684674a2e2c27cb326b73, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4166017612249350593, guid: 2976089d728684674a2e2c27cb326b73, type: 3}
       propertyPath: m_Name
       value: Grouped_Rocks_02 (1)
@@ -5325,7 +5481,7 @@ GameObject:
   - component: {fileID: 2147008316}
   - component: {fileID: 2147008315}
   - component: {fileID: 2147008314}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlantLocations(Main) (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
