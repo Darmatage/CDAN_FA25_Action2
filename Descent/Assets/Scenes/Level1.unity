@@ -2732,6 +2732,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5689388169616430107, guid: bf34544452a22f44298cdfa5293ba935, type: 3}
+      propertyPath: nextLevel
+      value: Shop
+      objectReference: {fileID: 0}
     - target: {fileID: 7154662080193455756, guid: bf34544452a22f44298cdfa5293ba935, type: 3}
       propertyPath: m_Name
       value: GATE_SYSTEM
