@@ -28,15 +28,15 @@ public class EnemyStatHandler : MonoBehaviour
 
     public void EnemyDamage(float damageSource)
     {
-        Debug.Log(damageSource);
-        Debug.Log(enemyArmor);
+        //Debug.Log(damageSource);
+        //Debug.Log(enemyArmor);
 
         //anim.SetTrigger("EnemyHurt");
         StartCoroutine(EnemyHurtFlash());
 
         float totalDamage = damageSource * enemyArmor;
         //other things can go here, like crits or weaknesses
-        Debug.Log("Total Damage: " + totalDamage);
+        //Debug.Log("Total Damage: " + totalDamage);
         enemyCurrentHealth -= totalDamage;
         if (enemyCurrentHealth <= 0)
         {

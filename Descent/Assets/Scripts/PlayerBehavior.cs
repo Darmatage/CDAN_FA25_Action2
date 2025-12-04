@@ -104,7 +104,7 @@ public class PlayerBehavior : MonoBehaviour
             {
                 //Debug.Log("We hit " + enemy.name);
                 //enemy.GetComponent<EnemyStatHandler>().EnemyDamage(GameHandler.MeleeCalc());
-                enemy.GetComponent<EnemyStatHandler>().EnemyDamage(10); //call damage function on enemy
+                enemy.GetComponent<EnemyStatHandler>().EnemyDamage(GameHandler.MeleeCalc()); //call damage function on enemy
              }
     }
 

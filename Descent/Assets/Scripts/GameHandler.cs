@@ -18,10 +18,9 @@ public class GameHandler : MonoBehaviour
     [Header("Player Stats")]
 
 	private GameObject player;
-	public TMP_Text healthText;
-    public static int gotCoins = 0;
-    public TMP_Text coinsText;
+	
 
+    public static int gotCoins = 1000;
     public static float playerCurrentHealth = 100f;
     public static float playerMaxHealth = 100f;
     public static float playerArmor = 0.9f; //direct multiplier to damage taken
@@ -32,29 +31,45 @@ public class GameHandler : MonoBehaviour
     public static float critRate = 0.2f; //critical rate, 1 = 100%, 0.5 = 50% etc
     public static float attackRadius = 1f;
 
+    [Header("UI elements")]
+
+    public TMP_Text healthText;
+    public TMP_Text coinsText;
+    public GameObject weaponIcon;
+    public GameObject projectileIcon;
+
+    public Sprite weapon_claw;
+    public Sprite weapon_bite;
+
+    public Sprite proj_shot;
+    public Sprite proj_beam;
+
     [Header("Mutation handler")]
 
-    public static int MeleeType = 0; //tracks what "main weapon" currently is
+    public static int MeleeType = 1; //tracks what "main weapon" currently is
     /*
-     * 0 = bite, default
-     * 1 = claws, bleed effect, faster attack speed, shorter range
-     * 2 = tail whip, huge range that scales off max hp, slow speed
+     * 1 = bite, default
+     * 2 = claws, bleed effect, faster attack speed, shorter range
+     * 3 = tail whip, huge range that scales off max hp, slow speed?
      */
-    public static int RangedType = 0; //tracks current ranged weapon
+    public static int RangedType = 11; //tracks current ranged weapon
     /*
-     * 0 = steam shot, default
-     * idkkk
+     * 11 = steam shot, default
+     * 12 = beam, hitscan held, pierce
+     * 13 = bomb, aoe blast?
      */
-    public static int extraHP; //stacks of extra hp
-    public static int extraAttack; //stacks of extra attack
-    public static int extraGreed; //stacks of extra greed
-    public static int extraArmor; //stacks of extra armor
-    public static float lifesteal = 0f; //stacks of extra lifesteal
+    public static int extraHP = 0; //stacks of extra hp
+    public static int extraAttack = 0; //stacks of extra attack
+    public static int extraGreed = 0; //stacks of extra greed
+    public static int extraArmor = 0; //stacks of extra armor
+    public static int lifesteal = 0; //stacks of extra lifesteal
 
 
     void Start()
     {
         updateStatsDisplay();
+        UpdateWeapon(1);
+        UpdateProjectile(1);
     }
 
     void FixedUpdate()
@@ -81,9 +96,16 @@ public class GameHandler : MonoBehaviour
             updateStatsDisplay();
     }
 
+    public void playerLoseCoins(int newCoins)
+    {
+        gotCoins -= newCoins;
+        updateStatsDisplay();
+    }
+
     public void updateStatsDisplay(){
             healthText.text = "HEALTH: " + playerCurrentHealth;
             coinsText.text = "COINS: " + gotCoins;
+            
     }
 
     public void playerGetHit(int damage){
@@ -122,21 +144,22 @@ public class GameHandler : MonoBehaviour
     {
         
 
-        switch (MeleeType)
+        switch (MeleeType) //Get stats of current weapon
         {
-            case 0: //bite
+            case 1: //bite
                 meleeDamage = 30f;
                 critRate = 0.1f;
                 attackRadius = 1f;
                 break;
-            case 1: //claws
+            case 2: //claws
                 meleeDamage = 15f;
                 critRate = 0.3f;
                 attackRadius = 0.8f;
                 break;
         }
 
-        float totalDamage = meleeDamage;
+        float totalDamage = meleeDamage * //base damage 
+            ((extraAttack * 0.1f) + 1); //attack passive modifier
 
         if (critRate > Random.value)
         {
@@ -146,21 +169,83 @@ public class GameHandler : MonoBehaviour
         return totalDamage;
     }
 
-/*
-	public void playerDies(){
-            player.GetComponent<PlayerHurt>().playerDead();       //play Death animation
-            lastLevelDied = sceneName;       //allows replaying the Level where you died
-            StartCoroutine(DeathPause());
-      }
+    /*
+        public void playerDies(){
+                player.GetComponent<PlayerHurt>().playerDead();       //play Death animation
+                lastLevelDied = sceneName;       //allows replaying the Level where you died
+                StartCoroutine(DeathPause());
+          }
 
-      IEnumerator DeathPause(){
-            player.GetComponent<PlayerMove>().isAlive = false;
-            player.GetComponent<PlayerJump>().isAlive = false;
-            yield return new WaitForSeconds(1.0f);
-            SceneManager.LoadScene("EndLose");
-      }
-*/
-      public void StartGame() {
+          IEnumerator DeathPause(){
+                player.GetComponent<PlayerMove>().isAlive = false;
+                player.GetComponent<PlayerJump>().isAlive = false;
+                yield return new WaitForSeconds(1.0f);
+                SceneManager.LoadScene("EndLose");
+          }
+    */
+
+    //MUTATIONS
+    public void UpdateWeapon(int type) //changes current weapon type
+    {
+        switch (type)
+        {
+            case 1: //BITE
+                MeleeType = 1;
+                weaponIcon.GetComponent<Image>().sprite = weapon_bite;
+                break;
+            case 2: //CLAW
+                MeleeType = 2;
+                weaponIcon.GetComponent<Image>().sprite = weapon_claw;
+                break;
+            
+        }
+    }
+
+    public void UpdateProjectile(int type) //changes current projectile type
+    {
+        switch (type)
+        {
+            case 11: //SHOT
+                RangedType = 1;
+                projectileIcon.GetComponent<Image>().sprite = proj_shot;
+                break;
+            case 12: //BEAM
+                RangedType = 2;
+                projectileIcon.GetComponent<Image>().sprite = proj_beam;
+                break;
+        }
+    }
+    public void AddUpgrade(int type) //increments stacking upgrades
+    {
+        switch (type)
+        {
+            case 21: //HEALTH
+                extraHP++;
+                UpdateHealth();
+                break;
+            case 22: //ATTACK
+                extraAttack++;
+                break;
+            case 23: //GREED
+                extraGreed++;
+                break;
+            case 24: //LIFESTEAL
+                lifesteal++;
+                break;
+            case 25: //ARMOR
+                extraArmor++;
+                break;
+        }
+    }
+
+    void UpdateHealth() //changes hp when upgrading max hp
+    {
+        float healthRatio = playerCurrentHealth / playerMaxHealth; 
+        playerMaxHealth += extraHP * 20;
+        playerCurrentHealth = playerCurrentHealth * healthRatio;
+        
+    }
+    public void StartGame() {
             SceneManager.LoadScene("WORK_Rennie");
       }
 
