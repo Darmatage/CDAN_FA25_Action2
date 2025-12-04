@@ -95,24 +95,25 @@ public class GameHandler : MonoBehaviour
         
     }
 
-    public void playerGetCoins(int newCoins){
+    //COIN COUNTING
+    public void playerGetCoins(int newCoins){ //gettin coins
             gotCoins += newCoins;
             updateStatsDisplay();
     }
 
-    public void playerLoseCoins(int newCoins)
+    public void playerLoseCoins(int newCoins) //losin coins
     {
         gotCoins -= newCoins;
         updateStatsDisplay();
     }
 
-    public void updateStatsDisplay(){
+    public void updateStatsDisplay(){ //update totals
             healthText.text = "HEALTH: " + playerCurrentHealth;
             coinsText.text = "COINS: " + gotCoins;
             
     }
 
-    public void playerGetHit(int damage){
+    public void playerGetHit(int damage){ //player gets hit
            //if (isDefending == false){
                   playerCurrentHealth -= damage;
                   if (playerCurrentHealth >=0){

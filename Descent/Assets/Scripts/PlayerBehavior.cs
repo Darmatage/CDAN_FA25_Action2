@@ -24,7 +24,7 @@ public class PlayerBehavior : MonoBehaviour
     public Vector3 FaceDirection;
     public Collider MyHurtbox;
     public GameHandler GameHandler;
-    public AttackHandler AttackHandler;
+    
 
     [Header("Behavior")]
     [Tooltip("Length of attack in seconds.")]
@@ -38,7 +38,7 @@ public class PlayerBehavior : MonoBehaviour
 
     void Start()
     {
-        AttackHandler script = GetComponentInChildren<AttackHandler>(true);
+        
         //script.damageSource = GameHandler.meleeDamage; //assign strength to hitbox damage
         Hitbox.SetActive(false);
     }
@@ -50,11 +50,11 @@ public class PlayerBehavior : MonoBehaviour
             if (Input.GetMouseButton(0)) //detect left mouse click
             {
                 Debug.Log("I hit left mouse button");
-                HandleAttackBite();
+                AttackBite();
                 attackTimerMelee = Time.time + 1f / attackCooldown;
             }
 
-        HandleAttackProjectile();
+        AttackProjectile();
         //Debug.DrawRay(transform.position, FaceTarget.transform.position, Color.red);
     }
 
@@ -94,7 +94,7 @@ public class PlayerBehavior : MonoBehaviour
         */
     }
 
-    void HandleAttackBite()
+    void AttackBite()
     {
         Debug.Log("Player Attacks");
 
@@ -108,11 +108,19 @@ public class PlayerBehavior : MonoBehaviour
              }
     }
 
-    void HandleAttackProjectile()
+    void AttackProjectile()
     {
         if (Input.GetMouseButton(1)) //detect right mouse click
         {
-            
+            switch (GameHandler.RangedType)
+            {
+                case 11: //shot
+                    break;
+                case 12: //beam
+                    break;
+                case 13: //bomb
+                    break;
+            }
         }
     }
 

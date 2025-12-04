@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class PlayerShoot : MonoBehaviour
+public class PlayerShoot_Shot : MonoBehaviour
 {
     public GameObject cam;
     // Update is called once per frame
