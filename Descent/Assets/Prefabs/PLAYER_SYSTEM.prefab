@@ -372,6 +372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd8eaa75ffcdc412c81a2129a6094db7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameHandler: {fileID: 0}
   forwardSpeed: 30
   strafeSpeed: 12
   backwardSpeed: 6
@@ -380,9 +381,10 @@ MonoBehaviour:
   drag: 2
   dashSpeed: 0
   dashFalloffTimer: 0
+  dashCDTimer: 3
   isDashing: 0
-  lookRateSpeed: 60
-  mouseSensitivity: 4
+  lookRateSpeed: 145.2
+  mouseSensitivity: 11
   mouseReturnSpeed: 3
   rollSpeed: 60
   rollAcceleration: 0.5
