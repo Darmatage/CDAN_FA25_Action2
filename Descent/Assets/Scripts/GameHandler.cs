@@ -292,6 +292,8 @@ public class GameHandler : MonoBehaviour
     public void EnterShop() //entering a shop
     {
         inShop = true;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
     public void LoadLevel() //exiting shop, entering level
     {

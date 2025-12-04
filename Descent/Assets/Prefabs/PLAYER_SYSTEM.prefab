@@ -384,7 +384,7 @@ MonoBehaviour:
   dashCDTimer: 3
   isDashing: 0
   lookRateSpeed: 145.2
-  mouseSensitivity: 11
+  mouseSensitivity: 2
   mouseReturnSpeed: 3
   rollSpeed: 60
   rollAcceleration: 0.5
