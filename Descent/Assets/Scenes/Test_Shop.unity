@@ -308,12 +308,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca21ca771a908ac4195fbda05e0bee3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameHandler: {fileID: 365074585}
   ShopHandler: {fileID: 498869930}
   buttonNum: 2
   label: {fileID: 1307995358}
   desc: 
   price: 0
+  empty: {fileID: 21300000, guid: 8bae5c9fbadfb8d4d95e1517cf9f5579, type: 3}
   weapon_claw: {fileID: 21300000, guid: 10c6ab270ecb40d4eb017dda47100634, type: 3}
   weapon_bite: {fileID: 21300000, guid: 25432f65cb0e58b408f095a6913f5f78, type: 3}
   proj_shot: {fileID: 21300000, guid: 078f316fa0838ca4cae70c297aa6644b, type: 3}
@@ -1120,12 +1120,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca21ca771a908ac4195fbda05e0bee3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameHandler: {fileID: 365074585}
   ShopHandler: {fileID: 498869930}
   buttonNum: 3
   label: {fileID: 1756651620}
   desc: 
   price: 0
+  empty: {fileID: 21300000, guid: 8bae5c9fbadfb8d4d95e1517cf9f5579, type: 3}
   weapon_claw: {fileID: 21300000, guid: 10c6ab270ecb40d4eb017dda47100634, type: 3}
   weapon_bite: {fileID: 21300000, guid: 25432f65cb0e58b408f095a6913f5f78, type: 3}
   proj_shot: {fileID: 21300000, guid: 078f316fa0838ca4cae70c297aa6644b, type: 3}
@@ -2310,8 +2310,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4283025316
-  m_fontColor: {r: 0.64463806, g: 0.7798742, b: 0.28693473, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2514,18 +2514,6 @@ MonoBehaviour:
       - m_Target: {fileID: 7610658645676544321}
         m_TargetAssemblyTypeName: ShopButton, Assembly-CSharp
         m_MethodName: ShopButtonPress
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 498869930}
-        m_TargetAssemblyTypeName: ShopHandler, Assembly-CSharp
-        m_MethodName: ButtonSelection
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2894,12 +2882,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca21ca771a908ac4195fbda05e0bee3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameHandler: {fileID: 365074585}
   ShopHandler: {fileID: 498869930}
   buttonNum: 1
   label: {fileID: 6197360851128014290}
   desc: 
   price: 0
+  empty: {fileID: 21300000, guid: 8bae5c9fbadfb8d4d95e1517cf9f5579, type: 3}
   weapon_claw: {fileID: 21300000, guid: 10c6ab270ecb40d4eb017dda47100634, type: 3}
   weapon_bite: {fileID: 21300000, guid: 25432f65cb0e58b408f095a6913f5f78, type: 3}
   proj_shot: {fileID: 21300000, guid: 078f316fa0838ca4cae70c297aa6644b, type: 3}

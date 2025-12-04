@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ShopButton : MonoBehaviour
 {
-    public GameHandler GameHandler;
+    //public GameHandler GameHandler;
     public ShopHandler ShopHandler;
     public int buttonNum;
 
@@ -21,6 +21,8 @@ public class ShopButton : MonoBehaviour
     public TMP_Text label;
     public string desc;
     public int price;
+
+    public Sprite empty;
 
     public Sprite weapon_claw;
     public Sprite weapon_bite;
@@ -39,9 +41,13 @@ public class ShopButton : MonoBehaviour
         DisplayUpgrade(UpgradeNum);
     }
 
+    public void ResetButton()
+    {
+        UpgradeNum = 0;
+        DisplayUpgrade(UpgradeNum);
+    }
 
-
-    void getUpgradeNum()
+    void getUpgradeNum() //get specific upgrade
     {
         //randomize type of upgrade
         UpgradeType = Random.Range(1, 10);
@@ -68,8 +74,16 @@ public class ShopButton : MonoBehaviour
 
     void DisplayUpgrade(int num) //Change icon and labels
     {
+        Debug.Log("calling displayupgrade" + UpgradeNum);
         switch (num)
         {
+            case 0: //EMPTY
+                gameObject.GetComponent<Image>().sprite = empty;
+                label.text = "";
+                price = 0;
+                desc = "";
+                break;
+
             //WEAPONS
             case 1: //BITE
                 gameObject.GetComponent<Image>().sprite = weapon_bite;
@@ -132,10 +146,18 @@ public class ShopButton : MonoBehaviour
         }
     }
 
-    public void ShopButtonPress()
+    public void ShopButtonPress() //when button is pressed
     {
-        //Debug.Log("press!");
-        ShopHandler.ChangeDescription(desc, UpgradeType, UpgradeNum, price, buttonNum);
+        if(UpgradeNum == 0) //check if button is empty
+        {
+
+        }
+        else 
+        {
+            //Debug.Log("press!");
+            ShopHandler.ChangeDescription(desc, UpgradeType, UpgradeNum, price, buttonNum); //display description
+        }
+            
     }
     
     public void RerollUpgrade()

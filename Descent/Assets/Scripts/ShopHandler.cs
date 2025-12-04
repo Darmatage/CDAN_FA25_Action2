@@ -26,6 +26,7 @@ public class ShopHandler : MonoBehaviour
     private void Start()
     {
         ResetDescription();
+        GameHandler.EnterShop();
     }
     void ResetDescription() //sets description to default
     {
@@ -61,6 +62,7 @@ public class ShopHandler : MonoBehaviour
     }
     public void Buy() //hit buy button
     {
+        //purchase item
         if (selectedButton == 0 || upgradetype == 0)
         {
             Warning("You don't have anything selected...");
@@ -69,36 +71,55 @@ public class ShopHandler : MonoBehaviour
         {
             Warning("You can't afford this item!");
         }
-        else if (upgradetype >= 21) //if upgrade is a passive
+        else if(GameHandler.MeleeType == upgradetype) //check if purchased weapon is already equipped
+        {
+            Warning("You already have this weapon equipped!");
+        }
+        else if (GameHandler.RangedType == upgradetype) //check if purchased weapon is already equipped
+        {
+            Warning("You already have this projectile equipped!");
+        }
+        else
+        {
+            SuccessfulPurchase();
+        }
+    }
+
+    void SuccessfulPurchase()
+    {
+        if (upgradetype >= 21) //if upgrade is a passive
         {
             GameHandler.AddUpgrade(upgradetype); //call upgrade stack increase
-            GameHandler.playerLoseCoins(upgradeprice); //subtract price
-            ResetDescription();
         }
         else if (upgradetype >= 11) //if upgrade is a projectile
         {
-            if (GameHandler.RangedType == upgradetype) //check if purchased weapon is already equipped
-            {
-                Warning("You already have this projectile equipped!");
-            }
-
             GameHandler.UpdateProjectile(upgradetype); //call weapon change
-            GameHandler.playerLoseCoins(upgradeprice); //subtract price
-            ResetDescription();
         }
         else //if upgrade is a weapon
         {
-            if (GameHandler.MeleeType == upgradetype) //check if purchased weapon is already equipped
-            {
-                Warning("You already have this weapon equipped!");
-            }
-
             GameHandler.UpdateWeapon(upgradetype); //call weapon change
+        }
+
+        //reset purchased item
             GameHandler.playerLoseCoins(upgradeprice); //subtract price
             GameHandler.updateStatsDisplay();
             ResetDescription();
-        }
+
+        if (upgradeprice <= GameHandler.gotCoins)
+            switch (selectedButton)
+            {
+                case 1: //button1
+                    button1.GetComponent<ShopButton>().ResetButton();
+                    break;
+                case 2: //button2
+                    button2.GetComponent<ShopButton>().ResetButton();
+                    break;
+                case 3: //button3
+                    button3.GetComponent<ShopButton>().ResetButton();
+                    break;
+            }
     }
+
 
     public void Warning(string message)
     {

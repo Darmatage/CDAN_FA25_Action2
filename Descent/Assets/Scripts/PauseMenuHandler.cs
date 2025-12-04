@@ -15,6 +15,7 @@ public class PauseMenuHandler : MonoBehaviour
     public static float volumeLevel = 1.0f;
     private Slider sliderVolumeCtrl;
     public GameObject controlMenuUI;
+    //public GameHandler gameHandler;
 
     void Awake()
     {
@@ -72,8 +73,12 @@ public class PauseMenuHandler : MonoBehaviour
         Time.timeScale = 1f;
         GameisPaused = false;
 
-        Cursor.lockState = CursorLockMode.Locked; //Moved from flight controller due to conflict
-        Cursor.visible = false;
+        if(GameHandler.inShop == false)
+        {
+            Cursor.lockState = CursorLockMode.Locked; //Moved from flight controller due to conflict
+            Cursor.visible = false;
+        }
+            
     }
 
     public void SetLevel(float sliderValue)

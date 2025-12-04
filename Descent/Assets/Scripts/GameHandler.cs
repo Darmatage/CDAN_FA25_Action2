@@ -8,12 +8,14 @@ using UnityEngine.SceneManagement;
 public class GameHandler : MonoBehaviour
 {
     [Header("Level Stats")]
-    public float levelTimer;
-    public float maxTime = 180f;
+    public float levelTimer; //current time elapsed in level
+    public float maxTime = 180f; //time limit for level
 	private string sceneName;
     public static int enemiesKilled = 0; //current enemies killed
     public int enemyGoal = 25; //enemies to kill for gate unlocking
 	public static string lastLevelDied;  //allows replaying the Level where you died
+
+    public static bool inShop = false;
 
     [Header("Player Stats")]
 
@@ -76,7 +78,7 @@ public class GameHandler : MonoBehaviour
     {
         levelTimer = Time.timeSinceLevelLoad; //seconds since scene load
 
-        if (levelTimer > maxTime || playerCurrentHealth <= 0) //like 3 minutes or death
+        if (levelTimer > maxTime || playerCurrentHealth <= 0 || !inShop) //like 3 minutes or death
         {
             SceneManager.LoadScene("EndLose");
             //game over!!
@@ -244,6 +246,13 @@ public class GameHandler : MonoBehaviour
         playerMaxHealth += extraHP * 20;
         playerCurrentHealth = playerCurrentHealth * healthRatio;
         
+    }
+
+    //STATE CHANGES
+    
+    public void EnterShop()
+    {
+       inShop = true;
     }
     public void StartGame() {
             SceneManager.LoadScene("WORK_Rennie");
