@@ -35,7 +35,6 @@ public class EnemyStatHandler : MonoBehaviour
         StartCoroutine(EnemyHurtFlash());
 
         float totalDamage = damageSource * enemyArmor;
-        //other things can go here, like crits or weaknesses
         //Debug.Log("Total Damage: " + totalDamage);
         enemyCurrentHealth -= totalDamage;
         if (enemyCurrentHealth <= 0)
