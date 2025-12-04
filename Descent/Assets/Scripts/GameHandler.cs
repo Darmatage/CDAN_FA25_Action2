@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameHandler : MonoBehaviour
 {
     [Header("Level Stats")]
-    public static int currentLevel = 0; //current level
+    public static int currentLevel = 1; //current level
     public float levelTimer; //current time elapsed in level
     public float maxTime = 180f; //time limit for level
 	private string sceneName;
@@ -295,8 +295,8 @@ public class GameHandler : MonoBehaviour
     }
     public void LoadLevel() //exiting shop, entering level
     {
-        //SceneManager.LoadScene("Level" + currentLevel);
-        SceneManager.LoadScene("WORK_Rennie");
+        SceneManager.LoadScene("Level" + currentLevel);
+        //SceneManager.LoadScene("WORK_Rennie");
         inShop = false;
     }
     public void StartGame() {
