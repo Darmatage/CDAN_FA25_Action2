@@ -46,7 +46,10 @@ public class GameHandler : MonoBehaviour
      * idkkk
      */
     public static int extraHP; //stacks of extra hp
-    public static bool Vampirism = false;
+    public static int extraAttack; //stacks of extra attack
+    public static int extraGreed; //stacks of extra greed
+    public static int extraArmor; //stacks of extra armor
+    public static float lifesteal = 0f; //stacks of extra lifesteal
 
 
     void Start()
@@ -122,12 +125,12 @@ public class GameHandler : MonoBehaviour
         switch (MeleeType)
         {
             case 0: //bite
-                meleeDamage = 10f;
+                meleeDamage = 30f;
                 critRate = 0.1f;
                 attackRadius = 1f;
                 break;
             case 1: //claws
-                meleeDamage = 5f;
+                meleeDamage = 15f;
                 critRate = 0.3f;
                 attackRadius = 0.8f;
                 break;
