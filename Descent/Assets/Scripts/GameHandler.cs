@@ -25,11 +25,13 @@ public class GameHandler : MonoBehaviour
     public static int gotCoins = 1000;
     public static float playerCurrentHealth = 100f;
     public static float playerMaxHealth = 100f;
-    public static float playerArmor = 0.9f; //direct multiplier to damage taken
+    public static float playerMaxHealthBase = 100f;
+    public static float playerArmor = 1f; //direct multiplier to damage taken
+    public static float playerArmorBase = 1f; //direct multiplier to damage taken
     public static float IFrames = 30f; //frames of immunity after taking damage
 
-    public static float meleeDamage = 10f; //damage of bite
-    public static float projectileDamage = 5f; //damage of projectile
+    public static float meleeDamage; //damage of bite
+    public static float projectileDamage; //damage of projectile
     public static float critRate = 0.2f; //critical rate, 1 = 100%, 0.5 = 50% etc
     public static float attackRadius = 1f;
 
@@ -78,7 +80,7 @@ public class GameHandler : MonoBehaviour
     {
         levelTimer = Time.timeSinceLevelLoad; //seconds since scene load
 
-        if (levelTimer > maxTime || playerCurrentHealth <= 0 || !inShop) //like 3 minutes or death
+        if ((levelTimer > maxTime || playerCurrentHealth <= 0) && !inShop) //like 3 minutes or death
         {
             SceneManager.LoadScene("EndLose");
             //game over!!
@@ -135,14 +137,8 @@ public class GameHandler : MonoBehaviour
       }
 
 
-
-
-
-
-//FOR PLAYER AND ENEMIES: calculates damage taken based on attacker's attack and defender's armor
-    
-
-    public float MeleeCalc()
+    //DAMAGE CALCULATION
+    public float MeleeCalc() //calculates player's melee damage
     {
         
 
@@ -168,6 +164,24 @@ public class GameHandler : MonoBehaviour
             totalDamage *= 1.5f; //critical hits increase damage by 50%. effects can also be added here :3
         }
          Debug.Log("Sent Damage: " + totalDamage);
+        return totalDamage;
+    }
+
+    public float ProjCalc()//calculates player's ranged damage
+    {
+        switch (RangedType) //Get stats of current weapon
+        {
+            case 1: //shot
+                projectileDamage = 20f;
+                break;
+            case 2: //beam
+                projectileDamage = 15f;
+                break;
+        }
+
+        float totalDamage = projectileDamage * //base damage 
+            ((extraAttack * 0.1f) + 1); //attack passive modifier
+
         return totalDamage;
     }
 
@@ -236,6 +250,7 @@ public class GameHandler : MonoBehaviour
                 break;
             case 25: //ARMOR
                 extraArmor++;
+                playerArmor -= 0.05f;
                 break;
         }
     }
@@ -243,7 +258,7 @@ public class GameHandler : MonoBehaviour
     void UpdateHealth() //changes hp when upgrading max hp
     {
         float healthRatio = playerCurrentHealth / playerMaxHealth; 
-        playerMaxHealth += extraHP * 20;
+        playerMaxHealth += 20;
         playerCurrentHealth = playerCurrentHealth * healthRatio;
         
     }
