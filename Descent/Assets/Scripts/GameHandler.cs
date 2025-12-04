@@ -22,8 +22,9 @@ public class GameHandler : MonoBehaviour
 
 	private GameObject player;
 	
-
-    public static int gotCoins = 1000;
+    public static int gotCoins = 0;
+    
+    //health and armor
     public static float playerCurrentHealth = 100f;
     public static float playerMaxHealth = 100f;
     public static float playerMaxHealthBase = 100f;
@@ -31,12 +32,17 @@ public class GameHandler : MonoBehaviour
     public static float playerArmorBase = 1f; //default armor value
     public static float IFrames = 30f; //frames of immunity after taking damage
 
+    //attacks
     public static float meleeDamage; //damage of bite
     public static float meleeCD = 1f; //cooldown of bite
     public static float projectileDamage; //damage of projectile
     public static float projectileCD = 1f; //cooldown of projectile
     public static float critRate = 0.2f; //critical rate, 1 = 100%, 0.5 = 50% etc
     public static float attackRadius = 1f;
+
+    //dashing
+    public static float dashCD = 3f; //cooldown between dashes
+    public static float speedMultiplier = 1f; //multiplier to speed
 
     [Header("UI elements")]
 
@@ -70,6 +76,7 @@ public class GameHandler : MonoBehaviour
     public static int extraGreed = 0; //stacks of extra greed
     public static int extraArmor = 0; //stacks of extra armor
     public static int lifesteal = 0; //stacks of extra lifesteal
+    public static int extraDashCD = 0; //stacks of extra dash cooldown
 
 
     void Start()
@@ -264,6 +271,11 @@ public class GameHandler : MonoBehaviour
                 extraArmor++;
                 playerArmor -= 0.05f;
                 break;
+            case 26: //DASH COOLDOWN
+                extraDashCD++;
+                dashCD *= 0.95f;
+                break;
+
         }
     }
 
