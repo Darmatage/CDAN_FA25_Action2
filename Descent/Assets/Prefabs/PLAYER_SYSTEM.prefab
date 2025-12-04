@@ -31,7 +31,6 @@ Transform:
   m_Children:
   - {fileID: 8008058169675994577}
   - {fileID: 7085648858279325616}
-  - {fileID: 2796751513549741232}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2821452117608738125
@@ -136,7 +135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2796751513549741232
 Transform:
   m_ObjectHideFlags: 0
@@ -152,7 +151,7 @@ Transform:
   m_Children:
   - {fileID: 978333734541964517}
   - {fileID: 5773696152479412052}
-  m_Father: {fileID: 2894494177292003140}
+  m_Father: {fileID: 8008058169675994577}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5361426793100380845
 MeshFilter:
@@ -306,6 +305,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2796751513549741232}
   - {fileID: 1887623821720385481}
   - {fileID: 4714219235686465550}
   m_Father: {fileID: 2894494177292003140}
@@ -408,11 +408,11 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 512
-  FaceTarget: {fileID: 0}
-  FaceDirection: {x: 0, y: 0, z: 0}
   MyHurtbox: {fileID: 0}
   GameHandler: {fileID: 0}
+  Shoot_Shot: {fileID: 6082224427242191483}
   attackTimerMelee: 0
+  attackTimerProj: 0
   immuneTimer: 60
 --- !u!114 &1115042721366511614
 MonoBehaviour:
@@ -499,12 +499,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5153403813527265674}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8666f4f0c0dad0242a33ababb8fcf7f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 6796844036791646149}
+  player: {fileID: 5153403813527265674}
+  GameHandler: {fileID: 0}
+  fireBase: {fileID: 5773696152479412052}
+  firePoint: {fileID: 978333734541964517}
+  projectilePrefab: {fileID: 6220804846925646105, guid: 5fcf5e3f08377f640bf58a700aead3db, type: 3}
+  projectileSpeed: 10
 --- !u!1 &6614554899479863025
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,7 +555,6 @@ GameObject:
   - component: {fileID: 5275911078925536535}
   - component: {fileID: 5478860948768771587}
   - component: {fileID: 7407801134995931675}
-  - component: {fileID: 4354360355580368848}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -705,23 +710,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 72
   collisionBuffer: 0.5
---- !u!114 &4354360355580368848
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6796844036791646149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c88207ca253fe4fbfac96ebdc95de4ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCamera: {fileID: 7085648858279325616}
-  depth: 150
-  postProcessingVolume: {fileID: 0}
-  surfacePostProcessing: {fileID: 11400000, guid: ab09877e2e707104187f6f83e2f62510, type: 2}
-  underwaterPostProcessing: {fileID: 11400000, guid: fa9c82b5fff6a4b2486a1851d5294d39, type: 2}
 --- !u!1 &7346054542434430601
 GameObject:
   m_ObjectHideFlags: 0
