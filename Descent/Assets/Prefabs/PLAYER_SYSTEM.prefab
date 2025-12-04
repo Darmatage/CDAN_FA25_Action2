@@ -382,7 +382,7 @@ MonoBehaviour:
   dashFalloffTimer: 0
   isDashing: 0
   lookRateSpeed: 60
-  mouseSensitivity: 2
+  mouseSensitivity: 4
   mouseReturnSpeed: 3
   rollSpeed: 60
   rollAcceleration: 0.5

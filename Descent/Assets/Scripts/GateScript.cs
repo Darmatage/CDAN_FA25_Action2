@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class GateScript : MonoBehaviour
 {
     GameHandler GameHandler;
+	Transform player;
+	float MSG_range = 10; 
 	
 	[Header("GateKeyBinds")]
     //public KeyCode summonKey = KeyCode.F;
@@ -27,7 +29,7 @@ public class GateScript : MonoBehaviour
     //Next level scene (string?) next shop scene
     //public float interactionRange = 2f;
     
-	private bool gateTriggered1 = false;
+	private bool gateTriggered = false;
     private bool inRange;
     private bool bossDefeated;
 
@@ -36,10 +38,37 @@ public class GateScript : MonoBehaviour
        bossesToDefeat = bossSpwnPnts.Length;
 	   LightColumn.SetActive(false);
 	   MSG_NotActivated.SetActive(false);
-       Debug.Log("LightColumn set false, bosses = bosslength, msg set false.");
+       //Debug.Log("LightColumn set false, bosses = bosslength, msg set false.");
 	   CheckGate();
-       Debug.Log("CheckGate Ran");
+       //Debug.Log("CheckGate Ran");
+	   if (GameObject.FindWithTag("Player") != null){
+        	player = GameObject.FindWithTag("Player").GetComponent<Transform>();
+		}
     }
+
+   void Update()
+	{
+		float playerDistance = Vector3.Distance(transform.position, player.position);
+		if (playerDistance <= MSG_range)
+		{
+			if (!gateTriggered)
+			{
+				SpawnBosses();
+                gateTriggered = true; //Bosses have been spawned
+			}
+			
+			if (!gateActivated)
+			{
+				MSG_NotActivated.SetActive(true);
+			}
+		} else
+		{
+			//Debug.Log("Player exit trigger");
+			MSG_NotActivated.SetActive(false);
+		}
+
+
+	}
 
   
 	//add a timer for a color / lights pulse animation?
@@ -48,7 +77,7 @@ public class GateScript : MonoBehaviour
 		
 	}
 
-//publ function to ccess by bos enemies' death
+//public function to access by boss enemies' death
   	public void defeatABoss()
 	{
 		bossesToDefeat--;
@@ -62,54 +91,26 @@ public class GateScript : MonoBehaviour
 		{
 			gateActivated=true;
 			LightColumn.SetActive(true);
-            Debug.Log("Gate has been activated, 0 bosses found. Light column activated");
+            Debug.Log("Gate has been activated, " + bossesToDefeat + " bosses found. Light column activated");
 		}
 	} 
 	
-
 //go through gate if gate activated:
-	void OnCollisionEnter(Collision other)
-	{
-		if (other.gameObject.tag=="Player")
-        {
-            Debug.Log("Collision other with Player tag. " + gateActivated);
-			if (gateActivated)
-			{
-                Debug.Log("Loading scene!");
-                GameHandler.currentLevel++;
-                SceneManager.LoadScene("Shop");
-			} 
-		}
-	}
-
-//spawn bosses when first touching gate range
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.tag=="Player")
         {
-            Debug.Log("Collider other with player tag");
-			if (!gateTriggered1)
+			//Debug.Log("Gate hit player");
+            //Debug.Log("Collision other with Player tag. Gate Activated = " + gateActivated);
+			if (gateActivated)
 			{
-				SpawnBosses();
-                gateTriggered1 = true; //Bosses have been spawned
-			}
-			
-			if (!gateActivated)
-			{
-				MSG_NotActivated.SetActive(true);
-			}
+				Debug.Log("Gate hit player, and gatActivated = " + gateActivated);
+                //Debug.Log("Loading scene!");
+                GameHandler.currentLevel++;
+                SceneManager.LoadScene(nextLevel);
+			} 
 		}
 	}
-
-	void OnTriggerExit(Collider other)
-	{
-		if (other.gameObject.tag=="Player")
-        {
-            Debug.Log("Player exit trigger");
-			MSG_NotActivated.SetActive(false);
-		}
-	}
-
 
 	void SpawnBosses()
 	{
@@ -117,11 +118,9 @@ public class GateScript : MonoBehaviour
 			Instantiate(bossPrefab, bossSpwnPnts[i].position, Quaternion.identity);
             Debug.Log("Bosses spawned");
 		}
-    
 	}
 
 }
-
 
 //Sarah thoughts:
 // if player range < interactionRange, then inRange = true;
