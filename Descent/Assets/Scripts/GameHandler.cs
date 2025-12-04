@@ -22,7 +22,7 @@ public class GameHandler : MonoBehaviour
 
 	private GameObject player;
 	
-    public static int gotCoins = 0;
+    public static int gotCoins = 100;
     
     //health and armor
     public static float playerCurrentHealth = 100f;

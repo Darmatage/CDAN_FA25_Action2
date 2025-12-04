@@ -311,7 +311,7 @@ public class EnemyBehavior_Melee : MonoBehaviour
                 //Debug.Log("Move attempt invalid!");
             }
         } while (!attemptValid); //keep checking until valid location is found
-        //Debug.Log("Attempt succeded! Target position: x - " + moveAttempt.x + " y - " + moveAttempt.y + " z - " + moveAttempt.z);
+        Debug.Log("Attempt succeded! Target position: x - " + moveAttempt.x + " y - " + moveAttempt.y + " z - " + moveAttempt.z);
         //GameObject targetlocation = new GameObject("Target location");
         //targetlocation.transform.position = moveAttempt;
         return moveAttempt; //return valid location

@@ -14,6 +14,7 @@ public class EnemyStatHandler : MonoBehaviour
     public float enemyArmor = 0.5f; //multiplier to damage taken!
     public int enemyReward = 5; //amount of coins dropped
     public bool isBoss = false;
+    bool isDying = false;
 
     public Renderer enemyRenderer;
     public Color whiteColor;
@@ -44,20 +45,23 @@ public class EnemyStatHandler : MonoBehaviour
         enemyCurrentHealth -= totalDamage;
         if (enemyCurrentHealth <= 0)
         {
+            
             //anim.SetBool("EnemyDead", true);
-            GameHandler.enemiesKilled++;
-            //if (GameHandler.enemiesKilled >= GameHandler.enemyGoal)
-            //{
-            //    
-            //}
-            if (isBoss) //if enemy is a boss
+            if(!isDying)
             {
-                GateScript gate;
-                gate = GameObject.FindWithTag("Door").GetComponent<GateScript>();
-                gate.defeatABoss();
+                GameHandler.enemiesKilled++;
+                if (isBoss) //if enemy is a boss
+                {
+                    GateScript gate;
+                    gate = GameObject.FindWithTag("Door").GetComponent<GateScript>();
+                    gate.defeatABoss();
+                }
+                GameHandler.playerGetCoins(enemyReward);
+                StartCoroutine(EnemyDeath());
             }
-            GameHandler.playerGetCoins(enemyReward);
-            StartCoroutine(EnemyDeath());
+            
+
+            isDying = true;
         }
     }
 

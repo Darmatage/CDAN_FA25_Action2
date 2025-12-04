@@ -40,7 +40,7 @@ public class EnemySpawner : MonoBehaviour
 
     void spawnBasicEnemy()
     {
-        Vector3 spawnPosition = new Vector3(Random.Range(-10f, 10f), Random.Range(0f, 10f), Random.Range(-10f, 10f));
+        Vector3 spawnPosition = new Vector3(Random.Range(-10f, 10f) + transform.x, Random.Range(0f, 10f) + transform.y, Random.Range(-10f, 10f) + transform.z);
         Instantiate(enemyBasic, spawnPosition, Quaternion.identity, transform);
     }
 }
