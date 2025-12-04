@@ -10,6 +10,7 @@ TagManager:
   - Door
   - PauseMenuSlider
   - AudioManager
+  - WaterVolume
   layers:
   - Default
   - TransparentFX
