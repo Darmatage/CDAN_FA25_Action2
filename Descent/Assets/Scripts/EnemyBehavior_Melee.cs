@@ -8,6 +8,7 @@ public class EnemyBehavior_Melee : MonoBehaviour
 {
 
     private GameHandler gameHandler;
+    public EnemyStatHandler enemyStatHandler;
     //public AttackHandler AttackHandler;
 
     [Header("Movement")]
@@ -69,6 +70,8 @@ public class EnemyBehavior_Melee : MonoBehaviour
         if (GameObject.FindWithTag("GameHandler") != null){
             gameHandler = GameObject.FindWithTag("GameHandler").GetComponent<GameHandler>();
         }
+
+        enemyStatHandler = gameObject.GetComponent<EnemyStatHandler>();
     }
 
     void Update()
@@ -186,6 +189,11 @@ public class EnemyBehavior_Melee : MonoBehaviour
             else
             {
                 Hitbox.SetActive(false);
+            }
+
+            if (enemyStatHandler.isDying)
+            {
+                moveSpeed = -0.1f;
             }
         }
     }

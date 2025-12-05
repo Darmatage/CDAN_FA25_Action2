@@ -7,17 +7,19 @@ public class EnemyStatHandler : MonoBehaviour
 {
     //private Animator anim; 
     public GameHandler GameHandler;
-
+    public GameObject coins;
+    public GameObject deathParticles;
+    public GameObject hitParticles;
+    //aa
     [Header("Stats")]
-    public float enemyMaxHealth = 10f;
+    public float enemyMaxHealth = 15f;
     public float enemyCurrentHealth;
     public float enemyArmor = 0.5f; //multiplier to damage taken!
     public int enemyReward = 5; //amount of coins dropped
     public bool isBoss = false;
-    bool isDying = false;
+    public bool isDying = false;
 
-    public ParticleSystem coins;
-    public ParticleSystem enemydeath;
+    
     public Renderer enemyRenderer;
     public Color whiteColor;
     public Color redColor;
@@ -40,12 +42,14 @@ public class EnemyStatHandler : MonoBehaviour
         //Debug.Log(enemyArmor);
 
         //anim.SetTrigger("EnemyHurt");
-        StartCoroutine(EnemyHurtFlash());
 
-        float totalDamage = damageSource * enemyArmor;
-        //Debug.Log("Total Damage: " + totalDamage);
-        enemyCurrentHealth -= totalDamage;
-        if (enemyCurrentHealth <= 0)
+        if (!isDying) //if enemy is alive
+        {
+            float totalDamage = damageSource * enemyArmor;
+            enemyCurrentHealth -= totalDamage;
+        }
+
+        if (enemyCurrentHealth <= 0) //if enemy dies
         {
             
             //anim.SetBool("EnemyDead", true);
@@ -58,13 +62,20 @@ public class EnemyStatHandler : MonoBehaviour
                     gate = GameObject.FindWithTag("Door").GetComponent<GateScript>();
                     gate.defeatABoss();
                 }
-                GameHandler.playerGetCoins(enemyReward);
+                GameObject deathPS = Instantiate(deathParticles, transform.position, Quaternion.identity);
+                
                 StartCoroutine(EnemyDeath());
             }
             
 
             isDying = true;
         }
+        else
+        {
+            StartCoroutine(EnemyHurtFlash());
+        }
+
+            
     }
 
     IEnumerator EnemyDeath()
@@ -73,15 +84,19 @@ public class EnemyStatHandler : MonoBehaviour
 
         enemyRenderer.material.color = Color.black;
         yield return new WaitForSeconds(1f);
-        coins.Emit(emitParams, enemyReward);
+        GameObject coinPS = Instantiate(coins, transform.position, Quaternion.identity);
+        coinPS.GetComponent<ParticleSystem>().Emit(emitParams, enemyReward);
+        GameHandler.playerGetCoins(enemyReward);
         Destroy(gameObject);
     }
 
     IEnumerator EnemyHurtFlash()
     {
+        GameObject hitPS = Instantiate(hitParticles, transform.position, Quaternion.identity);
         enemyRenderer.material.color = redColor;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.2f);
         enemyRenderer.material.color = whiteColor;
+        
     }
 
 }

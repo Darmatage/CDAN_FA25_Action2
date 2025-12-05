@@ -132,11 +132,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameHandler: {fileID: 0}
+  coins: {fileID: 5481206327258202898, guid: 439f5ca0b3b08864fa60d7b41ddac3d2, type: 3}
+  deathParticles: {fileID: 5481206327258202898, guid: 3fc24759657aa4448a855ccc7a1cc4de, type: 3}
+  hitParticles: {fileID: 5481206327258202898, guid: fbd833a00734d11429c06efe9eb78b48, type: 3}
   enemyMaxHealth: 100
   enemyCurrentHealth: 0
   enemyArmor: 0.5
-  enemyReward: 5
+  enemyReward: 20
   isBoss: 1
+  isDying: 0
   enemyRenderer: {fileID: 6732193897011076446}
   whiteColor: {r: 1, g: 1, b: 1, a: 1}
   redColor: {r: 1, g: 0, b: 0, a: 1}
@@ -152,6 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54eb2cf860bd10e498c5521305a4e2b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyStatHandler: {fileID: 0}
   moveSpeed: 0.91
   patrolSpeed: 0.33
   patrolFailsafe: 0

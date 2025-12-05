@@ -11,7 +11,7 @@ public class PlayerShoot_Shot : MonoBehaviour
     public Transform fireBase;
     public Transform firePoint;
     public GameObject projectilePrefab;
-    public float projectileSpeed = 10f;
+    public float projectileSpeed = 20f;
     //public float attackRate = 2f;
     //private float nextAttackTime = 0f;
 

@@ -20,6 +20,7 @@ public class PlayerBehavior : MonoBehaviour
 
     public GameObject Hitbox;
     public LayerMask enemyLayers;
+    public Animation bite;
     //public GameObject FaceTarget; //direction player is facing
     //public Vector3 FaceDirection;
     public Collider MyHurtbox;
