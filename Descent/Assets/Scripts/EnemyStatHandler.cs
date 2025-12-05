@@ -16,6 +16,8 @@ public class EnemyStatHandler : MonoBehaviour
     public bool isBoss = false;
     bool isDying = false;
 
+    public ParticleSystem coins;
+    public ParticleSystem enemydeath;
     public Renderer enemyRenderer;
     public Color whiteColor;
     public Color redColor;
@@ -67,8 +69,11 @@ public class EnemyStatHandler : MonoBehaviour
 
     IEnumerator EnemyDeath()
     {
+        var emitParams = new ParticleSystem.EmitParams();
+
         enemyRenderer.material.color = Color.black;
         yield return new WaitForSeconds(1f);
+        coins.Emit(emitParams, enemyReward);
         Destroy(gameObject);
     }
 
