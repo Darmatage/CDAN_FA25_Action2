@@ -23,12 +23,12 @@ public class AudioManager : MonoBehaviour {
         void Awake(){
                 //set the music based on the scene
                 if (SceneManager.GetActiveScene().name == "MainMenu") {theMusic = main_menu;} 
-                else if (SceneManager.GetActiveScene().name == "Abyss") {theMusic = abyss_ambient;} 
-                else if (SceneManager.GetActiveScene().name == "Abyss") {theMusic = abyss_boss;}
-                else if (SceneManager.GetActiveScene().name == "Caves") {theMusic = caves_ambient;}
-                else if (SceneManager.GetActiveScene().name == "Caves") {theMusic = caves_boss;}
-                else if (SceneManager.GetActiveScene().name == "Coral") {theMusic = coral_ambient;}
-                else if (SceneManager.GetActiveScene().name == "Coral") {theMusic = coral_boss;}
+                else if (SceneManager.GetActiveScene().name == "Level 3") {theMusic = abyss_ambient;} 
+                else if (SceneManager.GetActiveScene().name == "Level 3") {theMusic = abyss_boss;}
+                else if (SceneManager.GetActiveScene().name == "Level 1") {theMusic = caves_ambient;}
+                else if (SceneManager.GetActiveScene().name == "Level 1") {theMusic = caves_boss;}
+                else if (SceneManager.GetActiveScene().name == "Level 2") {theMusic = coral_ambient;}
+                else if (SceneManager.GetActiveScene().name == "Level 2") {theMusic = coral_boss;}
                 else if (SceneManager.GetActiveScene().name == "River") {theMusic = river_ambient;}
 
                 //set the time and play:
