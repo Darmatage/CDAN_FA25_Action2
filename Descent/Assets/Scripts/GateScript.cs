@@ -92,7 +92,12 @@ public class GateScript : MonoBehaviour
 			gateActivated=true;
 			LightColumn.SetActive(true);
             Debug.Log("Gate has been activated, " + bossesToDefeat + " bosses found. Light column activated");
-			GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>().StartAmbientMusic();
+			
+			if(SceneManager.GetActiveScene().name == "River")
+            {
+                Debug.Log("The Music Did Not Change");
+            }
+			else {GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>().StartAmbientMusic();}
 		}
 	} 
 	
@@ -115,7 +120,11 @@ public class GateScript : MonoBehaviour
 
 	void SpawnBosses()
 	{
-		GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>().StartBossMusic();
+		if (SceneManager.GetActiveScene().name == "River")
+        {
+            Debug.Log("Music Did Not Change");
+        }
+		else {GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>().StartBossMusic();}
 		
 		
 		

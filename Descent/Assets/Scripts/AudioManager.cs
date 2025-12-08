@@ -30,19 +30,16 @@ public class AudioManager : MonoBehaviour {
                 else if (SceneManager.GetActiveScene().name == "Level3") {theMusic = abyss_ambient;} 
                 else if (SceneManager.GetActiveScene().name == "Level1") {theMusic = caves_ambient;}
                 else if (SceneManager.GetActiveScene().name == "Level2") {theMusic = coral_ambient;}
-                //else if (SceneManager.GetActiveScene().name == "River") {theMusic = river_ambient;}
 
-                //set the time and play:
-                theMusic.time = musicTimeStamp;
+                if (SceneManager.GetActiveScene().name == "River")
+                {
+                        theMusic = river_ambient;
+                        theBossMusic = river_ambient;
+                }
 
                 if (theMusic != null)
-        {
-            theMusic.Play();
-        }
-        else
-        {
-            Debug.Log("The Music is Not Assigned");
-        }
+                {theMusic.Play();}
+                else{Debug.Log("The Music is Not Assigned");}
 
                 
                 if (SceneManager.GetActiveScene().name == "Level3") {theBossMusic = abyss_boss;}

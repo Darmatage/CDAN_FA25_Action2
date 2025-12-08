@@ -17,6 +17,7 @@ public class DragonFlightController : MonoBehaviour
 	public float dashFalloffTimer = 0f; //time since dash was initiated
 	public float dashCDTimer = 3f; //time since last dash
 	public bool isDashing = false;
+	public AudioSource SFX_Dash;
 
 	[Header("Mouse Settings")]
 	public float lookRateSpeed = 90f; //How fast it turns
@@ -147,6 +148,9 @@ public class DragonFlightController : MonoBehaviour
 				dashFalloffTimer = 0f;
 				FOVtimer = 0f;
 				dashCDTimer = 0f;
+				if (SFX_Dash.isPlaying == false){
+                        SFX_Dash.Play();
+                }
 				
 			}
 			//during dash
@@ -161,6 +165,7 @@ public class DragonFlightController : MonoBehaviour
 				isDashing = false;
 				dashFalloffTimer = 0f;
 			}
+			
 		}
 			
 		//increment timers
