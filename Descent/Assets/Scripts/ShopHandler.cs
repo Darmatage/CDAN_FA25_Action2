@@ -41,6 +41,7 @@ public class ShopHandler : MonoBehaviour
     {
         description.text = desc;
         priceText.text = "Price: " + price;
+        upgradeprice = price;
         selectedButton = button;
         upgradetype = num;
         //UnityEngine.Debug.Log(type);
@@ -102,8 +103,9 @@ public class ShopHandler : MonoBehaviour
 
         //reset purchased item
             GameHandler.playerLoseCoins(upgradeprice); //subtract price
-            GameHandler.updateStatsDisplay();
-            ResetDescription();
+        UnityEngine.Debug.Log("spent " + upgradeprice);
+            //GameHandler.updateStatsDisplay(); //update stats
+            ResetDescription(); //reset description
 
         if (upgradeprice <= GameHandler.gotCoins)
             switch (selectedButton)

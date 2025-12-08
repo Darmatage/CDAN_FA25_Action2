@@ -59,14 +59,16 @@ public class GameHandler : MonoBehaviour
 
     [Header("Mutation handler")]
 
-    public static int MeleeType = 1; //tracks what "main weapon" currently is
+    public static int MeleeType = 0; //tracks what "main weapon" currently is
     /*
+     * 0 = starting value
      * 1 = bite, default
      * 2 = claws, bleed effect, faster attack speed, shorter range
      * 3 = tail whip, huge range that scales off max hp, slow speed?
      */
-    public static int RangedType = 11; //tracks current ranged weapon
+    public static int RangedType = 10; //tracks current ranged weapon
     /*
+     * 10 = starting value
      * 11 = steam shot, default
      * 12 = beam, hitscan held, pierce
      * 13 = bomb, aoe blast?
@@ -82,8 +84,26 @@ public class GameHandler : MonoBehaviour
     void Start()
     {
         updateStatsDisplay();
-        UpdateWeapon(1);
-        UpdateProjectile(1);
+
+        //make sure weapons are loaded properly
+        if (MeleeType == 0)
+        {
+            UpdateWeapon(1);
+        }
+        else
+        {
+            UpdateWeapon(MeleeType);
+        }
+
+        if (RangedType == 10)
+        {
+            UpdateProjectile(11);
+        }
+        else
+        {
+            UpdateProjectile(RangedType);
+        }
+        
     }
 
     void FixedUpdate()
