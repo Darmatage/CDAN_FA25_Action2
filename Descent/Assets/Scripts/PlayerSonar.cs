@@ -33,10 +33,11 @@ public class PlayerSonar : MonoBehaviour
             StopAllCoroutines();
             StartCoroutine(Sonar());
             }
-        }
-        if (SFX_Ping.isPlaying == false){
+            if (SFX_Ping.isPlaying == false){
                         SFX_Ping.Play();
                 }
+        }
+        
     }
 
     IEnumerator Sonar()

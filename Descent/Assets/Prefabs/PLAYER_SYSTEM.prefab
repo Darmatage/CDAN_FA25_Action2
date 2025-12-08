@@ -220,8 +220,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 3addd3dfcd9b9451c9bfba046665dcc9, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 06b9cc0937248499a81848d838424041, type: 3}
-  m_Resource: {fileID: 8300000, guid: 06b9cc0937248499a81848d838424041, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 03aa37ed8caef4d76936056bcf8a105d, type: 3}
+  m_Resource: {fileID: 8300000, guid: 03aa37ed8caef4d76936056bcf8a105d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.4
   m_Pitch: 1
@@ -586,8 +586,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 3addd3dfcd9b9451c9bfba046665dcc9, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 80443ed11cf51459d8ab690b939cf5c3, type: 3}
-  m_Resource: {fileID: 8300000, guid: 80443ed11cf51459d8ab690b939cf5c3, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 55eb2e0714d0141ac899356ac1bcc58c, type: 3}
+  m_Resource: {fileID: 8300000, guid: 55eb2e0714d0141ac899356ac1bcc58c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.4
   m_Pitch: 1
@@ -836,7 +836,7 @@ MonoBehaviour:
   sonarKey: 116
   sonarTime: 10
   drawBehind: {fileID: 11400000, guid: f288ae1f4751b564a96ac7587541f7a2, type: 2}
-  detectionDistanceMin: 100
+  detectionDistanceMin: 1000
   player: {fileID: 8008058169675994577}
   gate: {fileID: 0}
   SFX_Ping: {fileID: 2322593627156006814}
@@ -919,6 +919,7 @@ MonoBehaviour:
   firePoint: {fileID: 978333734541964517}
   projectilePrefab: {fileID: 6220804846925646105, guid: 5fcf5e3f08377f640bf58a700aead3db, type: 3}
   projectileSpeed: 10
+  SFX_Projectile: {fileID: 3333466599379531623}
 --- !u!1 &6614554899479863025
 GameObject:
   m_ObjectHideFlags: 0
@@ -1240,8 +1241,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 3addd3dfcd9b9451c9bfba046665dcc9, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 55eb2e0714d0141ac899356ac1bcc58c, type: 3}
-  m_Resource: {fileID: 8300000, guid: 55eb2e0714d0141ac899356ac1bcc58c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: eb659b1f4921b4f5d984f9f63d056ed1, type: 3}
+  m_Resource: {fileID: 8300000, guid: eb659b1f4921b4f5d984f9f63d056ed1, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.4
   m_Pitch: 1

@@ -14,6 +14,7 @@ public class PlayerShoot_Shot : MonoBehaviour
     public float projectileSpeed = 20f;
     //public float attackRate = 2f;
     //private float nextAttackTime = 0f;
+    public AudioSource SFX_Projectile;
 
     private void Start()
     {
@@ -32,5 +33,8 @@ public class PlayerShoot_Shot : MonoBehaviour
         //Spawn a bullet that inherits rotation from the instantating object:
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, transform.rotation);
         projectile.GetComponent<Rigidbody>().AddForce(fwd * projectileSpeed, ForceMode.Impulse);
+        if (SFX_Projectile.isPlaying == false){
+                        SFX_Projectile.Play();
+                }
     }
 }
