@@ -22,6 +22,8 @@ public class ShopHandler : MonoBehaviour
     public GameObject button1;
     public GameObject button2;
     public GameObject button3;
+    public AudioSource SFX_Buy;
+    public AudioSource SFX_Fail;
 
     private void Start()
     {
@@ -67,22 +69,27 @@ public class ShopHandler : MonoBehaviour
         if (selectedButton == 0 || upgradetype == 0)
         {
             Warning("You don't have anything selected...");
+            SFX_Fail.Play();
         }
         else if (upgradeprice > GameHandler.gotCoins)
         {
             Warning("You can't afford this item!");
+            SFX_Fail.Play();
         }
         else if(GameHandler.MeleeType == upgradetype) //check if purchased weapon is already equipped
         {
             Warning("You already have this weapon equipped!");
+            SFX_Fail.Play();
         }
         else if (GameHandler.RangedType == upgradetype) //check if purchased weapon is already equipped
         {
             Warning("You already have this projectile equipped!");
+            SFX_Fail.Play();
         }
         else
         {
             SuccessfulPurchase();
+            SFX_Buy.Play();
         }
     }
 
@@ -134,12 +141,13 @@ public class ShopHandler : MonoBehaviour
     {
         if (GameHandler.gotCoins < 25) //check if player can afford to reroll
         {
-            
+            SFX_Fail.Play();
         }
         else
         {
             ResetDescription();
             GameHandler.playerLoseCoins(25); //subtract price
+            SFX_Buy.Play();
         }
 
     }
