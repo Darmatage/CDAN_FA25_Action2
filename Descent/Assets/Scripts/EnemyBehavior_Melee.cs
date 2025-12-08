@@ -46,24 +46,23 @@ public class EnemyBehavior_Melee : MonoBehaviour
     private Collider hitCollider;
     private float AttackTimer; //controls attack length
 
-    private GameObject EnemyHome;
+    private Vector3 EnemyHome;
     public float MaxHomeDist = 10f;
 
     
 
     void Start()    
     {
-        //enemyLocation.localEulerAngles = new Vector3(transform.localEulerAngles.x, 90, transform.localEulerAngles.z);
+        
         Hitbox.SetActive(false);
-        EnemyHome = new GameObject("EnemyHome"); //create home
-        EnemyHome.transform.parent = transform; //home is where the me is :)
+
+        //Initialize patrol home
+        EnemyHome = new Vector3(transform.position.x, transform.position.y, transform.position.z); //home is where the me is :)
+        
         //Debug.Log("Setting new home at: x - " + EnemyHome.transform.position.x + " y - " + EnemyHome.transform.position.y + " z - " + EnemyHome.transform.position.z);
 
 
-        player = GameObject.Find("Player");
-
-        //AttackHandler script = GetComponentInChildren<AttackHandler>(true);
-        //script.damageSource = enemyStrength; //assign strength to hitbox damage
+        player = GameObject.Find("Player"); //get player
 
         //hitCollider = new Collider.SphereCollider();
 
@@ -81,7 +80,7 @@ public class EnemyBehavior_Melee : MonoBehaviour
             //Debug.Log("FUCK");
         }
         float distToPlayer = Vector3.Distance(transform.position, player.transform.position); //get distance to player
-        float distToHome = Vector3.Distance(transform.position, EnemyHome.transform.position); //get distance from home point
+        float distToHome = Vector3.Distance(transform.position, EnemyHome); //get distance from home point
 
         //MOVEMENT
         if (isAttacking) //Actively executing attack
@@ -91,7 +90,7 @@ public class EnemyBehavior_Melee : MonoBehaviour
                 Vector3 LERPposition = Vector3.Lerp(transform.position, player.transform.position, ApproachSpeed * Time.deltaTime);
                 transform.position = LERPposition;
                 transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
-            }
+            } //move towards player at approach speed
             transform.LookAt(player.transform);
         }
         else if (isAggro && !isAttacking) //Chase state
@@ -139,9 +138,9 @@ public class EnemyBehavior_Melee : MonoBehaviour
         else //if outside of home range and player is out of aggro range
         {
             //Debug.Log("Returning home! Distance to home: " + distToHome);
-            Vector3 LERPposition = Vector3.Lerp(transform.position, EnemyHome.transform.position, patrolSpeed * Time.deltaTime);
+            Vector3 LERPposition = Vector3.Lerp(transform.position, EnemyHome, patrolSpeed * Time.deltaTime);
             transform.position = LERPposition;
-            transform.LookAt(EnemyHome.transform.position);
+            transform.LookAt(EnemyHome);
         }
 
         //DETECTION
@@ -292,7 +291,7 @@ public class EnemyBehavior_Melee : MonoBehaviour
                 //Debug.Log("Setting attacking to false!");
                 AttackTimer = 0;
                 //check if this hit the player
-                EnemyHome.transform.position = transform.position;
+                EnemyHome = transform.position;
                 //Debug.Log("Setting new home at: x - " + EnemyHome.transform.position.x + " y - " + EnemyHome.transform.position.y + " z - " + EnemyHome.transform.position.z);
                 //if attack hit player, set home to current position
                 //this is to prevent the enemy from taking a walk of shame back to their spawn if they chased the player far away
@@ -308,7 +307,7 @@ public class EnemyBehavior_Melee : MonoBehaviour
         do
         {
             moveAttempt = (Random.insideUnitSphere * MaxHomeDist); //pick direction within home range
-            moveAttempt += EnemyHome.transform.position; //center vector on home
+            moveAttempt += EnemyHome; //center vector on home
             //this results in a target point i think. vectors are confusing
             if (!Physics.Linecast(transform.position, moveAttempt, 3)) //check if move intersects terrain
             {
