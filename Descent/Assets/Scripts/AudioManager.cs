@@ -33,7 +33,7 @@ public class AudioManager : MonoBehaviour {
                 //else if (SceneManager.GetActiveScene().name == "River") {theMusic = river_ambient;}
 
                 //set the time and play:
-                //theMusic.time = musicTimeStamp;
+                theMusic.time = musicTimeStamp;
 
                 if (theMusic != null)
         {
@@ -52,8 +52,8 @@ public class AudioManager : MonoBehaviour {
 
         void Update(){
                //keep track of timestamp, to auto-call it in the next scene:
-               //musicTimeStamp = theMusic.time;
-               //currentTimeStamp = theMusic.time;
+               musicTimeStamp = theMusic.time;
+               currentTimeStamp = theMusic.time;
         }
 
 //change timestamp (can be called by door code):
