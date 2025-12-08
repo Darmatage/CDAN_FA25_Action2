@@ -596,17 +596,93 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 124967514794762508, guid: 1e7b701f96ca44139b9eb44ba8cd454e, type: 3}
+      propertyPath: Mute
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 321649136615593812, guid: 1e7b701f96ca44139b9eb44ba8cd454e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 590028605159869166, guid: 1e7b701f96ca44139b9eb44ba8cd454e, type: 3}
+      propertyPath: Mute
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 872818825982726867, guid: 1e7b701f96ca44139b9eb44ba8cd454e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1157262221174241616, guid: 1e7b701f96ca44139b9eb44ba8cd454e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1784225639758221129, guid: 1e7b701f96ca44139b9eb44ba8cd454e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2336020435490228306, guid: 1e7b701f96ca44139b9eb44ba8cd454e, type: 3}
+      propertyPath: Mute
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2475923697847613115, guid: 1e7b701f96ca44139b9eb44ba8cd454e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963095197632249930, guid: 1e7b701f96ca44139b9eb44ba8cd454e, type: 3}
+      propertyPath: Mute
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3518340223200851788, guid: 1e7b701f96ca44139b9eb44ba8cd454e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3602884534139675616, guid: 1e7b701f96ca44139b9eb44ba8cd454e, type: 3}
       propertyPath: m_Name
       value: GAME_CANVAS
       objectReference: {fileID: 0}
+    - target: {fileID: 3620519249788735624, guid: 1e7b701f96ca44139b9eb44ba8cd454e, type: 3}
+      propertyPath: Mute
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3648662746663987906, guid: 1e7b701f96ca44139b9eb44ba8cd454e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5820456383980819226, guid: 1e7b701f96ca44139b9eb44ba8cd454e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6058621115081718662, guid: 1e7b701f96ca44139b9eb44ba8cd454e, type: 3}
+      propertyPath: Mute
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165637594954712081, guid: 1e7b701f96ca44139b9eb44ba8cd454e, type: 3}
+      propertyPath: Mute
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978989443407296710, guid: 1e7b701f96ca44139b9eb44ba8cd454e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6996715962877129725, guid: 1e7b701f96ca44139b9eb44ba8cd454e, type: 3}
+      propertyPath: Mute
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7130008346015872277, guid: 1e7b701f96ca44139b9eb44ba8cd454e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7505462197319951398, guid: 1e7b701f96ca44139b9eb44ba8cd454e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7875833072620373766, guid: 1e7b701f96ca44139b9eb44ba8cd454e, type: 3}
+      propertyPath: Mute
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7944498743400645476, guid: 1e7b701f96ca44139b9eb44ba8cd454e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8184966454732811068, guid: 1e7b701f96ca44139b9eb44ba8cd454e, type: 3}
       propertyPath: m_LocalPosition.x
