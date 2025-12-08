@@ -10,6 +10,8 @@ public class PlayerSonar : MonoBehaviour
     public float detectionDistanceMin = 10f;
     public Transform player;
     public Transform gate;
+    public AudioSource SFX_Ping;
+
     void Start()
     {
         drawBehind.rendererFeatures[^2].SetActive(false);
@@ -32,6 +34,9 @@ public class PlayerSonar : MonoBehaviour
             StartCoroutine(Sonar());
             }
         }
+        if (SFX_Ping.isPlaying == false){
+                        SFX_Ping.Play();
+                }
     }
 
     IEnumerator Sonar()
