@@ -34,8 +34,8 @@ public class PlayerSonar : MonoBehaviour
             StartCoroutine(Sonar());
             }
             if (SFX_Ping.isPlaying == false){
-                        SFX_Ping.Play();
-                }
+				SFX_Ping.Play();
+			}
         }
         
     }

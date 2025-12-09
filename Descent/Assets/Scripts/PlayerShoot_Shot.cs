@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 public class PlayerShoot_Shot : MonoBehaviour
 {
-    public GameObject cam;
-    public GameObject player;
-    public GameHandler GameHandler;
+    //public GameObject cam;
+    //public GameObject player;
+    //public GameHandler GameHandler;
     // Update is called once per frame
     public Transform fireBase;
     public Transform firePoint;
@@ -18,7 +18,7 @@ public class PlayerShoot_Shot : MonoBehaviour
 
     private void Start()
     {
-        GameHandler = GameObject.FindWithTag("GameHandler").GetComponent<GameHandler>();
+        //GameHandler = GameObject.FindWithTag("GameHandler").GetComponent<GameHandler>();
     }
     void LateUpdate()
     {
@@ -30,11 +30,11 @@ public class PlayerShoot_Shot : MonoBehaviour
     {
         Debug.Log("projectile instantiated!");
         Vector3 fwd = (firePoint.position - fireBase.position).normalized;
-        //Spawn a bullet that inherits rotation from the instantating object:
+        //Spawn a bullet that inherits rotation from the instantiating object:
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, transform.rotation);
         projectile.GetComponent<Rigidbody>().AddForce(fwd * projectileSpeed, ForceMode.Impulse);
         if (SFX_Projectile.isPlaying == false){
-                        SFX_Projectile.Play();
-                }
+			SFX_Projectile.Play();
+		}
     }
 }
