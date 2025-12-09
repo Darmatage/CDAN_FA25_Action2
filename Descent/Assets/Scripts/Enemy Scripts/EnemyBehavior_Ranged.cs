@@ -27,7 +27,7 @@ public class EnemyBehavior_Ranged : MonoBehaviour
     public LayerMask playerMask;
     public Transform enemyLocation;
 
-    public int damageMelee = 5;
+    public int damage = 5;
 
     [Header("Behavior")]
 
@@ -46,7 +46,7 @@ public class EnemyBehavior_Ranged : MonoBehaviour
     private bool isAttacking = false; //in the middle of the attack
     public float ApproachSpeed = 0.01f; //movespeed while attacking
     public float AttackRange = 1f; //distance when attack will be executed
-    public GameObject Hitbox; //attack collider guide
+    //public GameObject Hitbox; //attack collider guide
     //private Collider hitCollider;
     //private float AttackTimer; //controls attack length
     public float CDTimer = 0f; //controls attack cooldown
@@ -59,7 +59,7 @@ public class EnemyBehavior_Ranged : MonoBehaviour
     void Start()    
     {
         
-        Hitbox.SetActive(false);
+        //Hitbox.SetActive(false);
 
         //Initialize patrol home
         EnemyHome = new Vector3(transform.position.x, transform.position.y, transform.position.z); //home is where the me is :)
@@ -265,7 +265,7 @@ public class EnemyBehavior_Ranged : MonoBehaviour
     void OnCollisionEnter(Collision other){ //ATTACKING
         if (other.gameObject.tag=="Player")
             if (isAttackActive){
-                gameHandler.playerGetHit(damageMelee); 
+                gameHandler.playerGetHit(damage); 
             }
     }
 
@@ -284,21 +284,10 @@ public class EnemyBehavior_Ranged : MonoBehaviour
 
         yield return new WaitForSeconds(windupTime);
 
-        //Debug.Log("done winding up, checking for player!");
-        //check if player is in hitbox
-        bool hitDetect = Physics.CheckSphere(Hitbox.transform.position, Hitbox.GetComponent<SphereCollider>().radius * GameHandler.attackRadius, playerMask);
-        Hitbox.SetActive(true);
-        if (hitDetect)
-        {
-            //Debug.Log("found player!");
-            gameHandler.playerGetHit(damageMelee); //damage player
-            meleeHurtSFX.Play(); //play hitsound
-            EnemyHome = transform.position; //set home to current location
-        }
+
 
         yield return new WaitForSeconds(attackTime);
         //Debug.Log("done attacking.");
-        Hitbox.SetActive(false);
         isAttacking = false;
 
         yield return new WaitForSeconds(cooldownTime);
