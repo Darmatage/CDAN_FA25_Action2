@@ -135,6 +135,7 @@ MonoBehaviour:
   coins: {fileID: 5481206327258202898, guid: 439f5ca0b3b08864fa60d7b41ddac3d2, type: 3}
   deathParticles: {fileID: 5481206327258202898, guid: 3fc24759657aa4448a855ccc7a1cc4de, type: 3}
   hitParticles: {fileID: 5481206327258202898, guid: fbd833a00734d11429c06efe9eb78b48, type: 3}
+  criticalParticles: {fileID: 5481206327258202898, guid: 7f61dc67b094c25489e381d956540fef, type: 3}
   enemyMaxHealth: 100
   enemyCurrentHealth: 0
   enemyArmor: 0.5

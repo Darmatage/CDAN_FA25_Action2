@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameHandler : MonoBehaviour
 {
     [Header("Level Stats")]
-    public static int currentLevel = 1; //current level
+    public static int currentLevel = 0; //current level
     public float levelTimer; //current time elapsed in level
     public float maxTime = 180f; //time limit for level
 	private string sceneName;
@@ -21,7 +21,7 @@ public class GameHandler : MonoBehaviour
     [Header("Player Stats")]
 
 	private GameObject player;
-    private Renderer playerRenderer;
+    //private Renderer playerRenderer;
 	
     public static int gotCoins = 100;
     
@@ -199,7 +199,7 @@ public class GameHandler : MonoBehaviour
 
         if (isCrit)
         {
-            totalDamage *= critDamage; //critical hits increase damage by 50%. effects can also be added here :3
+            totalDamage *= critDamage * (1 + (extraCritDMG * 0.05f)); //critical hits increase damage by 50%. effects can also be added here :3
         }
          //Debug.Log("Sent Damage: " + totalDamage);
 
