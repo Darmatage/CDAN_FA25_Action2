@@ -330,6 +330,7 @@ public class GameHandler : MonoBehaviour
     
     public void EnterShop() //entering a shop
     {
+		Debug.Log("In a shop am I");
         inShop = true;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;

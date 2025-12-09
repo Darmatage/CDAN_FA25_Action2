@@ -52,6 +52,7 @@ public class ShopButton : MonoBehaviour
 
     public void ResetButton()
     {
+		Debug.Log("I am trying to reset a button");
         UpgradeNum = 0;
         DisplayUpgrade(UpgradeNum);
     }
@@ -83,10 +84,11 @@ public class ShopButton : MonoBehaviour
 
     void DisplayUpgrade(int num) //Change icon and labels
     {
-        Debug.Log("calling displayupgrade" + UpgradeNum);
+        Debug.Log("calling displayupgrade" + num);
         switch (num)
         {
             case 0: //EMPTY
+				Debug.Log("I am an empty button!");
                 gameObject.GetComponent<Image>().sprite = empty;
                 label.text = "";
                 price = 0;

@@ -1,16 +1,14 @@
-using System;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.ShaderGraph;
-using UnityEngine;
 using UnityEngine.UI;
 
 public class ShopHandler : MonoBehaviour
 {
-    public GameHandler GameHandler;
+    public GameHandler gameHandler;
 
     public TMP_Text description;
     public TMP_Text upgradeTypeText;
@@ -25,11 +23,17 @@ public class ShopHandler : MonoBehaviour
     public AudioSource SFX_Buy;
     public AudioSource SFX_Fail;
 
+	void Awake()
+	{
+		//GameObject.FindWithTag("GameHandler").GetComponent<GameHandler>();
+	}
+
     private void Start()
     {
         ResetDescription();
-        GameHandler.EnterShop();
+        gameHandler.EnterShop();
     }
+
     void ResetDescription() //sets description to default
     {
         description.text = "";
@@ -97,33 +101,36 @@ public class ShopHandler : MonoBehaviour
     {
         if (upgradetype >= 21) //if upgrade is a passive
         {
-            GameHandler.AddUpgrade(upgradetype); //call upgrade stack increase
+            gameHandler.AddUpgrade(upgradetype); //call upgrade stack increase
         }
         else if (upgradetype >= 11) //if upgrade is a projectile
         {
-            GameHandler.UpdateProjectile(upgradetype); //call weapon change
+            gameHandler.UpdateProjectile(upgradetype); //call weapon change
         }
         else //if upgrade is a weapon
         {
-            GameHandler.UpdateWeapon(upgradetype); //call weapon change
+            gameHandler.UpdateWeapon(upgradetype); //call weapon change
         }
 
         //reset purchased item
-            GameHandler.playerLoseCoins(upgradeprice); //subtract price
-        UnityEngine.Debug.Log("spent " + upgradeprice);
+            gameHandler.playerLoseCoins(upgradeprice); //subtract price
+        	UnityEngine.Debug.Log("spent " + upgradeprice);
             //GameHandler.updateStatsDisplay(); //update stats
             ResetDescription(); //reset description
 
-        if (upgradeprice <= GameHandler.gotCoins)
+        //if (upgradeprice <= GameHandler.gotCoins)
             switch (selectedButton)
             {
                 case 1: //button1
+					Debug.Log("am I called? Trying to switch a button off1");
                     button1.GetComponent<ShopButton>().ResetButton();
                     break;
                 case 2: //button2
+				Debug.Log("am I called? Trying to switch a button off2");
                     button2.GetComponent<ShopButton>().ResetButton();
                     break;
                 case 3: //button3
+				Debug.Log("am I called? Trying to switch a button off3");
                     button3.GetComponent<ShopButton>().ResetButton();
                     break;
             }
@@ -146,7 +153,7 @@ public class ShopHandler : MonoBehaviour
         else
         {
             ResetDescription();
-            GameHandler.playerLoseCoins(25); //subtract price
+            gameHandler.playerLoseCoins(25); //subtract price
             SFX_Buy.Play();
         }
 
