@@ -21,6 +21,7 @@ public class GameHandler : MonoBehaviour
     [Header("Player Stats")]
 
 	private GameObject player;
+    private Renderer playerRenderer;
 	
     public static int gotCoins = 100;
     
@@ -31,6 +32,8 @@ public class GameHandler : MonoBehaviour
     public static float playerArmor = 1f; //direct multiplier to damage taken
     public static float playerArmorBase = 1f; //default armor value
     public static float IFrames = 30f; //frames of immunity after taking damage
+    private bool isImmune = false;
+    private float immuneTimer = 0f;
 
     //attacks
     public static float meleeDamage; //damage of bite
@@ -38,6 +41,7 @@ public class GameHandler : MonoBehaviour
     public static float projectileDamage; //damage of projectile
     public static float projectileCD = 1f; //cooldown of projectile
     public static float critRate = 0.2f; //critical rate, 1 = 100%, 0.5 = 50% etc
+    public static float critDamage = 1.5f; //critical damage multiplier
     public static float attackRadius = 1f;
 
     //dashing
@@ -106,6 +110,10 @@ public class GameHandler : MonoBehaviour
         
     }
 
+    private void Update()
+    {
+            immuneTimer++;
+    }
     void FixedUpdate()
     {
         levelTimer = Time.timeSinceLevelLoad; //seconds since scene load
@@ -142,8 +150,23 @@ public class GameHandler : MonoBehaviour
     
     //DAMAGE CALCULATION
     public void playerGetHit(int damage){ //player gets hit
-           //if (isDefending == false){
-                  playerCurrentHealth -= damage;
+
+        if (immuneTimer >= IFrames)
+        {
+            isImmune = true;
+            //playerRenderer.material.color.a = 0.5f;
+            
+        }
+        else
+        {
+            isImmune = false;
+        }
+
+        
+
+        if (!isImmune)
+        {
+            playerCurrentHealth -= damage;
                   if (playerCurrentHealth >=0){
                         updateStatsDisplay();
                   }
@@ -151,7 +174,8 @@ public class GameHandler : MonoBehaviour
                         //play GetHit animation:
                         //player.GetComponent<PlayerHurt>().playerHit();
                   }
-            //}
+            immuneTimer = 0; //reset immunity timer
+         }
 
            if (playerCurrentHealth > playerMaxHealth){
                   playerCurrentHealth = playerMaxHealth;
@@ -190,9 +214,9 @@ public class GameHandler : MonoBehaviour
 
         if (critRate > Random.value)
         {
-            totalDamage *= 1.5f; //critical hits increase damage by 50%. effects can also be added here :3
+            totalDamage *= critDamage; //critical hits increase damage by 50%. effects can also be added here :3
         }
-         Debug.Log("Sent Damage: " + totalDamage);
+         //Debug.Log("Sent Damage: " + totalDamage);
 
         //lifesteal
         if(lifesteal != 0)

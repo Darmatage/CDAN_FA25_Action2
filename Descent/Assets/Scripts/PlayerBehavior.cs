@@ -23,7 +23,7 @@ public class PlayerBehavior : MonoBehaviour
     public Animation bite;
     //public GameObject FaceTarget; //direction player is facing
     //public Vector3 FaceDirection;
-    public Collider MyHurtbox;
+    //public Collider MyHurtbox;
     public GameHandler GameHandler;
     public PlayerShoot_Shot Shoot_Shot;
     
@@ -37,7 +37,6 @@ public class PlayerBehavior : MonoBehaviour
     //private bool isCooldown = false;
     public float attackTimerMelee = 0f;
     public float attackTimerProj = 0f;
-    public float immuneTimer = 60f;
 
     void Start()
     {
@@ -66,6 +65,7 @@ public class PlayerBehavior : MonoBehaviour
             }
         }
         
+
         //Debug.DrawRay(transform.position, FaceTarget.transform.position, Color.red);
     }
 
@@ -124,7 +124,7 @@ public class PlayerBehavior : MonoBehaviour
         switch (GameHandler.RangedType)
         {
             case 11: //shot
-                //Debug.Log("running attackprojectile!");
+                Debug.Log("running attackprojectile!");
                 Shoot_Shot.playerFireShot();
                 break;
             case 12: //beam
@@ -132,11 +132,6 @@ public class PlayerBehavior : MonoBehaviour
             case 13: //bomb
                 break;
         }
-    }
-
-    public void Immunity()//managing immunity frames upon hit
-    {
-
     }
     
     /*

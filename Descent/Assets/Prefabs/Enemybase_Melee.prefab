@@ -142,7 +142,7 @@ MonoBehaviour:
   enemyReward: 5
   isBoss: 0
   isDying: 0
-  enemyRenderer: {fileID: 6732193897011076446}
+  enemyRenderer: {fileID: 4209021121877516624}
   whiteColor: {r: 1, g: 1, b: 1, a: 1}
   redColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &3745409360446228052
@@ -510,5 +510,10 @@ PrefabInstance:
 --- !u!4 &3036093227494005311 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ecf453cbe6c5e45beafc3bb9bd5308bb, type: 3}
+  m_PrefabInstance: {fileID: 3290134378923081172}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &4209021121877516624 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: ecf453cbe6c5e45beafc3bb9bd5308bb, type: 3}
   m_PrefabInstance: {fileID: 3290134378923081172}
   m_PrefabAsset: {fileID: 0}

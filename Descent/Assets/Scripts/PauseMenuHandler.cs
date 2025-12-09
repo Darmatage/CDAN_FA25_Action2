@@ -15,7 +15,8 @@ public class PauseMenuHandler : MonoBehaviour
     public static float volumeLevel = 1.0f;
     private Slider sliderVolumeCtrl;
     public GameObject controlMenuUI;
-    //public GameHandler gameHandler;
+    public TMP_Text statText;
+    public GameHandler GameHandler;
 
     void Awake()
     {
@@ -33,6 +34,7 @@ public class PauseMenuHandler : MonoBehaviour
         pauseMenuUI.SetActive(false);
         controlMenuUI.SetActive(false);
         GameisPaused = false;
+        GameHandler = GameObject.FindWithTag("GameHandler").GetComponent<GameHandler>();
     }
 
     void Update()
@@ -61,6 +63,22 @@ public class PauseMenuHandler : MonoBehaviour
 
             Cursor.lockState = CursorLockMode.None; //Moved from Flight Controller due to conflict
             Cursor.visible = true; //Moved from Flight Controller
+            
+            //initialize damage stats
+            GameHandler.MeleeCalc();
+            GameHandler.ProjCalc();
+
+            //display current stats
+            statText.text = (GameHandler.meleeDamage * ((GameHandler.extraAttack * 0.1f) + 1) + "\n" //melee attack
+                + GameHandler.projectileDamage * ((GameHandler.extraAttack * 0.1f) + 1) + "\n" //ranged attack
+                + (1 - GameHandler.playerArmor) * 100 + "%\n" //armor as percentage
+                + "x" + (GameHandler.extraGreed * 0.05f) + "\n" //greed as multiplier
+                + (1 - (GameHandler.lifesteal * 0.05f)) * 100 + "%\n" //lifesteal as percentage
+                + "x" + GameHandler.critDamage + "\n" //crit damage as multiplier
+                + GameHandler.critRate * 100 + "%\n" //crit rate as percentage
+                );
+
+
         }
         else
         { Resume(); }

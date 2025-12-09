@@ -26,6 +26,7 @@ public class EnemyBehavior_Melee : MonoBehaviour
     public int damageMelee = 5;
 
     [Header("Behavior")]
+
     public bool isAggro = false;
     public float aggroRange = 3f; //player detection range
 
@@ -182,12 +183,13 @@ public class EnemyBehavior_Melee : MonoBehaviour
             //attacking, activate hurtbox
             if (isAttackActive)
             {
-                Hitbox.SetActive(true);
+                //Hitbox.SetActive(true);
+                Collider hitDetect = Hitbox.GetComponent<SphereCollider>();
                 //Debug.Log("Activating hurtbox!");
             }
             else
             {
-                Hitbox.SetActive(false);
+                //Hitbox.SetActive(false);
             }
 
             if (enemyStatHandler.isDying)
@@ -318,9 +320,7 @@ public class EnemyBehavior_Melee : MonoBehaviour
                 //Debug.Log("Move attempt invalid!");
             }
         } while (!attemptValid); //keep checking until valid location is found
-        Debug.Log("Attempt succeded! Target position: x - " + moveAttempt.x + " y - " + moveAttempt.y + " z - " + moveAttempt.z);
-        //GameObject targetlocation = new GameObject("Target location");
-        //targetlocation.transform.position = moveAttempt;
+        //Debug.Log("Attempt succeded! Target position: x - " + moveAttempt.x + " y - " + moveAttempt.y + " z - " + moveAttempt.z);
         return moveAttempt; //return valid location
           
     }
@@ -345,7 +345,7 @@ public class EnemyBehavior_Melee : MonoBehaviour
     */
 
 
-    void OnCollisionEnter(Collision other){
+    void OnCollisionEnter(Collision other){ //ATTACKING
         if (other.gameObject.tag=="Player")
             if (isAttackActive){
                 gameHandler.playerGetHit(damageMelee); 

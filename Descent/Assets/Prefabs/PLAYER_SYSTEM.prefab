@@ -593,8 +593,8 @@ Transform:
   m_GameObject: {fileID: 3199043941286494011}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 2.22}
-  m_LocalScale: {x: 2.3617449, y: 2.3617449, z: 2.3617449}
+  m_LocalPosition: {x: -0, y: 0, z: 1.81}
+  m_LocalScale: {x: 3.5726113, y: 3.5726113, z: 3.5726113}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6339939016628951494}
@@ -946,12 +946,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   bite: {fileID: 0}
-  MyHurtbox: {fileID: 0}
   GameHandler: {fileID: 0}
   Shoot_Shot: {fileID: 6082224427242191483}
   attackTimerMelee: 0
   attackTimerProj: 0
-  immuneTimer: 60
 --- !u!114 &1115042721366511614
 MonoBehaviour:
   m_ObjectHideFlags: 0
