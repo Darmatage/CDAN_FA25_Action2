@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using Unity.Mathematics;
 using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
 using static UnityEngine.Rendering.DebugUI;
@@ -90,9 +91,11 @@ public class EnemyBehavior_Melee : MonoBehaviour
 
         if (enemyStatHandler.isDying) //Dying
         {
+            
+
             Vector3 LERPposition = Vector3.Lerp(transform.position, player.transform.position, -ApproachSpeed * Time.deltaTime);
             transform.position = LERPposition;
-            //transform.rotation;
+            //transform.rotation = transform.rotation;
             transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
         }
         else if (isAttacking) //Actively executing attack
@@ -192,7 +195,7 @@ public class EnemyBehavior_Melee : MonoBehaviour
         Vector3 moveAttempt;
         do
         {
-            moveAttempt = (Random.insideUnitSphere * MaxHomeDist); //pick direction within home range
+            moveAttempt = (UnityEngine.Random.insideUnitSphere * MaxHomeDist); //pick direction within home range
             moveAttempt += EnemyHome; //center vector on home
             //this results in a target point i think. vectors are confusing
             if (!Physics.Linecast(transform.position, moveAttempt, 3)) //check if move intersects terrain
@@ -233,7 +236,7 @@ public class EnemyBehavior_Melee : MonoBehaviour
             {
                 isOnPatrol = false;
                 isIdlePatrol = true;
-                patrolTimer = Random.Range(3f, 10f);//wait 3-10 seconds
+                patrolTimer = UnityEngine.Random.Range(3f, 10f);//wait 3-10 seconds
             }
         }
         else
