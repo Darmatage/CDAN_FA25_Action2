@@ -192,7 +192,7 @@ public class FlockUnit : MonoBehaviour
         if(currentObstacleAvoidanceVector != Vector3.zero)
         {
             RaycastHit hit;
-            if (Physics.Raycast(myTransform.position, myTransform.forward, out hit, assignedFlock.obstacleDistance, obstacleLayer))
+            if (!Physics.Raycast(myTransform.position, myTransform.forward, out hit, assignedFlock.obstacleDistance, obstacleLayer))
             {
                 return currentObstacleAvoidanceVector;
             }
@@ -207,7 +207,7 @@ public class FlockUnit : MonoBehaviour
             if (Physics.Raycast(myTransform.position, currentDirection, out hit, assignedFlock.obstacleDistance, obstacleLayer))
             {
                 float currentDistance = (hit.point - myTransform.position).sqrMagnitude;
-                if (currentDistance < maxDistance)
+                if (currentDistance > maxDistance)
                 {
                     maxDistance = currentDistance;
                     selectedDirection = currentDirection;
