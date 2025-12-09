@@ -111,18 +111,25 @@ void UpdateCameraRotation()
 	Vector3 directionToTarget = smoothedLookPosition - transform.position;
 	if (directionToTarget.magnitude > 0.01f) //Shouldn't get that close
 	{
-		float dragonRoll = 0f;
-		DragonFlightController flightController = dragonHead.GetComponent<DragonFlightController>();
-		if (flightController != null)
-		{
-			dragonRoll = flightController.GetCurrentRoll(); //grab roll from Flight Controller
-		}
-
-		Quaternion lookRotation = Quaternion.LookRotation(directionToTarget, Vector3.up); //base 'looking' rotation, towards target and sky
-		Quaternion rollRotation = Quaternion.Euler(0f,0f,dragonRoll); //Adds only the roll of the target
-		Quaternion targetRotation = lookRotation * rollRotation; //lookRotation puts level to horizon THEN, rollRotation applies current Roll of target.
-
-		transform.rotation = Quaternion.Slerp(transform.rotation,targetRotation,rotationSmoothing * Time.deltaTime); //Apply Rotation to camera, Slerp is like lerp but for rotating. Uses cameras current rotation, where it should be facing, then how fast.
+			Vector3 cameraUp = dragonHead.up; //Added new code to try to prevent gimbal lock
+			float dragonRoll = 0f;
+			DragonFlightController flightController = dragonHead.GetComponent<DragonFlightController>();
+			if (flightController != null)
+			{
+				dragonRoll = flightController.GetCurrentRoll();
+			}
+			Quaternion lookRotation = Quaternion.LookRotation(directionToTarget, cameraUp);
+			transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotationSmoothing * Time.deltaTime);
+		//float dragonRoll = 0f;
+		//DragonFlightController flightController = dragonHead.GetComponent<DragonFlightController>();
+		//if (flightController != null)
+		//{
+		//	dragonRoll = flightController.GetCurrentRoll(); //grab roll from Flight Controller
+		//}	
+		//Quaternion lookRotation = Quaternion.LookRotation(directionToTarget, Vector3.up); //base 'looking' rotation, towards target and sky, replaced vector3 with cameraup
+		//Quaternion rollRotation = Quaternion.Euler(0f,0f,dragonRoll); //Adds only the roll of the target
+		//Quaternion targetRotation = lookRotation * rollRotation; //lookRotation puts level to horizon THEN, rollRotation applies current Roll of target.
+		//transform.rotation = Quaternion.Slerp(transform.rotation,targetRotation,rotationSmoothing * Time.deltaTime); //Apply Rotation to camera, Slerp is like lerp but for rotating. Uses cameras current rotation, where it should be facing, then how fast.
 	}
 }
 public void SetDistance (float distance)

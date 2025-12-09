@@ -924,6 +924,7 @@ MonoBehaviour:
   rollSpeed: 60
   rollAcceleration: 0.5
   maxTurnRate: 150
+  maxPitchAngle: 80
   collisionLayers:
     serializedVersion: 2
     m_Bits: 8

@@ -30,6 +30,8 @@ public class DragonFlightController : MonoBehaviour
 
 	[Header("Constraints")]
 	public float maxTurnRate = 150f; //Degrees for max turn rate to prevent weird movement
+	[Range (0,90)]
+	public float maxPitchAngle = 85f; //Max angle up/down (More than 90 fucks it up)
 	public LayerMask collisionLayers; //What layers you can't go through.
 	public float collisionCheckDistance = 2f; //How far it checks for walls
 	public float collisionPushbackForce = 5f; //How hard it pushes from walls
@@ -94,11 +96,24 @@ public class DragonFlightController : MonoBehaviour
         {
             realMouseDistance = Vector2.Lerp(realMouseDistance, Vector2.zero, mouseReturnSpeed*Time.deltaTime);
         } //Returns to center when not moving
-
+		
 		float pitchAmount = -realMouseDistance.y * lookRateSpeed * Time.deltaTime; //Inverts Y mouse so up goes up * MouseLookSpeed
 		float yawAmount = realMouseDistance.x * lookRateSpeed * Time.deltaTime; //Same but with X
 
-		
+		//Added clamp
+
+		Vector3 currentEuler = transform.eulerAngles;
+		float currentPitch = currentEuler.x; //Get's current pitch before applying new
+
+		if (currentPitch > 180f) //pitch converted from over 180  to -180 - 180 range.
+			currentPitch -= 360f;
+
+		float newPitch = currentPitch + pitchAmount;
+		newPitch = Mathf.Clamp(newPitch, -maxPitchAngle, maxPitchAngle); //Clamps pitch between max and min
+		pitchAmount = newPitch - currentPitch; 
+
+
+		//Added clamp
 		transform.Rotate(pitchAmount, 0f, 0f, Space.Self); // Pitch around local X ((Controls so not World Y, dragons OWN updown axis.)
 		transform.Rotate(0f, yawAmount, 0f, Space.World);  // Yaw around world Y (imagine horizontal plane, is how you turn left/right.) Removes unintended Roll from pitch/yaw bc we want only the control to do that.
 // Both apply them
