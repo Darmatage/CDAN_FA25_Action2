@@ -4,11 +4,13 @@ using System.Collections.Generic;
 
 public class PlayerProjectile : MonoBehaviour
 {
-    public GameHandler GameHandler;
+    private GameHandler GameHandler;
 
     public float SelfDestructTime = 4.0f; //time until projectile disappears
     public float SelfDestructSFX = 0.5f;
     public GameObject projectileArt;
+	public AudioSource projectileHurtSFX; 
+	//public AudioSource projectileHitSFX; 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,17 +24,20 @@ public class PlayerProjectile : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy")) //if bullet hits an enemy
         {
             other.gameObject.GetComponent<EnemyStatHandler>().EnemyDamage(GameHandler.ProjCalc(), false); //deal damage based on player's projectile damage
-        }
-        if (other.gameObject.tag != "Player") //if bullet hits anything but the player
+			projectileHurtSFX.Play();
+			StartCoroutine(selfDestructHit());
+		}
+        else if (other.gameObject.tag != "Player") //if bullet hits anything but the player
         {
-            gameObject.GetComponent<Collider>().enabled = false;
-            //projectileArt.SetActive(false);
+            //projectileHitSFX.Play();
             StartCoroutine(selfDestructHit());
         }
     }
 
     IEnumerator selfDestructHit()
     {
+		gameObject.GetComponent<Collider>().enabled = false;
+		projectileArt.SetActive(false);
         yield return new WaitForSeconds(SelfDestructSFX);
         Destroy(gameObject);
     }
