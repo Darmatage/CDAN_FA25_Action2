@@ -66,16 +66,30 @@ public class EnemyBehavior_Melee : MonoBehaviour
         
         //Debug.Log("Setting new home at: x - " + EnemyHome.transform.position.x + " y - " + EnemyHome.transform.position.y + " z - " + EnemyHome.transform.position.z);
 
-
         player = GameObject.Find("Player"); //get player
-
-        //hitCollider = new Collider.SphereCollider();
 
         if (GameObject.FindWithTag("GameHandler") != null){
             gameHandler = GameObject.FindWithTag("GameHandler").GetComponent<GameHandler>();
         }
 
         enemyStatHandler = gameObject.GetComponent<EnemyStatHandler>();
+
+        float damageMult = 1; //damage scaling
+
+        switch (GameHandler.currentLevel + 1)
+        {
+            case 1: damageMult = 1; break;
+
+            case 2: damageMult = 1.3f; break;
+
+            case 3: damageMult = 1.5f; break;
+
+            case 4: damageMult = 1.7f; break;
+
+        }
+
+        damageMelee *= Mathf.RoundToInt(damageMult);
+
     }
 
     void Update()

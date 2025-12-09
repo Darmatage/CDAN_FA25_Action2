@@ -26,10 +26,28 @@ public class EnemyStatHandler : MonoBehaviour
     public Color redColor;
 
     void Start(){
-         enemyCurrentHealth = enemyMaxHealth;
+         
         GameHandler = GameObject.FindWithTag("GameHandler").GetComponent<GameHandler>();
         //anim = GetComponentInChildren<Animator>();
         //Renderer enemyRenderer = GetComponent<Renderer>();
+
+        //Health scaling
+        float healthMult = 1;
+
+        switch (GameHandler.currentLevel + 1)
+        {
+            case 1: healthMult = 1; break;
+
+            case 2: healthMult = 1.3f; break;
+
+            case 3: healthMult = 1.5f; break;
+
+            case 4: healthMult = 1.7f; break;
+
+        }
+
+        enemyMaxHealth *= healthMult;
+        enemyCurrentHealth = enemyMaxHealth;
     }
 
     private void Update()
