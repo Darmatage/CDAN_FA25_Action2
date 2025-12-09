@@ -37,7 +37,7 @@ public class AudioManager : MonoBehaviour {
                 else if (SceneManager.GetActiveScene().name == "Level1") {theMusic = caves_ambient;}
                 else if (SceneManager.GetActiveScene().name == "Level2") {theMusic = coral_ambient;}
 
-                if (SceneManager.GetActiveScene().name == "River")
+                if (SceneManager.GetActiveScene().name == "Level0")
                 {
                         theMusic = river_ambient;
                         theBossMusic = river_ambient;
