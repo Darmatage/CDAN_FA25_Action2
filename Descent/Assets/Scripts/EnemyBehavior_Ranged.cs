@@ -7,7 +7,7 @@ using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
 using static UnityEngine.Rendering.DebugUI;
 
-public class EnemyBehavior_Melee : MonoBehaviour
+public class EnemyBehavior_Ranged : MonoBehaviour
 {
 
     private GameHandler gameHandler;
@@ -54,7 +54,7 @@ public class EnemyBehavior_Melee : MonoBehaviour
     private Vector3 EnemyHome;
     public float MaxHomeDist = 10f;
 
-    //public AudioSource meleeHurtSFX;
+    public AudioSource meleeHurtSFX;
 
     void Start()    
     {
@@ -292,7 +292,7 @@ public class EnemyBehavior_Melee : MonoBehaviour
         {
             //Debug.Log("found player!");
             gameHandler.playerGetHit(damageMelee); //damage player
-            //meleeHurtSFX.Play(); //play hitsound
+            meleeHurtSFX.Play(); //play hitsound
             EnemyHome = transform.position; //set home to current location
         }
 
