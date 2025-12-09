@@ -8,12 +8,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material.001
-    second: {fileID: 2100000, guid: 975f45fe0b476874abab786cef692983, type: 2}
+    second: {fileID: 2100000, guid: d104984133ec5c1489e112a590ad9a63, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Lionfish2
-    second: {fileID: 2800000, guid: f66d5d5a349703249b508b3c4568afb2, type: 3}
+    second: {fileID: 2800000, guid: 89008b1e751f0124c8af7e9d816a254e, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
