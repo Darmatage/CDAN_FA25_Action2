@@ -41,6 +41,8 @@ public class ShopButton : MonoBehaviour
     //armor pierce?
     //regeration
 
+    public AudioSource SFX_Select;
+
 
     void Start()
     {
@@ -175,6 +177,7 @@ public class ShopButton : MonoBehaviour
         {
             //Debug.Log("press!");
             ShopHandler.ChangeDescription(desc, UpgradeType, UpgradeNum, price, buttonNum); //display description
+            SFX_Select.Play();
         }
             
     }
