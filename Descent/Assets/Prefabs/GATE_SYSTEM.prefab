@@ -5312,8 +5312,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5179015215693782903}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.5464954, z: -0.00000047683716}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5431,6 +5431,7 @@ MonoBehaviour:
   bossPrefab: {fileID: 4420768128652202809, guid: 0b1c81180f9024d88b2f93115662d766, type: 3}
   bossSpwnPnts:
   - {fileID: 7902192961150506439}
+  gateOpenSFX: {fileID: 4639041973811953449}
 --- !u!1 &8943442918856518757
 GameObject:
   m_ObjectHideFlags: 0

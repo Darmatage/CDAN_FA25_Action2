@@ -33,6 +33,8 @@ public class GateScript : MonoBehaviour
     private bool inRange;
     private bool bossDefeated;
 
+	public AudioSource gateOpenSFX;
+
 	void Start()
     {
        bossesToDefeat = bossSpwnPnts.Length;
@@ -91,6 +93,7 @@ public class GateScript : MonoBehaviour
 		{
 			gateActivated=true;
 			LightColumn.SetActive(true);
+			gateOpenSFX.Play();
             Debug.Log("Gate has been activated, " + bossesToDefeat + " bosses found. Light column activated");
 			
 			if(SceneManager.GetActiveScene().name == "Level0")
