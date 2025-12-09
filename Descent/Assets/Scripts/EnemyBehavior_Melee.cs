@@ -87,7 +87,15 @@ public class EnemyBehavior_Melee : MonoBehaviour
         float distToHome = Vector3.Distance(transform.position, EnemyHome); //get distance from home point
 
         //MOVEMENT
-        if (isAttacking) //Actively executing attack
+
+        if (enemyStatHandler.isDying) //Dying
+        {
+            Vector3 LERPposition = Vector3.Lerp(transform.position, player.transform.position, -ApproachSpeed * Time.deltaTime);
+            transform.position = LERPposition;
+            //transform.rotation;
+            transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+        }
+        else if (isAttacking) //Actively executing attack
         {       
             //move towards player at approach speed
             Vector3 LERPposition = Vector3.Lerp(transform.position, player.transform.position, ApproachSpeed * Time.deltaTime);
@@ -144,11 +152,6 @@ public class EnemyBehavior_Melee : MonoBehaviour
             isAttacking = false;
         }
 
-        //ATTACKING
-            if (enemyStatHandler.isDying)
-            {
-                moveSpeed = -0.1f;
-            }
     }
 
     void FixedUpdate()

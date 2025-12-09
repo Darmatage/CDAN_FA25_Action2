@@ -179,7 +179,7 @@ MonoBehaviour:
   attackTime: 0.3
   cooldownTime: 3
   ApproachSpeed: 0.01
-  AttackRange: 2.11
+  AttackRange: 3.58
   Hitbox: {fileID: 2211854982219645767}
   CDTimer: 0
   MaxHomeDist: 10.8
