@@ -244,11 +244,7 @@ public class EnemyBehavior_Melee : MonoBehaviour
             //do nothing
         }
     }
-   
-    private void Chase()
-    {
 
-    }
     
 
     /*

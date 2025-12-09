@@ -278,11 +278,11 @@ public class GameHandler : MonoBehaviour
         switch (type)
         {
             case 11: //SHOT
-                RangedType = 1;
+                RangedType = 11;
                 projectileIcon.GetComponent<Image>().sprite = proj_shot;
                 break;
             case 12: //BEAM
-                RangedType = 2;
+                RangedType = 12;
                 projectileIcon.GetComponent<Image>().sprite = proj_beam;
                 break;
         }
