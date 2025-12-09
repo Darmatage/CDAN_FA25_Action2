@@ -170,7 +170,7 @@ MonoBehaviour:
   enemyLocation: {fileID: 0}
   damage: 5
   isAggro: 0
-  aggroRange: 3
+  aggroRange: 24.36
   isAttackWindup: 0
   isAttackCooldown: 0
   isAttackActive: 0
@@ -178,7 +178,7 @@ MonoBehaviour:
   attackTime: 0.3
   cooldownTime: 3
   ApproachSpeed: 0.01
-  AttackRange: 1
+  AttackRange: 15.8
   CDTimer: 0
   MaxHomeDist: 10
   meleeHurtSFX: {fileID: 0}

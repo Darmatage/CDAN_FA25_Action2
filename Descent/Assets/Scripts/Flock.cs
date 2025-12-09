@@ -110,4 +110,9 @@ public class Flock : MonoBehaviour
             allUnits[i].InitializeSpeed(UnityEngine.Random.Range(minSpeed, maxSpeed));
         }
     }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, boundsDistance); //gizmo of aggro range
+    }
 }

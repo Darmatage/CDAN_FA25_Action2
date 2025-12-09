@@ -171,7 +171,7 @@ MonoBehaviour:
   enemyLocation: {fileID: 9032897564143075174}
   damageMelee: 5
   isAggro: 0
-  aggroRange: 13.8
+  aggroRange: 17.1
   isAttackWindup: 0
   isAttackCooldown: 0
   isAttackActive: 0
