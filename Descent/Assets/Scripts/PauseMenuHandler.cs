@@ -65,7 +65,7 @@ public class PauseMenuHandler : MonoBehaviour
             Cursor.visible = true; //Moved from Flight Controller
             
             //initialize damage stats
-            GameHandler.MeleeCalc();
+            GameHandler.MeleeCalc(false);
             GameHandler.ProjCalc();
 
             //display current stats

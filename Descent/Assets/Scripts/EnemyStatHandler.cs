@@ -10,6 +10,7 @@ public class EnemyStatHandler : MonoBehaviour
     public GameObject coins;
     public GameObject deathParticles;
     public GameObject hitParticles;
+    public GameObject criticalParticles;
     //aa
     [Header("Stats")]
     public float enemyMaxHealth = 15f;
@@ -36,7 +37,7 @@ public class EnemyStatHandler : MonoBehaviour
         
     }
 
-    public void EnemyDamage(float damageSource)
+    public void EnemyDamage(float damageSource, bool isCrit)
     {
         //Debug.Log(damageSource);
         //Debug.Log(enemyArmor);
@@ -71,7 +72,17 @@ public class EnemyStatHandler : MonoBehaviour
             isDying = true;
         }
         else
-        {
+        {   
+            if (isCrit) //change particles based on criticals
+            {
+                GameObject critPS = Instantiate(criticalParticles, transform.position, Quaternion.identity);
+            }
+            else
+            {
+                GameObject hitPS = Instantiate(hitParticles, transform.position, Quaternion.identity);
+            }
+
+                
             StartCoroutine(EnemyHurtFlash());
         }
 
@@ -92,7 +103,7 @@ public class EnemyStatHandler : MonoBehaviour
 
     IEnumerator EnemyHurtFlash()
     {
-        GameObject hitPS = Instantiate(hitParticles, transform.position, Quaternion.identity);
+        
         enemyRenderer.material.color = redColor;
         yield return new WaitForSeconds(0.2f);
         enemyRenderer.material.color = whiteColor;

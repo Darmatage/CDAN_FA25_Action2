@@ -21,7 +21,7 @@ public class PlayerProjectile : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy")) //if bullet hits an enemy
         {
-            other.gameObject.GetComponent<EnemyStatHandler>().EnemyDamage(GameHandler.ProjCalc()); //deal damage based on player's projectile damage
+            other.gameObject.GetComponent<EnemyStatHandler>().EnemyDamage(GameHandler.ProjCalc(), false); //deal damage based on player's projectile damage
         }
         if (other.gameObject.tag != "Player") //if bullet hits anything but the player
         {

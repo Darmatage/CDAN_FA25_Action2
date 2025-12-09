@@ -109,14 +109,26 @@ public class PlayerBehavior : MonoBehaviour
     {
         //Debug.Log("Player Attacks");
 
+
         Collider[] hitEnemies = Physics.OverlapSphere(Hitbox.transform.position, Hitbox.GetComponent<SphereCollider>().radius * GameHandler.attackRadius, enemyLayers);
+        
+        bool isCrit;
+        if(GameHandler.critRate <= Random.value)
+        {
+            isCrit = true;
+        }
+        else
+        {
+            isCrit = false;
+        }
 
             foreach (Collider enemy in hitEnemies)
             {
                 //Debug.Log("We hit " + enemy.name);
                 //enemy.GetComponent<EnemyStatHandler>().EnemyDamage(GameHandler.MeleeCalc());
-                enemy.GetComponent<EnemyStatHandler>().EnemyDamage(GameHandler.MeleeCalc()); //call damage function on enemy
-             }
+
+                enemy.GetComponent<EnemyStatHandler>().EnemyDamage(GameHandler.MeleeCalc(isCrit), isCrit); //call damage function on enemy
+            }
     }
 
     void AttackProjectile()

@@ -83,6 +83,7 @@ public class GameHandler : MonoBehaviour
     public static int extraArmor = 0; //stacks of extra armor
     public static int lifesteal = 0; //stacks of extra lifesteal
     public static int extraDashCD = 0; //stacks of extra dash cooldown
+    public static int extraCritDMG = 0; //stacks of extra crit DMG
 
 
     void Start()
@@ -189,30 +190,12 @@ public class GameHandler : MonoBehaviour
             }
       }
 
-    public float MeleeCalc() //calculates player's melee damage
+    public float MeleeCalc(bool isCrit) //calculates player's melee damage
     {
-        
-
-        switch (MeleeType) //Get stats of current weapon
-        {
-            case 1: //bite
-                meleeDamage = 30f;
-                meleeCD = 2f;
-                critRate = 0.1f;
-                attackRadius = 1f;
-                break;
-            case 2: //claws
-                meleeDamage = 15f;
-                meleeCD = 3f;
-                critRate = 0.3f;
-                attackRadius = 0.8f;
-                break;
-        }
-
         float totalDamage = meleeDamage * //base damage 
             ((extraAttack * 0.1f) + 1); //attack passive modifier
 
-        if (critRate > Random.value)
+        if (isCrit)
         {
             totalDamage *= critDamage; //critical hits increase damage by 50%. effects can also be added here :3
         }
@@ -270,10 +253,18 @@ public class GameHandler : MonoBehaviour
         {
             case 1: //BITE
                 MeleeType = 1;
+                meleeDamage = 30f;
+                meleeCD = 2f;
+                critRate = 0.1f;
+                attackRadius = 1f;
                 weaponIcon.GetComponent<Image>().sprite = weapon_bite;
                 break;
             case 2: //CLAW
                 MeleeType = 2;
+                meleeDamage = 15f;
+                meleeCD = 3f;
+                critRate = 0.3f;
+                attackRadius = 0.8f;
                 weaponIcon.GetComponent<Image>().sprite = weapon_claw;
                 break;
             
@@ -319,7 +310,9 @@ public class GameHandler : MonoBehaviour
                 extraDashCD++;
                 dashCD *= 0.95f;
                 break;
-
+            case 27: //CRIT DAMAGE
+                extraDashCD++;
+                break;
         }
     }
 

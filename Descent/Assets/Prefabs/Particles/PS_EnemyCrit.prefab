@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4221207063102560063}
   - component: {fileID: 9151267378360977458}
   m_Layer: 0
-  m_Name: PS_EnemyHit
+  m_Name: PS_EnemyCrit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,7 +116,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.14
+      scalar: 0.7
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -169,7 +169,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 21.63
+      scalar: 3.92
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -1429,7 +1429,7 @@ ParticleSystem:
     enabled: 1
     mode: 1
     timeMode: 2
-    fps: 3
+    fps: 10
     frameOverTime:
       serializedVersion: 2
       minMaxState: 3
@@ -1545,8 +1545,8 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 0
     sprites:
-    - sprite: {fileID: -1246560863, guid: 5f5638fd9efc4b34d87873350ae64376, type: 3}
-    - sprite: {fileID: 888128264, guid: 5f5638fd9efc4b34d87873350ae64376, type: 3}
+    - sprite: {fileID: 831380587, guid: 19cdcc48c1921fc4599c6bf257018407, type: 3}
+    - sprite: {fileID: -79813370, guid: 19cdcc48c1921fc4599c6bf257018407, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -4839,7 +4839,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 948818c9581c2434a9829b0c7703abc6, type: 2}
+  - {fileID: 2100000, guid: 8b71b9d4e2738fb4d9723c1a5c771016, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
