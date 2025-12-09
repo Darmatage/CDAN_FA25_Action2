@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1405227033239986616}
   - component: {fileID: 8206668696821887847}
   m_Layer: 5
-  m_Name: Health_TXT
+  m_Name: Gate_TXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '100/100
+  m_text: 'Press F to summon
 
 '
   m_isRightToLeft: 0
@@ -76,8 +76,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4290444779
+  m_fontColor: {r: 0.9204996, g: 0.99371064, b: 0.7280961, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -152,12 +152,12 @@ GameObject:
   - component: {fileID: 6054508835842550765}
   - component: {fileID: 5275259693399640901}
   m_Layer: 5
-  m_Name: Canvas_MSG
+  m_Name: Interaction_MSG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &84638179073231458
 RectTransform:
   m_ObjectHideFlags: 0
@@ -167,7 +167,7 @@ RectTransform:
   m_GameObject: {fileID: 2589158605224399362}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.66, y: 1.66, z: 1.66}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 439879794113430522}
@@ -175,7 +175,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 5.08}
+  m_AnchoredPosition: {x: -0.004303, y: 10.9}
   m_SizeDelta: {x: 5, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &7021648808843361677
@@ -5424,9 +5424,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8517f17fa462c4aad989e2bc5a0da09d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MSG_range: 12.1
+  summonKey: 102
+  nextLevelKey: 102
   nextLevel: Level2
   gateActivated: 0
-  MSG_NotActivated: {fileID: 2589158605224399362}
+  MSG_Interaction: {fileID: 2589158605224399362}
+  interactionText: {fileID: 8206668696821887847}
+  detectHeight: 10.81
   LightColumn: {fileID: 8976465361532427164}
   bossPrefab: {fileID: 4420768128652202809, guid: 0b1c81180f9024d88b2f93115662d766, type: 3}
   bossSpwnPnts:

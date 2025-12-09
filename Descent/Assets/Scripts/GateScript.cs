@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GateScript : MonoBehaviour
 {
@@ -10,13 +11,15 @@ public class GateScript : MonoBehaviour
 	public float MSG_range = 10; 
 	
 	[Header("GateKeyBinds")]
-    //public KeyCode summonKey = KeyCode.F;
-    //public KeyCode nextLevelKey = KeyCode.F;
+    public KeyCode summonKey = KeyCode.F;
+    public KeyCode nextLevelKey = KeyCode.F;
     //public KeyCode shopKey = KeyCode.S;
 
 	public string nextLevel="MainMenu";
 	public bool gateActivated = false;
-	//public GameObject MSG_NotActivated;
+	public GameObject MSG_Interaction;
+	public TMP_Text interactionText;
+	public float detectHeight = 3f; //boosts height of range a bit so player isn't too close to the ground
 	public GameObject LightColumn;
 
     [Header("BOSS SPAWN")]
@@ -39,8 +42,11 @@ public class GateScript : MonoBehaviour
     {
        bossesToDefeat = bossSpwnPnts.Length;
 	   LightColumn.SetActive(false);
-	   //MSG_NotActivated.SetActive(false);
-       //Debug.Log("LightColumn set false, bosses = bosslength, msg set false.");
+		
+		MSG_Interaction.SetActive(false);;
+		interactionText.text = ("Press F to Summon boss");
+
+
 	   CheckGate();
        //Debug.Log("CheckGate Ran");
 	   if (GameObject.FindWithTag("Player") != null){
@@ -50,24 +56,30 @@ public class GateScript : MonoBehaviour
 
    void Update()
 	{
-		float playerDistance = Vector3.Distance(transform.position, player.position);
-		if (playerDistance <= MSG_range)
+		float playerDistance = Vector3.Distance(transform.position, new Vector3(player.position.x, (player.position.y - detectHeight), player.position.z));
+		if (playerDistance <= MSG_range && !(gateTriggered && !gateActivated)) //if player is in range and boss is not alive
 		{
-			if (!gateTriggered)
+			MSG_Interaction.SetActive(true);
+
+            if (Input.GetKeyDown(summonKey))
 			{
-				SpawnBosses();
-                gateTriggered = true; //Bosses have been spawned
+				if (!gateActivated) //if boss hasn't been spawned, spawn the boss
+				{
+					SpawnBosses();
+					gateTriggered = true;
+				}
+				else //enter shop
+				{
+                    GameHandler.currentLevel++;
+                    SceneManager.LoadScene(nextLevel);
+                }
 			}
-			
-			if (!gateActivated)
-			{
-				//MSG_NotActivated.SetActive(true);
-			}
-		} else
+
+        } 
+		else
 		{
-			//Debug.Log("Player exit trigger");
-			//MSG_NotActivated.SetActive(false);
-		}
+            MSG_Interaction.SetActive(false);
+        }
 
 
 	}
@@ -94,6 +106,8 @@ public class GateScript : MonoBehaviour
 			gateActivated=true;
 			LightColumn.SetActive(true);
 			gateOpenSFX.Play();
+
+            interactionText.text = ("Press F to exit level");
             Debug.Log("Gate has been activated, " + bossesToDefeat + " bosses found. Light column activated");
 			
 			if(SceneManager.GetActiveScene().name == "Level0")
@@ -105,6 +119,7 @@ public class GateScript : MonoBehaviour
 	} 
 	
 //go through gate if gate activated:
+/*
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.tag=="Player")
@@ -120,7 +135,7 @@ public class GateScript : MonoBehaviour
 			} 
 		}
 	}
-
+*/
 	void SpawnBosses()
 	{
 		if (SceneManager.GetActiveScene().name == "Level0")
@@ -139,7 +154,7 @@ public class GateScript : MonoBehaviour
 
 	void OnDrawGizmosSelected()
 	{
-		Gizmos.DrawWireSphere(transform.position, MSG_range); //gizmo of aggro range
+		Gizmos.DrawWireSphere(new Vector3(transform.position.x, (transform.position.y + detectHeight), transform.position.z), MSG_range); //gizmo of interaction range
 	}
 }
 
