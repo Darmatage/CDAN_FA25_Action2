@@ -1354,7 +1354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 6128259293770380774}
   mixer: {fileID: 24100000, guid: 3addd3dfcd9b9451c9bfba046665dcc9, type: 2}
-  mixer2: {fileID: 0}
+  mixer2: {fileID: 24100000, guid: 633e20aecfaa89f4482c5c029375a382, type: 2}
   controlMenuUI: {fileID: 7840985748476249889}
   statText: {fileID: 5646585795928164320}
 --- !u!1 &2515723510206348488
