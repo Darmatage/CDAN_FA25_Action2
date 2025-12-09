@@ -14,6 +14,7 @@ public class AudioManager : MonoBehaviour {
         public AudioSource coral_boss;
         public AudioSource river_ambient;
         public AudioSource main_menu;
+        public AudioSource end_scene;
 
 
         private AudioSource theMusic;
@@ -24,9 +25,14 @@ public class AudioManager : MonoBehaviour {
         void Awake(){
                 //set the music based on the scene
                 if ((SceneManager.GetActiveScene().name == "MainMenu")
-                ||(SceneManager.GetActiveScene().name == "Shop")
-                ||(SceneManager.GetActiveScene().name == "Credits")) 
+                ||(SceneManager.GetActiveScene().name == "Shop")) 
                 {theMusic = main_menu;}
+
+                else if((SceneManager.GetActiveScene().name == "EndLose")
+                ||(SceneManager.GetActiveScene().name == "EndWin")
+                ||(SceneManager.GetActiveScene().name == "Credits"))
+                {theMusic = end_scene;}
+
                 else if (SceneManager.GetActiveScene().name == "Level3") {theMusic = abyss_ambient;} 
                 else if (SceneManager.GetActiveScene().name == "Level1") {theMusic = caves_ambient;}
                 else if (SceneManager.GetActiveScene().name == "Level2") {theMusic = coral_ambient;}
@@ -45,6 +51,7 @@ public class AudioManager : MonoBehaviour {
                 if (SceneManager.GetActiveScene().name == "Level3") {theBossMusic = abyss_boss;}
                 else if (SceneManager.GetActiveScene().name == "Level1") {theBossMusic = caves_boss;}
                 else if (SceneManager.GetActiveScene().name == "Level2") {theBossMusic = coral_boss;}
+
         }
 
         void Update(){
@@ -55,7 +62,7 @@ public class AudioManager : MonoBehaviour {
 
 //change timestamp (can be called by door code):
         public void SetTimeStamp(){
-               //musicTimeStamp = theMusic.time;
+                //musicTimeStamp = theMusic.time;
         }
 
         public void StartBossMusic()
