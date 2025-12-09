@@ -1807,9 +1807,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Attack - Left Mouse Button\nRoll - Q/E \nLevelling (Autocorrecting Roll)
-    - L\nUp/Down - Ctrl/Space\nMovement - WASD\nSonar - T\nEscape - Back/Pause Menu\nTab
-    - Mouse Unlock\nShift - Dash\n"
+  m_text: "Attack - Left Mouse Button\nShoot Attack - Right Mouse Button\nRoll -
+    Q/E \nLevelling (Autocorrecting Roll) - L\nUp/Down - Ctrl/Space\nMovement - WASD\nSonar
+    - T\nEscape - Back/Pause Menu\nTab - Mouse Unlock\nShift - Dash\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 96968ffd7b064480ba7af67165c03c13, type: 2}
   m_sharedMaterial: {fileID: 7235418983103705955, guid: 96968ffd7b064480ba7af67165c03c13, type: 2}
