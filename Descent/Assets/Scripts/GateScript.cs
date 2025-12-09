@@ -93,7 +93,7 @@ public class GateScript : MonoBehaviour
 			LightColumn.SetActive(true);
             Debug.Log("Gate has been activated, " + bossesToDefeat + " bosses found. Light column activated");
 			
-			if(SceneManager.GetActiveScene().name == "River")
+			if(SceneManager.GetActiveScene().name == "Level0")
             {
                 Debug.Log("The Music Did Not Change");
             }
@@ -120,7 +120,7 @@ public class GateScript : MonoBehaviour
 
 	void SpawnBosses()
 	{
-		if (SceneManager.GetActiveScene().name == "River")
+		if (SceneManager.GetActiveScene().name == "Level0")
         {
             Debug.Log("Music Did Not Change");
         }
