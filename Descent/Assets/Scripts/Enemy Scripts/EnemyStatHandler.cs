@@ -1,7 +1,9 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem.LowLevel;
+using TMPro;
 
 public class EnemyStatHandler : MonoBehaviour
 {
@@ -11,6 +13,13 @@ public class EnemyStatHandler : MonoBehaviour
     public GameObject deathParticles;
     public GameObject hitParticles;
     public GameObject criticalParticles;
+
+    //health bar display
+    public GameObject healthBarObj;
+    public Image healthBar;
+    public TMP_Text healthBarText;
+    public Color healthyColor = new Color(0.3f, 0.8f, 0.3f);
+    public Color unhealthyColor = new Color(0.8f, 0.3f, 0.3f);
     //aa
     [Header("Stats")]
     public float enemyMaxHealth = 15f;
@@ -28,6 +37,7 @@ public class EnemyStatHandler : MonoBehaviour
     void Start(){
          
         GameHandler = GameObject.FindWithTag("GameHandler").GetComponent<GameHandler>();
+        healthBarObj.SetActive(false);
         //anim = GetComponentInChildren<Animator>();
         //Renderer enemyRenderer = GetComponent<Renderer>();
 
@@ -49,10 +59,9 @@ public class EnemyStatHandler : MonoBehaviour
         enemyMaxHealth *= healthMult;
         enemyCurrentHealth = enemyMaxHealth;
     }
-
-    private void Update()
+    public void SetColor(Color newColor) //set healthbar color
     {
-        
+        healthBar.GetComponent<Image>().color = newColor;
     }
 
     public void EnemyDamage(float damageSource, bool isCrit)
@@ -68,24 +77,47 @@ public class EnemyStatHandler : MonoBehaviour
             enemyCurrentHealth -= totalDamage;
         }
 
+        //health bar management
+
+        healthBarObj.SetActive(true); //enable healthbar if damage taken
+
+        healthBar.fillAmount = enemyCurrentHealth / enemyMaxHealth;
+        healthBarText.text = enemyCurrentHealth + "/" + enemyMaxHealth;
+
+        if (enemyCurrentHealth < (0.3f * enemyMaxHealth))
+        {
+            if ((enemyCurrentHealth * 100f) % 3 <= 0) //?
+            {
+                SetColor(Color.white);
+            }
+            else
+            {
+                SetColor(unhealthyColor);
+            }
+        }
+        else
+        {
+            SetColor(healthyColor);
+        }
+
         if (enemyCurrentHealth <= 0) //if enemy dies
         {
-            
+            healthBarText.text = 0 + "/" + enemyMaxHealth;
             //anim.SetBool("EnemyDead", true);
-            if(!isDying)
+            if (!isDying)
             {
                 GameHandler.enemiesKilled++;
+
                 if (isBoss) //if enemy is a boss
                 {
                     GateScript gate;
                     gate = GameObject.FindWithTag("Door").GetComponent<GateScript>();
                     gate.defeatABoss();
                 }
-                GameObject deathPS = Instantiate(deathParticles, transform.position, Quaternion.identity);
-                
-                StartCoroutine(EnemyDeath());
             }
-            
+            GameObject deathPS = Instantiate(deathParticles, transform.position, Quaternion.identity);
+                
+            StartCoroutine(EnemyDeath());
 
             isDying = true;
         }

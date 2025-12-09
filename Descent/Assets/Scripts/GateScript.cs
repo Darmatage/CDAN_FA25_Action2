@@ -7,7 +7,7 @@ public class GateScript : MonoBehaviour
 {
     GameHandler GameHandler;
 	Transform player;
-	float MSG_range = 10; 
+	public float MSG_range = 10; 
 	
 	[Header("GateKeyBinds")]
     //public KeyCode summonKey = KeyCode.F;
@@ -16,7 +16,7 @@ public class GateScript : MonoBehaviour
 
 	public string nextLevel="MainMenu";
 	public bool gateActivated = false;
-	public GameObject MSG_NotActivated;
+	//public GameObject MSG_NotActivated;
 	public GameObject LightColumn;
 
     [Header("BOSS SPAWN")]
@@ -39,7 +39,7 @@ public class GateScript : MonoBehaviour
     {
        bossesToDefeat = bossSpwnPnts.Length;
 	   LightColumn.SetActive(false);
-	   MSG_NotActivated.SetActive(false);
+	   //MSG_NotActivated.SetActive(false);
        //Debug.Log("LightColumn set false, bosses = bosslength, msg set false.");
 	   CheckGate();
        //Debug.Log("CheckGate Ran");
@@ -61,12 +61,12 @@ public class GateScript : MonoBehaviour
 			
 			if (!gateActivated)
 			{
-				MSG_NotActivated.SetActive(true);
+				//MSG_NotActivated.SetActive(true);
 			}
 		} else
 		{
 			//Debug.Log("Player exit trigger");
-			MSG_NotActivated.SetActive(false);
+			//MSG_NotActivated.SetActive(false);
 		}
 
 
@@ -137,6 +137,10 @@ public class GateScript : MonoBehaviour
 		}
 	}
 
+	void OnDrawGizmosSelected()
+	{
+		Gizmos.DrawWireSphere(transform.position, MSG_range); //gizmo of aggro range
+	}
 }
 
 //Sarah thoughts:
