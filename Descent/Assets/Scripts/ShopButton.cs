@@ -19,6 +19,7 @@ public class ShopButton : MonoBehaviour
     private int UpgradeNum; //specific upgrade in type
     
     public TMP_Text label;
+    public TMP_Text priceText;
     public string desc;
     public int price;
 
@@ -52,7 +53,7 @@ public class ShopButton : MonoBehaviour
 
     public void ResetButton()
     {
-		Debug.Log("I am trying to reset a button");
+		//Debug.Log("I am trying to reset a button");
         UpgradeNum = 0;
         DisplayUpgrade(UpgradeNum);
     }
@@ -77,21 +78,22 @@ public class ShopButton : MonoBehaviour
                 UpgradeNum = Random.Range(11, 13);
                 break;
             case 3: //PASSIVES
-                UpgradeNum = Random.Range(21, 26);
+                UpgradeNum = Random.Range(21, 28);
                 break;
         }
     }
 
     void DisplayUpgrade(int num) //Change icon and labels
     {
-        Debug.Log("calling displayupgrade" + num);
+        //Debug.Log("calling displayupgrade" + num);
         switch (num)
         {
             case 0: //EMPTY
-				Debug.Log("I am an empty button!");
+				//Debug.Log("I am an empty button!");
                 gameObject.GetComponent<Image>().sprite = empty;
                 label.text = "";
                 price = 0;
+                //priceText.text = "";
                 desc = "";
                 break;
 
@@ -167,6 +169,9 @@ public class ShopButton : MonoBehaviour
                 desc = "Increase damage from criticals by 5% per stack.";
                 break;
         }
+
+        //update price text
+        priceText.text = "Price - " + price;
     }
 
     public void ShopButtonPress() //when button is pressed
@@ -177,7 +182,7 @@ public class ShopButton : MonoBehaviour
         }
         else 
         {
-            //Debug.Log("press!");
+            //Debug.Log("buttonNum: " + buttonNum);
             ShopHandler.ChangeDescription(desc, UpgradeType, UpgradeNum, price, buttonNum); //display description
             SFX_Select.Play();
         }

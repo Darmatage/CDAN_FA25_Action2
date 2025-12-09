@@ -40,7 +40,7 @@ public class ShopHandler : MonoBehaviour
         priceText.text = "Price: " + "XX";
         selectedButton = 0;
         upgradetype = 0;
-        upgradeTypeText.text = "Upgrade Type";
+        upgradeTypeText.text = "Item Type";
         upgradeTypeText.color = Color.white;
     }
     public void ChangeDescription(string desc, int type, int num, int price, int button) //change description and others
@@ -49,6 +49,7 @@ public class ShopHandler : MonoBehaviour
         priceText.text = "Price: " + price;
         upgradeprice = price;
         selectedButton = button;
+        //Debug.Log("selectedButton: " + selectedButton);
         upgradetype = num;
         //UnityEngine.Debug.Log(type);
         switch (type)
@@ -114,26 +115,27 @@ public class ShopHandler : MonoBehaviour
 
         //reset purchased item
             gameHandler.playerLoseCoins(upgradeprice); //subtract price
-        	UnityEngine.Debug.Log("spent " + upgradeprice);
+        	//Debug.Log("spent " + upgradeprice);
             //GameHandler.updateStatsDisplay(); //update stats
-            ResetDescription(); //reset description
-
+            
+        //Debug.Log(selectedButton);
         //if (upgradeprice <= GameHandler.gotCoins)
-            switch (selectedButton)
+        switch (selectedButton)
             {
                 case 1: //button1
-					Debug.Log("am I called? Trying to switch a button off1");
+					//Debug.Log("am I called? Trying to switch a button off1");
                     button1.GetComponent<ShopButton>().ResetButton();
                     break;
                 case 2: //button2
-				Debug.Log("am I called? Trying to switch a button off2");
+				    //Debug.Log("am I called? Trying to switch a button off2");
                     button2.GetComponent<ShopButton>().ResetButton();
                     break;
                 case 3: //button3
-				Debug.Log("am I called? Trying to switch a button off3");
+				    //Debug.Log("am I called? Trying to switch a button off3");
                     button3.GetComponent<ShopButton>().ResetButton();
                     break;
             }
+            ResetDescription(); //reset description
     }
 
 
