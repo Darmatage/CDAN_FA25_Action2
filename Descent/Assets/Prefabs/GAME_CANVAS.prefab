@@ -4536,6 +4536,7 @@ MonoBehaviour:
   weapon_bite: {fileID: 21300000, guid: 25432f65cb0e58b408f095a6913f5f78, type: 3}
   proj_shot: {fileID: 21300000, guid: 078f316fa0838ca4cae70c297aa6644b, type: 3}
   proj_beam: {fileID: 21300000, guid: d09ef2bba6ea68c4088187307f024602, type: 3}
+  SFX_Damage: {fileID: 8201666168627256587}
 --- !u!1 &8870252967648328043
 GameObject:
   m_ObjectHideFlags: 0
@@ -4961,5 +4962,10 @@ PrefabInstance:
 --- !u!4 &2483279282750502259 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9064114051177880686, guid: ec65a6a2fa3e244619aee08f846916ea, type: 3}
+  m_PrefabInstance: {fileID: 6898479909073299741}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &8201666168627256587 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3345744615786837014, guid: ec65a6a2fa3e244619aee08f846916ea, type: 3}
   m_PrefabInstance: {fileID: 6898479909073299741}
   m_PrefabAsset: {fileID: 0}

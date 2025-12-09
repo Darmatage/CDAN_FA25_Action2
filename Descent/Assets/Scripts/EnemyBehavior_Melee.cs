@@ -1,7 +1,9 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 using static UnityEngine.Rendering.DebugUI;
 
 public class EnemyBehavior_Melee : MonoBehaviour
@@ -21,6 +23,7 @@ public class EnemyBehavior_Melee : MonoBehaviour
         
     private Vector3 moveLocation;
     public GameObject player;
+    public LayerMask playerMask;
     public Transform enemyLocation;
 
     public int damageMelee = 5;
@@ -35,17 +38,17 @@ public class EnemyBehavior_Melee : MonoBehaviour
     public bool isAttackCooldown = false;
     public bool isAttackActive = false;
 
-    public float windupTime = 30f;
-    public float attackTime = 30f;
-    public float cooldownTime = 30f;
+    public float windupTime = 0.1f; //time to initiate attack
+    public float attackTime = 0.3f; //time to pause while attacking
+    public float cooldownTime = 3f; //time until attack can be executed again
 
-    private bool executeAttack = false; //start the attack
     private bool isAttacking = false; //in the middle of the attack
     public float ApproachSpeed = 0.01f; //movespeed while attacking
     public float AttackRange = 1f; //distance when attack will be executed
     public GameObject Hitbox; //attack collider guide
     private Collider hitCollider;
     private float AttackTimer; //controls attack length
+    public float CDTimer = 0f; //controls attack cooldown
 
     private Vector3 EnemyHome;
     public float MaxHomeDist = 10f;
@@ -85,13 +88,11 @@ public class EnemyBehavior_Melee : MonoBehaviour
 
         //MOVEMENT
         if (isAttacking) //Actively executing attack
-        {
-            if (isAttackActive)
-            {
-                Vector3 LERPposition = Vector3.Lerp(transform.position, player.transform.position, ApproachSpeed * Time.deltaTime);
-                transform.position = LERPposition;
-                transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
-            } //move towards player at approach speed
+        {       
+            //move towards player at approach speed
+            Vector3 LERPposition = Vector3.Lerp(transform.position, player.transform.position, ApproachSpeed * Time.deltaTime);
+            transform.position = LERPposition;
+            transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
             transform.LookAt(player.transform);
         }
         else if (isAggro && !isAttacking) //Chase state
@@ -105,36 +106,7 @@ public class EnemyBehavior_Melee : MonoBehaviour
         }
         else if (distToHome < MaxHomeDist) //Patrol state
         {
-            float distToTarget;
-            //Debug.Log("distance to home: " + distToHome);
-
-            if (!isOnPatrol && !isIdlePatrol && !isAttacking) //not currently moving or waiting
-            {
-                moveLocation = getRandomVector();
-                isOnPatrol = true;
-                patrolFailsafe = 100f;
-                //Debug.Log("Going on patrol!");
-            }
-            else if (isOnPatrol) //actively moving, checking for target reach
-            {
-                distToTarget = Vector3.Distance(transform.position, moveLocation);
-                
-                Vector3 LERPposition = Vector3.Lerp(transform.position, moveLocation, patrolSpeed * Time.deltaTime);//go to point
-                transform.position = LERPposition;
-                transform.LookAt(moveLocation);
-                //Debug.Log("Movin!");
-                if (distToTarget < 0.1) //location reached
-                {
-                    isOnPatrol = false;
-                    isIdlePatrol = true;
-                    patrolTimer = Random.Range(3f, 10f);//wait 3-10 seconds
-                }
-            }
-            else
-            {
-                //do nothing
-            }
-            
+            Patrol();
         }
         else //if outside of home range and player is out of aggro range
         {
@@ -145,10 +117,15 @@ public class EnemyBehavior_Melee : MonoBehaviour
         }
 
         //DETECTION
-        if(distToPlayer <= AttackRange && !isAttacking) //player is in attack range and isn't attacking
+        if(distToPlayer <= AttackRange) //player is in attack range
         {
-            executeAttack = true;
-            //Debug.Log("Attacking!");
+            if (!isAttackCooldown)
+            {
+                Debug.Log("Attacking!");
+                isAttackCooldown = true;
+                StartCoroutine(Attack());
+                CDTimer = 0;
+            }
         }
         else if (distToPlayer <= aggroRange) //player is in aggro range
         {
@@ -168,53 +145,14 @@ public class EnemyBehavior_Melee : MonoBehaviour
         }
 
         //ATTACKING
-        if (executeAttack || isAttacking)
-        {
-            //windup attack
-            if (executeAttack)
-            {
-
-                isAttackWindup = true;
-                //Debug.Log("Setting windup to true!");
-                //begin windup
-                //play the animation here also
-            }
-
-            //attacking, activate hurtbox
-            if (isAttackActive)
-            {
-                //Hitbox.SetActive(true);
-                Collider hitDetect = Hitbox.GetComponent<SphereCollider>();
-                //Debug.Log("Activating hurtbox!");
-            }
-            else
-            {
-                //Hitbox.SetActive(false);
-            }
-
             if (enemyStatHandler.isDying)
             {
                 moveSpeed = -0.1f;
             }
-        }
     }
 
     void FixedUpdate()
     {
-        //attack timers
-        if (executeAttack)
-        {
-            isAttacking = true;
-            //Debug.Log("Setting attacking to true!");
-            //Debug.Log(isAttacking);
-            executeAttack = false;
-        }
-        if (isAttacking) 
-        {
-
-            Attack();
-        }
-
         //patrol movement timer
         if (isIdlePatrol) 
         {
@@ -245,63 +183,6 @@ public class EnemyBehavior_Melee : MonoBehaviour
         }
     }
 
-    private void Attack()
-    {
-        //Debug.Log("Attacking!");
-        if (isAttackWindup) //winding up
-        {
-
-            if (AttackTimer <= windupTime)
-            {
-                AttackTimer++;
-                // Debug.Log(AttackTimer);
-            }
-            else
-            {
-                //Debug.Log("winding up!");
-                isAttackActive = true;
-                AttackTimer = 0;
-                isAttackWindup = false;
-            }
-        }
-        if (isAttackActive) //attacking
-        {
-
-            if (AttackTimer <= attackTime)
-            {
-                AttackTimer++;
-            }
-            else
-            {
-                //Debug.Log("Attacking!");
-                isAttackCooldown = true;
-                AttackTimer = 0;
-                isAttackActive = false;
-            }
-
-        }
-        if (isAttackCooldown) //cooling down
-        {
-
-            if (AttackTimer <= cooldownTime)
-            {
-                AttackTimer++;
-            }
-            else
-            {
-                isAttacking = false; //done attacking
-                //Debug.Log("Setting attacking to false!");
-                AttackTimer = 0;
-                //check if this hit the player
-                EnemyHome = transform.position;
-                //Debug.Log("Setting new home at: x - " + EnemyHome.transform.position.x + " y - " + EnemyHome.transform.position.y + " z - " + EnemyHome.transform.position.z);
-                //if attack hit player, set home to current position
-                //this is to prevent the enemy from taking a walk of shame back to their spawn if they chased the player far away
-                isAttackCooldown = false;
-            }
-
-        }
-    }
     private Vector3 getRandomVector() //get point within home range to move to
     {
         bool attemptValid = false;
@@ -325,9 +206,43 @@ public class EnemyBehavior_Melee : MonoBehaviour
           
     }
     
-    
-   
+    private void Patrol()
+    {
+        float distToTarget;
+        //Debug.Log("distance to home: " + distToHome);
 
+        if (!isOnPatrol && !isIdlePatrol && !isAttacking) //not currently moving or waiting
+        {
+            moveLocation = getRandomVector();
+            isOnPatrol = true;
+            patrolFailsafe = 100f;
+            //Debug.Log("Going on patrol!");
+        }
+        else if (isOnPatrol) //actively moving, checking for target
+        {
+            distToTarget = Vector3.Distance(transform.position, moveLocation);
+
+            Vector3 LERPposition = Vector3.Lerp(transform.position, moveLocation, patrolSpeed * Time.deltaTime);//go to point
+            transform.position = LERPposition;
+            transform.LookAt(moveLocation);
+            //Debug.Log("Movin!");
+            if (distToTarget < 0.1) //location reached
+            {
+                isOnPatrol = false;
+                isIdlePatrol = true;
+                patrolTimer = Random.Range(3f, 10f);//wait 3-10 seconds
+            }
+        }
+        else
+        {
+            //do nothing
+        }
+    }
+   
+    private void Chase()
+    {
+
+    }
     
 
     /*
@@ -352,17 +267,40 @@ public class EnemyBehavior_Melee : MonoBehaviour
             }
     }
 
-    void AttackCollision()
-    {
-         //Debug.Log("Player Attacks");
-    }
-
  void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, aggroRange); //gizmo of aggro range
         Gizmos.DrawWireSphere(transform.position, AttackRange); //gizmo of aggro range
     }
 
+    IEnumerator Attack()
+    {
+        //Debug.Log("Starting attack coroutine!");
 
+        
+        isAttacking = true;
+
+        yield return new WaitForSeconds(windupTime);
+
+        //Debug.Log("done winding up, checking for player!");
+        //check if player is in hitbox
+        bool hitDetect = Physics.CheckSphere(Hitbox.transform.position, Hitbox.GetComponent<SphereCollider>().radius * GameHandler.attackRadius, playerMask);
+        Hitbox.SetActive(true);
+        if (hitDetect)
+        {
+            //Debug.Log("found player!");
+            gameHandler.playerGetHit(damageMelee); //damage player
+            EnemyHome = transform.position; //set home to current location
+        }
+
+        yield return new WaitForSeconds(attackTime);
+        //Debug.Log("done attacking.");
+        Hitbox.SetActive(false);
+        isAttacking = false;
+
+        yield return new WaitForSeconds(cooldownTime);
+
+        isAttackCooldown = false;
+    }
 
 }

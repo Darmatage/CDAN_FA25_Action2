@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 6339939016628951494}
   - component: {fileID: 8974991169770563022}
   - component: {fileID: 1722709071208082732}
-  m_Layer: 7
+  m_Layer: 1
   m_Name: Bite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -577,7 +577,7 @@ GameObject:
   - component: {fileID: 315792834075840158}
   - component: {fileID: 646630412119906408}
   - component: {fileID: 9134356644052284710}
-  m_Layer: 7
+  m_Layer: 1
   m_Name: Hitbox
   m_TagString: Hurtbox
   m_Icon: {fileID: 0}

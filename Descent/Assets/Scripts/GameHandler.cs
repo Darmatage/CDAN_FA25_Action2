@@ -154,7 +154,7 @@ public class GameHandler : MonoBehaviour
     //DAMAGE CALCULATION
     public void playerGetHit(int damage){ //player gets hit
 
-        if (immuneTimer >= IFrames)
+        if (immuneTimer <= IFrames)
         {
             isImmune = true;
             //playerRenderer.material.color.a = 0.5f;
