@@ -130,7 +130,7 @@ public class EnemyBehavior_Melee : MonoBehaviour
         //DETECTION
         if(distToPlayer <= AttackRange) //player is in attack range
         {
-            if (!isAttackCooldown)
+            if (!isAttackCooldown && !enemyStatHandler.isDying)
             {
                 Debug.Log("Attacking!");
                 isAttackCooldown = true;
