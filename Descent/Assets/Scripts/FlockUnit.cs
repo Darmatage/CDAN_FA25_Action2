@@ -48,8 +48,9 @@ public class FlockUnit : MonoBehaviour
         var alignmentVector = CalculateAlignmentVector() * assignedFlock.alignmentWeight;
         var boundsVector = CalculateBoundsVector() * assignedFlock.boundsWeight;
         var obstacleVector = CalculateObstacleVector() * assignedFlock.obstacleWeight;
+        var playerAvoidanceVector = CalculatePlayerAvoidanceVector() * assignedFlock.playerAvoidanceWeight;
 
-        var moveVector = cohesionVector + avoidanceVector + alignmentVector + boundsVector + obstacleVector;
+        var moveVector = cohesionVector + avoidanceVector + alignmentVector + boundsVector + obstacleVector + playerAvoidanceVector;
         moveVector = Vector3.SmoothDamp(myTransform.forward, moveVector, ref currentVelocity, smoothDamp);
         moveVector = moveVector.normalized * speed;
 
@@ -221,6 +222,25 @@ public class FlockUnit : MonoBehaviour
             }
         }
         return selectedDirection.normalized;
+    }
+
+    private Vector3 CalculatePlayerAvoidanceVector()
+    {
+        if (assignedFlock.player == null)
+            return Vector3.zero;
+
+        Vector3 toPlayer = assignedFlock.player.position - myTransform.position;
+        float distanceToPlayer = toPlayer.magnitude;
+
+        if (distanceToPlayer > assignedFlock.playerAvoidanceDistance)
+            return Vector3.zero;
+
+        float avoidanceStrength = 1f - (distanceToPlayer / assignedFlock.playerAvoidanceDistance);
+        avoidanceStrength = avoidanceStrength * avoidanceStrength; //stronger when close
+
+        Vector3 avoidanceDirection = (myTransform.position - assignedFlock.player.position).normalized;
+
+        return avoidanceDirection * avoidanceStrength;
     }
 
     private bool IsInFOV(Vector3 position)

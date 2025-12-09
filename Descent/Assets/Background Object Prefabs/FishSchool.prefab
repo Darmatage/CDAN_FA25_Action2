@@ -47,15 +47,18 @@ MonoBehaviour:
   flockUnitPrefab: {fileID: 8765449193788293018, guid: 5db1c4ba4f82b834c9eacbbd3433e194, type: 3}
   flockSize: 100
   spawnBounds: {x: 10, y: 5, z: 10}
+  _player: {fileID: 0}
   _minSpeed: 1
-  _maxSpeed: 3
+  _maxSpeed: 4
   _cohesionDistance: 5.5
   _avoidanceDistance: 2.7
   _alignmentDistance: 2.3
-  _obstacleDistance: 6
+  _obstacleDistance: 10
   _boundsDistance: 20
+  _playerAvoidanceDistance: 8
   _cohesionWeight: 2
   _avoidanceWeight: 3
   _alignmentWeight: 1.8
   _boundsWeight: 10
   _obstacleWeight: 10
+  _playerAvoidanceWeight: 8

@@ -9,6 +9,8 @@ public class Flock : MonoBehaviour
     [SerializeField] private FlockUnit flockUnitPrefab;
     [SerializeField] private int flockSize;
     [SerializeField] private Vector3 spawnBounds;
+    [SerializeField] private Transform _player;
+    public Transform player { get { return _player; } }
 
     [Header("Speed Settings")]
     [Range (0,10)]
@@ -40,6 +42,13 @@ public class Flock : MonoBehaviour
     [SerializeField] private float _boundsDistance;
     public float boundsDistance { get { return _boundsDistance; } }
 
+    [Range(0, 100)]
+    [SerializeField] private float _playerAvoidanceDistance;
+    public float playerAvoidanceDistance { get { return _playerAvoidanceDistance; } }
+
+
+
+
     [Header("Behaviour Control Weights")]
     [Range(0, 10)]
     [SerializeField] private float _cohesionWeight;
@@ -61,11 +70,21 @@ public class Flock : MonoBehaviour
     [SerializeField] private float _obstacleWeight;
     public float obstacleWeight { get { return _obstacleWeight; } }
 
+    [Range(0, 20)]
+    [SerializeField] private float _playerAvoidanceWeight;
+    public float playerAvoidanceWeight { get { return _playerAvoidanceWeight; } }
+
 
     public FlockUnit[] allUnits { get; set; }
 
     private void Start()
     {
+        if (_player == null)
+        {
+            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+            if (playerObj != null)
+                _player = playerObj.transform;
+        }
         GenerateUnits();
     }
 
