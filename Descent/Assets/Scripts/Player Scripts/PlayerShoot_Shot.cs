@@ -33,8 +33,6 @@ public class PlayerShoot_Shot : MonoBehaviour
         //Spawn a bullet that inherits rotation from the instantiating object:
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, transform.rotation);
         projectile.GetComponent<Rigidbody>().AddForce(fwd * projectileSpeed, ForceMode.Impulse);
-        if (SFX_Projectile.isPlaying == false){
 			SFX_Projectile.Play();
 		}
     }
-}

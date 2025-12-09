@@ -342,7 +342,7 @@ public class GameHandler : MonoBehaviour
         inShop = false;
     }
     public void StartGame() {
-            SceneManager.LoadScene("Level1");
+            SceneManager.LoadScene("Level0");
       }
 
       // Return to MainMenu
