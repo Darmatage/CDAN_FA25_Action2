@@ -3990,6 +3990,10 @@ PrefabInstance:
       value: Enemybase_Ranged
       objectReference: {fileID: 0}
     - target: {fileID: 7919672716541432740, guid: 6c2251f62cda43443b04cf01b0b95fd5, type: 3}
+      propertyPath: damage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919672716541432740, guid: 6c2251f62cda43443b04cf01b0b95fd5, type: 3}
       propertyPath: attackTime
       value: 0.32
       objectReference: {fileID: 0}

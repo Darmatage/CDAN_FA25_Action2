@@ -167,7 +167,7 @@ MonoBehaviour:
   enemyStatHandler: {fileID: 3763452132473662630}
   projectile: {fileID: 624861862153092661, guid: 6499f024bb937f34d82e1cee077ecf49, type: 3}
   firePoint: {fileID: 6936399430128056210}
-  moveSpeed: 0.48
+  moveSpeed: 0.01
   patrolSpeed: 0.4
   patrolFailsafe: 0
   isOnPatrol: 0
@@ -179,6 +179,7 @@ MonoBehaviour:
     m_Bits: 0
   damage: 5
   projectileSpeed: 20
+  aimVariance: 0.3
   isAggro: 0
   aggroRange: 30.9
   isAttackWindup: 0

@@ -36,6 +36,7 @@ public class EnemyBehavior_Ranged : MonoBehaviour
 
     public int damage = 5;
     public float projectileSpeed = 20f;
+    public float aimVariance = 3f;
 
     [Header("Behavior")]
 
@@ -84,6 +85,22 @@ public class EnemyBehavior_Ranged : MonoBehaviour
         }
 
         enemyStatHandler = gameObject.GetComponent<EnemyStatHandler>();
+
+        float damageMult = 1; //damage scaling
+
+        switch (GameHandler.currentLevel + 1)
+        {
+            case 1: damageMult = 1; break;
+
+            case 2: damageMult = 1.3f; break;
+
+            case 3: damageMult = 1.5f; break;
+
+            case 4: damageMult = 1.7f; break;
+
+        }
+
+        damage *= Mathf.RoundToInt(damageMult);
     }
 
     void Update()
@@ -313,9 +330,17 @@ public class EnemyBehavior_Ranged : MonoBehaviour
         {
             //Debug.Log("lionfish firing!");
             transform.LookAt(player.transform);
-            Vector3 fwd = (firePoint.transform.position - transform.position).normalized;
+            Vector3 fwd = ( new Vector3
+                ((firePoint.transform.position.x + UnityEngine.Random.Range(-aimVariance, aimVariance)), 
+                (firePoint.transform.position.y + UnityEngine.Random.Range(-aimVariance, aimVariance)), 
+                (firePoint.transform.position.z + UnityEngine.Random.Range(-aimVariance, aimVariance))) 
+                - transform.position).normalized; //initialize vector projectile will travel in, some randomness added to aim
+            
+            
+            
             GameObject Enemyprojectile = Instantiate(projectile, firePoint.transform.position, transform.rotation);
             Enemyprojectile.GetComponent<Rigidbody>().AddForce(fwd * projectileSpeed, ForceMode.Impulse);
+            Enemyprojectile.GetComponent<EnemyProjectile>().damage = damage;
             recoilTimer = 60;
             inRecoil = true;
             yield return new WaitForSeconds(0.5f);

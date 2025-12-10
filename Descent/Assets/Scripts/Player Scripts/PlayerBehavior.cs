@@ -136,7 +136,7 @@ public class PlayerBehavior : MonoBehaviour
         switch (GameHandler.RangedType)
         {
             case 11: //shot
-                Debug.Log("running attackprojectile!");
+                //Debug.Log("running attackprojectile!");
                 Shoot_Shot.playerFireShot();
                 break;
             case 12: //beam
