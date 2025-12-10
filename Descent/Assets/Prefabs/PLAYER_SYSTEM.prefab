@@ -927,7 +927,7 @@ MonoBehaviour:
   maxPitchAngle: 80
   collisionLayers:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 328
   collisionCheckDistance: 2
   collisionPushbackForce: 5
 --- !u!114 &7943000970861105896

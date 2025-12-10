@@ -109,7 +109,7 @@ MonoBehaviour:
   preventSelfCollision: 1
   selfCollisionRadius: 0.3
   preventWorldCollision: 1
-  worldCollisionRadius: 1
+  worldCollisionRadius: 0.1
   worldCollisionLayers:
     serializedVersion: 2
     m_Bits: 72

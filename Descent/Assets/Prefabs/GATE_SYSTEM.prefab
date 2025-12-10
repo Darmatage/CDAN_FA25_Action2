@@ -175,7 +175,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.004303, y: 10.9}
+  m_AnchoredPosition: {x: 0, y: 10.9}
   m_SizeDelta: {x: 5, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &7021648808843361677
@@ -5427,7 +5427,7 @@ MonoBehaviour:
   MSG_range: 12.1
   summonKey: 102
   nextLevelKey: 102
-  nextLevel: Level2
+  nextLevel: Shop
   gateActivated: 0
   MSG_Interaction: {fileID: 2589158605224399362}
   interactionText: {fileID: 8206668696821887847}
