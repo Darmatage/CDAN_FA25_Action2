@@ -192,6 +192,13 @@ public class GameHandler : MonoBehaviour
             }
       }
 
+    public void playerOutOfBounds(int damage)
+    {
+        playerGetHit(damage); //Damage taken when out of bounds
+    }
+
+    
+
     public float MeleeCalc(bool isCrit) //calculates player's melee damage
     {
         float totalDamage = meleeDamage * //base damage 

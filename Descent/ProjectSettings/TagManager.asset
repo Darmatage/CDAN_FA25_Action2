@@ -12,6 +12,12 @@ TagManager:
   - AudioManager
   - WaterVolume
   - PauseMenuSlider2
+  - OOB_WarnCanvas
+  - OOB_WarnText
+  - OOB_WarnPanel
+  - PreOOB_WarnCanvas
+  - PreOOB_WarnText
+  - PreOOB_WarnPanel
   layers:
   - Default
   - TransparentFX
