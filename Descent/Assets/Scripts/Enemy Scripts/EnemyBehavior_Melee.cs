@@ -25,7 +25,7 @@ public class EnemyBehavior_Melee : MonoBehaviour
     private Vector3 moveLocation;
     public GameObject player;
     public LayerMask playerMask;
-    public Transform enemyLocation;
+    //public Transform enemyLocation;
 
     public int damageMelee = 5;
 

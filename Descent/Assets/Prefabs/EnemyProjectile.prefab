@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4682238824338600284}
   - component: {fileID: 6615708425252277750}
+  - component: {fileID: -8650116146451101286}
   - component: {fileID: 5269839747467935053}
   m_Layer: 0
   m_Name: EnemyProjectile
@@ -49,12 +50,39 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &-8650116146451101286
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624861862153092661}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &5269839747467935053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,7 +99,7 @@ MonoBehaviour:
   damage: 1
   speed: 10
   hitEffectAnim: {fileID: 0}
-  SelfDestructTime: 2
+  SelfDestructTime: 2.44
 --- !u!1 &9023087890017541303
 GameObject:
   m_ObjectHideFlags: 0

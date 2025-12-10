@@ -14,39 +14,32 @@ public class EnemyProjectile : MonoBehaviour
 
     void Start()
     {
-        //NOTE: transform gets location, but we need Vector2 for direction, so we can use MoveTowards.
-        playerTrans = GameObject.FindGameObjectWithTag("Player").transform;
-        target = new Vector2(playerTrans.position.x, playerTrans.position.y);
-
         if (gameHandlerObj == null)
         {
             gameHandlerObj = GameObject.FindWithTag("GameHandler").GetComponent<GameHandler>();
         }
-        StartCoroutine(selfDestruct());
+        
 
-        //code for trajectory (moves target way beyond player position):
-        Vector2 startPos = transform.position;
-        float distance = Vector2.Distance(startPos, target);
-        distance = distance * (10f);
-        Vector2 difference = target - startPos;
-        difference = difference.normalized * distance;
-        target = (startPos + difference);
     }
 
     void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
+        //transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
     }
 
     //if the bullet hits a collider, play the explosion animation, then destroy the effect and the bullet
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter(Collider collision)
     {
+        
+
         if (collision.gameObject.tag == "Player")
         {
             gameHandlerObj.playerGetHit(damage);
         }
-        if (collision.gameObject.tag != "enemyShooter")
-        {
+        if (collision.gameObject.tag != "Hurtbox")
+        {   
+            //Debug.Log("hit a " + collision.gameObject.tag);
+            StartCoroutine(selfDestruct());
             //GameObject animEffect = Instantiate(hitEffectAnim, transform.position, Quaternion.identity);
             //Destroy(animEffect, 0.5f);
             Destroy(gameObject);

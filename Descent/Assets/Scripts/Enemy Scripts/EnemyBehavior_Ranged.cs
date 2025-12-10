@@ -1,9 +1,11 @@
 using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using static UnityEditor.Experimental.GraphView.GraphView;
 using static UnityEngine.Rendering.DebugUI;
 
@@ -12,6 +14,8 @@ public class EnemyBehavior_Ranged : MonoBehaviour
 
     private GameHandler gameHandler;
     public EnemyStatHandler enemyStatHandler;
+    public GameObject projectile;
+    public GameObject firePoint;
     //public AttackHandler AttackHandler;
 
     [Header("Movement")]
@@ -21,13 +25,17 @@ public class EnemyBehavior_Ranged : MonoBehaviour
     public float patrolFailsafe; //stops patrol if stuck
     public bool isOnPatrol = false;
     public bool isIdlePatrol = false;
+
+    public float recoilTimer = 0f;
+    bool inRecoil = false;
         
     private Vector3 moveLocation;
     public GameObject player;
     public LayerMask playerMask;
-    public Transform enemyLocation;
+    //public Transform enemyLocation;
 
     public int damage = 5;
+    public float projectileSpeed = 20f;
 
     [Header("Behavior")]
 
@@ -89,21 +97,35 @@ public class EnemyBehavior_Ranged : MonoBehaviour
 
         //MOVEMENT
 
+        if (recoilTimer > 0)
+        {
+            recoilTimer--;
+        }
+        else if (recoilTimer <= 0)
+        {
+            recoilTimer = 0;
+            inRecoil = false;
+        }
+
+
         if (enemyStatHandler.isDying) //Dying
         {
-            
-
-            Vector3 LERPposition = Vector3.Lerp(transform.position, player.transform.position, -ApproachSpeed * Time.deltaTime);
-            transform.position = LERPposition;
-            //transform.rotation = transform.rotation;
-            transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+            transform.Translate(Vector3.back * ApproachSpeed * Time.deltaTime);
         }
+        else if (inRecoil) //experiencing recoil
+        {
+            //recoil away from player
+            transform.LookAt(player.transform);
+            //Vector3 LERPposition = Vector3.Lerp(transform.position, player.transform.position, ApproachSpeed * Time.deltaTime);
+            //transform.position = LERPposition;
+            transform.Translate(Vector3.back * (moveSpeed * (recoilTimer / 100)) * Time.deltaTime);
+        }   
         else if (isAttacking) //Actively executing attack
-        {       
+        {
             //move towards player at approach speed
             Vector3 LERPposition = Vector3.Lerp(transform.position, player.transform.position, ApproachSpeed * Time.deltaTime);
             transform.position = LERPposition;
-            transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+            transform.Translate(Vector3.forward * ApproachSpeed * Time.deltaTime);
             transform.LookAt(player.transform);
         }
         else if (isAggro && !isAttacking) //Chase state
@@ -117,7 +139,8 @@ public class EnemyBehavior_Ranged : MonoBehaviour
         }
         else if (distToHome < MaxHomeDist) //Patrol state
         {
-            Patrol();
+            //Debug.Log("going on patrol! dist to player: " + distToPlayer);
+        Patrol();
         }
         else //if outside of home range and player is out of aggro range
         {
@@ -130,9 +153,10 @@ public class EnemyBehavior_Ranged : MonoBehaviour
         //DETECTION
         if(distToPlayer <= AttackRange) //player is in attack range
         {
+            isAggro = true;
             if (!isAttackCooldown && !enemyStatHandler.isDying)
             {
-                Debug.Log("Attacking!");
+                //Debug.Log("Attacking!");
                 isAttackCooldown = true;
                 StartCoroutine(Attack());
                 CDTimer = 0;
@@ -217,7 +241,7 @@ public class EnemyBehavior_Ranged : MonoBehaviour
         float distToTarget;
         //Debug.Log("distance to home: " + distToHome);
 
-        if (!isOnPatrol && !isIdlePatrol && !isAttacking) //not currently moving or waiting
+        if (!isOnPatrol && !isIdlePatrol && !isAttacking && !isAggro) //not currently moving or waiting or chasing
         {
             moveLocation = getRandomVector();
             isOnPatrol = true;
@@ -273,6 +297,7 @@ public class EnemyBehavior_Ranged : MonoBehaviour
     {
         Gizmos.DrawWireSphere(transform.position, aggroRange); //gizmo of aggro range
         Gizmos.DrawWireSphere(transform.position, AttackRange); //gizmo of aggro range
+        Gizmos.DrawWireSphere(EnemyHome, 1); //gizmo of aggro range
     }
 
     IEnumerator Attack()
@@ -284,9 +309,20 @@ public class EnemyBehavior_Ranged : MonoBehaviour
 
         yield return new WaitForSeconds(windupTime);
 
+        for (int i = 0; i < 3; i++)
+        {
+            //Debug.Log("lionfish firing!");
+            transform.LookAt(player.transform);
+            Vector3 fwd = (firePoint.transform.position - transform.position).normalized;
+            GameObject Enemyprojectile = Instantiate(projectile, firePoint.transform.position, transform.rotation);
+            Enemyprojectile.GetComponent<Rigidbody>().AddForce(fwd * projectileSpeed, ForceMode.Impulse);
+            recoilTimer = 60;
+            inRecoil = true;
+            yield return new WaitForSeconds(0.5f);
+        }
+        
 
-
-        yield return new WaitForSeconds(attackTime);
+        //yield return new WaitForSeconds(attackTime);
         //Debug.Log("done attacking.");
         isAttacking = false;
 

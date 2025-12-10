@@ -5424,14 +5424,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8517f17fa462c4aad989e2bc5a0da09d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MSG_range: 12.1
+  MSG_range: 21.3
   summonKey: 102
   nextLevelKey: 102
   nextLevel: Shop
   gateActivated: 0
   MSG_Interaction: {fileID: 2589158605224399362}
   interactionText: {fileID: 8206668696821887847}
-  detectHeight: 10.81
+  detectHeight: 11.83
   LightColumn: {fileID: 8976465361532427164}
   bossPrefab: {fileID: 4420768128652202809, guid: 0b1c81180f9024d88b2f93115662d766, type: 3}
   bossSpwnPnts:

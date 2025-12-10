@@ -1,9 +1,11 @@
-using UnityEngine;
-using UnityEngine.UI;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.InputSystem.LowLevel;
 using TMPro;
+using UnityEngine;
+using UnityEngine.InputSystem.LowLevel;
+using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 public class EnemyStatHandler : MonoBehaviour
 {
@@ -82,7 +84,7 @@ public class EnemyStatHandler : MonoBehaviour
         healthBarObj.SetActive(true); //enable healthbar if damage taken
 
         healthBar.fillAmount = enemyCurrentHealth / enemyMaxHealth;
-        healthBarText.text = enemyCurrentHealth + "/" + enemyMaxHealth;
+        healthBarText.text = (Math.Round(enemyCurrentHealth * 2, MidpointRounding.AwayFromZero) / 2) + "/" + enemyMaxHealth;
 
         if (enemyCurrentHealth < (0.3f * enemyMaxHealth))
         {

@@ -28,7 +28,7 @@ public class PlayerShoot_Shot : MonoBehaviour
 
     public void playerFireShot()
     {
-        Debug.Log("projectile instantiated!");
+        //Debug.Log("projectile instantiated!");
         Vector3 fwd = (firePoint.position - fireBase.position).normalized;
         //Spawn a bullet that inherits rotation from the instantiating object:
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, transform.rotation);
