@@ -71,7 +71,7 @@ public class GateScript : MonoBehaviour
 				}
 				else //enter shop
 				{
-                    GameHandler.currentLevel++;
+                    //GameHandler.currentLevel++;
                     SceneManager.LoadScene(nextLevel);
                 }
 			}

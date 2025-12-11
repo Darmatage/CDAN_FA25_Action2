@@ -363,7 +363,7 @@ public class GameHandler : MonoBehaviour
     }
     public void LoadLevel() //exiting shop, entering level
     {
-        SceneManager.LoadScene("Level" + currentLevel);
+        SceneManager.LoadScene("Level" + (currentLevel + 1));
         //SceneManager.LoadScene("WORK_Rennie");
         inShop = false;
     }
