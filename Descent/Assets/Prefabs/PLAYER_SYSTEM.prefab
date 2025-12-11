@@ -918,8 +918,8 @@ MonoBehaviour:
   dashCDTimer: 3
   isDashing: 0
   SFX_Dash: {fileID: 7714393257362810540}
-  lookRateSpeed: 145.2
-  mouseSensitivity: 2
+  lookRateSpeed: 130
+  mouseSensitivity: 1
   mouseReturnSpeed: 3
   rollSpeed: 60
   rollAcceleration: 0.5

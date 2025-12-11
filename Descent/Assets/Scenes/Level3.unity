@@ -179,9 +179,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: -8427962122985597550, guid: 99b05a497f6f649c581e824c929b45c2, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -6148318776892199134, guid: 99b05a497f6f649c581e824c929b45c2, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 99b05a497f6f649c581e824c929b45c2, type: 3}
       propertyPath: m_Name
       value: CaveRoof_D
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 99b05a497f6f649c581e824c929b45c2, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7635992152526159797, guid: 99b05a497f6f649c581e824c929b45c2, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -314,9 +326,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8427962122985597550, guid: 99b05a497f6f649c581e824c929b45c2, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -6148318776892199134, guid: 99b05a497f6f649c581e824c929b45c2, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 99b05a497f6f649c581e824c929b45c2, type: 3}
       propertyPath: m_Name
       value: CaveRoof_D (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 99b05a497f6f649c581e824c929b45c2, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7635992152526159797, guid: 99b05a497f6f649c581e824c929b45c2, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -341,7 +365,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 230962049}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TERRAIN PROPS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -462,9 +486,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 21.403
       objectReference: {fileID: 0}
+    - target: {fileID: -2098235084146913119, guid: 307bdea0ce2923a4183148c4ad57c43e, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 307bdea0ce2923a4183148c4ad57c43e, type: 3}
       propertyPath: m_Name
       value: Object_Coral_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 307bdea0ce2923a4183148c4ad57c43e, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1652343652283102588, guid: 307bdea0ce2923a4183148c4ad57c43e, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -585,6 +621,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grouped_Rocks_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 29caa214803ba4ff0ac0ec189eee2eb1, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -658,6 +698,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3b124115540534819a4a2064fca55a22, type: 3}
       propertyPath: m_Name
       value: Object_Coral_11 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3b124115540534819a4a2064fca55a22, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -850,6 +894,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Object_Coral_02
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2458248717a5e864da8ab081321bd451, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -935,9 +983,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: -8427962122985597550, guid: c2c51edb2e07b4632b057d5a258b1eb5, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -6148318776892199134, guid: c2c51edb2e07b4632b057d5a258b1eb5, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c2c51edb2e07b4632b057d5a258b1eb5, type: 3}
       propertyPath: m_Name
       value: CaveRoof_C
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c2c51edb2e07b4632b057d5a258b1eb5, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7635992152526159797, guid: c2c51edb2e07b4632b057d5a258b1eb5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -1157,6 +1217,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Object_Rock_13
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d456f1a59036b4cf3929e81b5d8df37b, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1231,6 +1295,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Object_Coral_04 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f74e802c8a180f54080cc8e6a1172201, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1299,6 +1367,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2458248717a5e864da8ab081321bd451, type: 3}
       propertyPath: m_Name
       value: Object_Coral_02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2458248717a5e864da8ab081321bd451, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1444,6 +1516,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Object_Rock_02 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 48b47cb08f75a4ead81277fd6c9c1187, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1514,6 +1590,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f64b3bf4512dd475898aea51bb448a06, type: 3}
       propertyPath: m_Name
       value: Grouped_Rocks_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f64b3bf4512dd475898aea51bb448a06, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1593,6 +1673,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CaveRoof_B
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b2d868183703a4efbb30ad8aadcc38f4, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1659,6 +1743,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TerrainAlmostFlatSand
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9877b580912d439479d20446d73507a4, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1724,6 +1812,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: bc797372f39c7ac42b4b30d082fcd922, type: 3}
       propertyPath: m_Name
       value: TerrainFlattishSand
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bc797372f39c7ac42b4b30d082fcd922, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1798,6 +1890,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3b124115540534819a4a2064fca55a22, type: 3}
       propertyPath: m_Name
       value: Object_Coral_11
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3b124115540534819a4a2064fca55a22, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1957,9 +2053,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6471764455443030347, guid: 81b75f73f82106d42814342c36bd7da1, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 81b75f73f82106d42814342c36bd7da1, type: 3}
       propertyPath: m_Name
       value: Object_Coral_06
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 81b75f73f82106d42814342c36bd7da1, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6963604671213066415, guid: 81b75f73f82106d42814342c36bd7da1, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2096,6 +2204,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Object_Rock_13 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d456f1a59036b4cf3929e81b5d8df37b, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2166,9 +2278,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 4.68
       objectReference: {fileID: 0}
+    - target: {fileID: -6471764455443030347, guid: 81b75f73f82106d42814342c36bd7da1, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 81b75f73f82106d42814342c36bd7da1, type: 3}
       propertyPath: m_Name
       value: Object_Coral_06 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 81b75f73f82106d42814342c36bd7da1, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6963604671213066415, guid: 81b75f73f82106d42814342c36bd7da1, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2320,6 +2444,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f64b3bf4512dd475898aea51bb448a06, type: 3}
       propertyPath: m_Name
       value: Grouped_Rocks_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f64b3bf4512dd475898aea51bb448a06, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2514,6 +2642,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Object_Rock_09
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 28f0ced2183cd4aea918d9d2885be5b0, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2637,6 +2769,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Object_Coral_10
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f98e8383dc65040268fbb2249fdfd872, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2714,6 +2850,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 48b47cb08f75a4ead81277fd6c9c1187, type: 3}
       propertyPath: m_Name
       value: Object_Rock_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 48b47cb08f75a4ead81277fd6c9c1187, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2855,6 +2995,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Object_Rock_02
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 48b47cb08f75a4ead81277fd6c9c1187, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2987,9 +3131,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2098235084146913119, guid: 307bdea0ce2923a4183148c4ad57c43e, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 307bdea0ce2923a4183148c4ad57c43e, type: 3}
       propertyPath: m_Name
       value: Object_Coral_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 307bdea0ce2923a4183148c4ad57c43e, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1652343652283102588, guid: 307bdea0ce2923a4183148c4ad57c43e, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3061,9 +3217,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -4.0169983
       objectReference: {fileID: 0}
+    - target: {fileID: -8427962122985597550, guid: 99b05a497f6f649c581e824c929b45c2, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -6148318776892199134, guid: 99b05a497f6f649c581e824c929b45c2, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 99b05a497f6f649c581e824c929b45c2, type: 3}
       propertyPath: m_Name
       value: CaveRoof_D (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 99b05a497f6f649c581e824c929b45c2, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7635992152526159797, guid: 99b05a497f6f649c581e824c929b45c2, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -3098,10 +3266,6 @@ PrefabInstance:
     - target: {fileID: 1526809109643683571, guid: ea046dbbbb5a34991b8b7b2a527fca77, type: 3}
       propertyPath: verticalSpeed
       value: 23.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1526809109643683571, guid: ea046dbbbb5a34991b8b7b2a527fca77, type: 3}
-      propertyPath: mouseSensitivity
-      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2099483679596890197, guid: ea046dbbbb5a34991b8b7b2a527fca77, type: 3}
       propertyPath: m_IsActive
@@ -3347,6 +3511,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Object_Rock_13 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d456f1a59036b4cf3929e81b5d8df37b, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3430,6 +3598,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grouped_Rocks_01
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 29caa214803ba4ff0ac0ec189eee2eb1, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3503,6 +3675,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 573eb7ae4ad3463448f5ecbd4b164068, type: 3}
       propertyPath: m_Name
       value: Object_Coral_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 573eb7ae4ad3463448f5ecbd4b164068, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3583,6 +3759,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Object_Coral_04
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f74e802c8a180f54080cc8e6a1172201, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3651,6 +3831,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 573eb7ae4ad3463448f5ecbd4b164068, type: 3}
       propertyPath: m_Name
       value: Object_Coral_03 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 573eb7ae4ad3463448f5ecbd4b164068, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3789,9 +3973,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8427962122985597550, guid: 99b05a497f6f649c581e824c929b45c2, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -6148318776892199134, guid: 99b05a497f6f649c581e824c929b45c2, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 99b05a497f6f649c581e824c929b45c2, type: 3}
       propertyPath: m_Name
       value: CaveRoof_D
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 99b05a497f6f649c581e824c929b45c2, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7635992152526159797, guid: 99b05a497f6f649c581e824c929b45c2, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -3916,9 +4112,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6471764455443030347, guid: 81b75f73f82106d42814342c36bd7da1, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 81b75f73f82106d42814342c36bd7da1, type: 3}
       propertyPath: m_Name
       value: Object_Coral_06 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 81b75f73f82106d42814342c36bd7da1, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6963604671213066415, guid: 81b75f73f82106d42814342c36bd7da1, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3998,6 +4206,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7d9a2990aecc66b4c8aa461f950400a3, type: 3}
       propertyPath: m_Name
       value: Object_Coral_05
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7d9a2990aecc66b4c8aa461f950400a3, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4226,6 +4438,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TerrainCliffs
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0b4311efa295caa46a55db5fdcec6c84, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4286,6 +4502,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d456f1a59036b4cf3929e81b5d8df37b, type: 3}
       propertyPath: m_Name
       value: Object_Rock_13 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d456f1a59036b4cf3929e81b5d8df37b, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4365,6 +4585,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 573eb7ae4ad3463448f5ecbd4b164068, type: 3}
       propertyPath: m_Name
       value: Object_Coral_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 573eb7ae4ad3463448f5ecbd4b164068, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4512,6 +4736,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 944f054625acc8f4db5eb84b65ad6cc2, type: 3}
       propertyPath: m_Name
       value: CaveRoof_A
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 944f054625acc8f4db5eb84b65ad6cc2, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4721,6 +4949,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 944f054625acc8f4db5eb84b65ad6cc2, type: 3}
       propertyPath: m_Name
       value: CaveRoof_A
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 944f054625acc8f4db5eb84b65ad6cc2, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
