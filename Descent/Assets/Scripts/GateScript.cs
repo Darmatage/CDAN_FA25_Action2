@@ -147,7 +147,8 @@ public class GateScript : MonoBehaviour
 		
 		
 		for (int i=0; i<bossSpwnPnts.Length; i++){
-			Instantiate(bossPrefab, bossSpwnPnts[i].position, Quaternion.identity);
+			GameObject boss = Instantiate(bossPrefab, bossSpwnPnts[i].position, Quaternion.identity);
+			boss.GetComponent<EnemyStatHandler>().isBoss = true;
             Debug.Log("Bosses spawned");
 		}
 	}

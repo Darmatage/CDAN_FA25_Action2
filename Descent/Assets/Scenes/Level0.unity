@@ -2979,6 +2979,10 @@ PrefabInstance:
       propertyPath: nextLevel
       value: Shop
       objectReference: {fileID: 0}
+    - target: {fileID: 5689388169616430107, guid: bf34544452a22f44298cdfa5293ba935, type: 3}
+      propertyPath: bossPrefab
+      value: 
+      objectReference: {fileID: 4420768128652202809, guid: f9d306211753e074cbd1fe0b1ee8094d, type: 3}
     - target: {fileID: 7154662080193455756, guid: bf34544452a22f44298cdfa5293ba935, type: 3}
       propertyPath: m_Name
       value: GATE_SYSTEM
