@@ -35,6 +35,11 @@ GraphicsSettings:
   - {fileID: 10770, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 10783, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 4800000, guid: a0d4b6c1d60d69147a4ec73174dd287c, type: 3}
+  - {fileID: -6465566751694194690, guid: 4c6384ecf81d72548b0a6ea56185eb1d, type: 3}
+  - {fileID: -6465566751694194690, guid: ee25ef3e7cc3b493c990cdbf1ce1b83b, type: 3}
+  - {fileID: -6465566751694194690, guid: 26f17c7b55853ab4c8a231682e8cce9e, type: 3}
+  - {fileID: -6465566751694194690, guid: 9796cbd951d702b4bad570e2fcf37543, type: 3}
+  - {fileID: -6465566751694194690, guid: d5187a2794734e24da3b15335c4b31cc, type: 3}
   m_PreloadedShaders: []
   m_PreloadShadersBatchTimeLimit: -1
   m_SpritesDefaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
@@ -45,7 +50,7 @@ GraphicsSettings:
   m_DefaultMobileRenderingPath: 1
   m_TierSettings: []
   m_LightmapStripping: 0
-  m_FogStripping: 0
+  m_FogStripping: 1
   m_InstancingStripping: 0
   m_BrgStripping: 0
   m_LightmapKeepPlain: 1
@@ -54,9 +59,9 @@ GraphicsSettings:
   m_LightmapKeepDynamicDirCombined: 1
   m_LightmapKeepShadowMask: 1
   m_LightmapKeepSubtractive: 1
-  m_FogKeepLinear: 0
-  m_FogKeepExp: 0
-  m_FogKeepExp2: 0
+  m_FogKeepLinear: 1
+  m_FogKeepExp: 1
+  m_FogKeepExp2: 1
   m_AlbedoSwatchInfos: []
   m_RenderPipelineGlobalSettingsMap:
     UnityEngine.Rendering.Universal.UniversalRenderPipeline: {fileID: 11400000, guid: 18dc0cd2c080841dea60987a38ce93fa, type: 2}
