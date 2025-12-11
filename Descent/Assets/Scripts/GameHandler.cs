@@ -61,7 +61,7 @@ public class GameHandler : MonoBehaviour
     public Sprite proj_shot;
     public Sprite proj_beam;
 
-    //public AudioSource SFX_Damage;
+    public AudioSource SFX_Damage;
 
     [Header("Mutation handler")]
 
@@ -188,10 +188,10 @@ public class GameHandler : MonoBehaviour
                   if (playerCurrentHealth >=0){
                         updateStatsDisplay();
                   }
-                //  if (damage > 0){{SFX_Damage.Play();}
+                  if (damage > 0){{SFX_Damage.Play();}
                         //play GetHit animation:
                         //player.GetComponent<PlayerHurt>().playerHit();
-                 // }
+                  }
             immuneTimer = 0; //reset immunity timer
             
          }
