@@ -111,11 +111,7 @@ public class GateScript : MonoBehaviour
             interactionText.text = ("Press F to exit level");
             Debug.Log("Gate has been activated, " + bossesToDefeat + " bosses found. Light column activated");
 			
-			if(SceneManager.GetActiveScene().name == "Level0")
-            {
-                Debug.Log("The Music Did Not Change");
-            }
-			else {GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>().StartAmbientMusic();}
+			GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>().StartAmbientMusic();
 		}
 	} 
 	
@@ -139,11 +135,7 @@ public class GateScript : MonoBehaviour
 */
 	void SpawnBosses()
 	{
-		if (SceneManager.GetActiveScene().name == "Level0")
-        {
-            Debug.Log("Music Did Not Change");
-        }
-		else {GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>().StartBossMusic();}
+		GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>().StartBossMusic();
 		
 		
 		

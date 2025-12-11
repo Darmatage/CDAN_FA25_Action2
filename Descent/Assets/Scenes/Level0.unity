@@ -448,6 +448,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d456f1a59036b4cf3929e81b5d8df37b, type: 3}
   m_PrefabInstance: {fileID: 1995169035}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &157130110 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7745143919603041185, guid: 23bc09f4ead44274a8f7b005bb856174, type: 3}
+  m_PrefabInstance: {fileID: 567925810}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &231206655 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9877b580912d439479d20446d73507a4, type: 3}
@@ -1514,23 +1519,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2894494177292003140, guid: ea046dbbbb5a34991b8b7b2a527fca77, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.63666797
       objectReference: {fileID: 0}
     - target: {fileID: 2894494177292003140, guid: ea046dbbbb5a34991b8b7b2a527fca77, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.30765882
       objectReference: {fileID: 0}
     - target: {fileID: 2894494177292003140, guid: ea046dbbbb5a34991b8b7b2a527fca77, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7071068
+      value: 0.63666797
       objectReference: {fileID: 0}
     - target: {fileID: 2894494177292003140, guid: ea046dbbbb5a34991b8b7b2a527fca77, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.30765882
       objectReference: {fileID: 0}
     - target: {fileID: 2894494177292003140, guid: ea046dbbbb5a34991b8b7b2a527fca77, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -51.583
       objectReference: {fileID: 0}
     - target: {fileID: 2894494177292003140, guid: ea046dbbbb5a34991b8b7b2a527fca77, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -1634,6 +1639,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7197723436735872565, guid: 23bc09f4ead44274a8f7b005bb856174, type: 3}
+      propertyPath: river_boss
+      value: 
+      objectReference: {fileID: 157130110}
     - target: {fileID: 7337472624083355303, guid: 23bc09f4ead44274a8f7b005bb856174, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

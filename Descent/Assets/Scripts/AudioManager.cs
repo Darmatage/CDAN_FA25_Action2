@@ -13,6 +13,7 @@ public class AudioManager : MonoBehaviour {
         public AudioSource coral_ambient;
         public AudioSource coral_boss;
         public AudioSource river_ambient;
+        public AudioSource river_boss;
         public AudioSource main_menu;
         public AudioSource end_scene;
 
@@ -36,13 +37,8 @@ public class AudioManager : MonoBehaviour {
                 else if (SceneManager.GetActiveScene().name == "Level3") {theMusic = abyss_ambient;} 
                 else if (SceneManager.GetActiveScene().name == "Level2") {theMusic = caves_ambient;}
                 else if (SceneManager.GetActiveScene().name == "Level1") {theMusic = coral_ambient;}
-
-                if (SceneManager.GetActiveScene().name == "Level0")
-                {
-                        theMusic = river_ambient;
-                        theBossMusic = river_ambient;
-                }
-
+                else if (SceneManager.GetActiveScene().name == "Level0") {theMusic = river_ambient;}
+                
                 if (theMusic != null)
                 {theMusic.Play();}
                 else{Debug.Log("The Music is Not Assigned");}
@@ -51,6 +47,7 @@ public class AudioManager : MonoBehaviour {
                 if (SceneManager.GetActiveScene().name == "Level3") {theBossMusic = abyss_boss;}
                 else if (SceneManager.GetActiveScene().name == "Level2") {theBossMusic = caves_boss;}
                 else if (SceneManager.GetActiveScene().name == "Level1") {theBossMusic = coral_boss;}
+                else if (SceneManager.GetActiveScene().name == "Level0") {theBossMusic = river_boss;}
 
         }
 
