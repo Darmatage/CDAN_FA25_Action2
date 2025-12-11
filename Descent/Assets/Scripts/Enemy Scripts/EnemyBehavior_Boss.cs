@@ -63,6 +63,9 @@ public class EnemyBehavior_Boss : MonoBehaviour
     private Vector3 EnemyHome;
     public float MaxHomeDist = 10f;
 
+    public AudioSource SFX_PillarAttack;
+    public AudioSource SFX_Summon;
+
     //public AudioSource meleeHurtSFX;
 
     void Start()    
@@ -375,6 +378,10 @@ public class EnemyBehavior_Boss : MonoBehaviour
             //instantiate pillar!!!!
             Instantiate(Pillar, summonLocation, quaternion.identity);
             yield return new WaitForSeconds(pillarCD);
+
+            if (SFX_PillarAttack.isPlaying == false){
+				SFX_PillarAttack.Play();
+			}
         }
 
         StartCoroutine(SpecialCooldown());
@@ -396,7 +403,7 @@ public class EnemyBehavior_Boss : MonoBehaviour
             //randomize enemy location
             summonLocation = (UnityEngine.Random.insideUnitSphere * UnityEngine.Random.Range(5f, 15f)); //pick direction
             summonLocation += transform.position; //center vector on self
-
+            
             //randomize enemytype
             
             switch (UnityEngine.Random.Range(1, 3))
@@ -409,6 +416,8 @@ public class EnemyBehavior_Boss : MonoBehaviour
                     Instantiate(rangedSummonedEnemy, summonLocation, quaternion.identity);
                     break;
             }
+
+            SFX_Summon.Play();
         }
 
         StartCoroutine(SpecialCooldown());
