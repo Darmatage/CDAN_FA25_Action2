@@ -34,8 +34,8 @@ public class AudioManager : MonoBehaviour {
                 {theMusic = end_scene;}
 
                 else if (SceneManager.GetActiveScene().name == "Level3") {theMusic = abyss_ambient;} 
-                else if (SceneManager.GetActiveScene().name == "Level1") {theMusic = caves_ambient;}
-                else if (SceneManager.GetActiveScene().name == "Level2") {theMusic = coral_ambient;}
+                else if (SceneManager.GetActiveScene().name == "Level2") {theMusic = caves_ambient;}
+                else if (SceneManager.GetActiveScene().name == "Level1") {theMusic = coral_ambient;}
 
                 if (SceneManager.GetActiveScene().name == "Level0")
                 {
@@ -49,8 +49,8 @@ public class AudioManager : MonoBehaviour {
 
                 
                 if (SceneManager.GetActiveScene().name == "Level3") {theBossMusic = abyss_boss;}
-                else if (SceneManager.GetActiveScene().name == "Level1") {theBossMusic = caves_boss;}
-                else if (SceneManager.GetActiveScene().name == "Level2") {theBossMusic = coral_boss;}
+                else if (SceneManager.GetActiveScene().name == "Level2") {theBossMusic = caves_boss;}
+                else if (SceneManager.GetActiveScene().name == "Level1") {theBossMusic = coral_boss;}
 
         }
 
