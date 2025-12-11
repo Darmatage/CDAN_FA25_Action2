@@ -111,7 +111,7 @@ public class GameHandler : MonoBehaviour
 
     void Start()
     {
-        if (SceneManager.GetActiveScene().name != "EndLose" && SceneManager.GetActiveScene().name != "Endwin"){
+        if (SceneManager.GetActiveScene().name != "EndLose" && SceneManager.GetActiveScene().name != "Endwin"&& SceneManager.GetActiveScene().name != "Credits"){
           updateStatsDisplay();  
         }
         
