@@ -27,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 5776958916480226270}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.000000021308, y: 0, z: -0.000000021308}
-  m_LocalScale: {x: 0.63673997, y: 0.9779165, z: 0.63673997}
+  m_LocalPosition: {x: 0.000000021308, y: -0.00000011216, z: -0.000000021308}
+  m_LocalScale: {x: 0.63673997, y: 3.3282409, z: 0.63673997}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1304665842839690270}
@@ -394,9 +394,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.33041543
-  m_Height: 2
+  m_Height: 6.9062047
   m_Direction: 1
-  m_Center: {x: 0.00000005960464, y: 0, z: -0.00000008940696}
+  m_Center: {x: 0.000000059604634, y: 0, z: -0.00000008940695}
 --- !u!114 &8578855838120221625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,8 +415,8 @@ MonoBehaviour:
   pillarRenderer: {fileID: 8020893422961441527}
   warningMat: {fileID: 2100000, guid: aeb426ef2f6514f45b8cd7cb9e903cc3, type: 2}
   attackMat: {fileID: 2100000, guid: d2d0882ae8ebab24588082ebd18d0253, type: 2}
-  damage: 1
-  warningTime: 3
+  damage: 4
+  warningTime: 2.97
   attackTime: 2
   moveSpeed: 10
   moveDrag: 0.5

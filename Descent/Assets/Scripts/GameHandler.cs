@@ -187,7 +187,8 @@ public class GameHandler : MonoBehaviour
 
         if (!isImmune)
         {
-            playerCurrentHealth -= damage;
+            playerCurrentHealth -= (damage * playerArmor);
+
                   if (playerCurrentHealth >=0){
                         updateStatsDisplay();
                   }

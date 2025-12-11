@@ -62,7 +62,7 @@ public class EnemyStatHandler : MonoBehaviour
         enemyMaxHealth *= healthMult;
         enemyCurrentHealth = enemyMaxHealth;
 
-        Debug.Log("health multiplier: " + healthMult + "\nmaxhealth: " + enemyMaxHealth);
+        //Debug.Log("health multiplier: " + healthMult + "\nmaxhealth: " + enemyMaxHealth);
     }
     public void SetColor(Color newColor) //set healthbar color
     {

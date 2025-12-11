@@ -737,9 +737,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemybase_Melee_Boss
       objectReference: {fileID: 0}
-    - target: {fileID: 5577272542602228487, guid: 0b1c81180f9024d88b2f93115662d766, type: 3}
-      propertyPath: AttackRange
-      value: 5.65
+    - target: {fileID: 4420768128652202809, guid: 0b1c81180f9024d88b2f93115662d766, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9032897564143075174, guid: 0b1c81180f9024d88b2f93115662d766, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2407,7 +2407,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1304665842839690270, guid: fb2caf69158b97a43aed5e36578d6d6f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 36.7
+      value: 31.1
       objectReference: {fileID: 0}
     - target: {fileID: 1304665842839690270, guid: fb2caf69158b97a43aed5e36578d6d6f, type: 3}
       propertyPath: m_LocalPosition.z

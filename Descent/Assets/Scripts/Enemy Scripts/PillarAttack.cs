@@ -14,7 +14,7 @@ public class PillarAttack : MonoBehaviour
     public Material warningMat;
     public Material attackMat;
 
-    public int damage = 30;
+    public int damage;
     public float warningTime = 3f; //time warning is displayed
     public float attackTime = 2f; //time attack is active
     public float moveSpeed = 10f; //current speed
@@ -91,6 +91,7 @@ public class PillarAttack : MonoBehaviour
         if (other.gameObject.tag == "Player"  && isAttacking)
         {
             //gameHandlerObj.immuneTimer = 100; //ignores player immunity
+            Debug.Log("pillar damage: " + damage);
             gameHandlerObj.playerGetHit(damage);    
         }
         
