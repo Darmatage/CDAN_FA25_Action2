@@ -38,10 +38,18 @@ public class UnderwaterDepthController : MonoBehaviour
     public Color deepTint = new Color(0.6f, 0.7f, 1f);
 
     [Header("Height Fog Gradient")]
+    //public bool enableHeightFog = true;
+    //public float heightFogRange = 40f;
+    //public Color topHeightFogColor = new Color(0.4f, 0.75f, 0.95f);
+    //public Color bottomHeightFogColor = new Color(0.08f, 0.15f, 0.3f);
     public bool enableHeightFog = true;
-    public float heightFogRange = 40f;
-    public Color topHeightFogColor = new Color(0.4f, 0.75f, 0.95f);
-    public Color bottomHeightFogColor = new Color(0.08f, 0.15f, 0.3f);
+    public Color surfaceTopFogColor = new Color(0.5f, 0.85f, 1f);
+    public Color surfaceBottomFogColor = new Color(0.2f, 0.5f, 0.7f);
+    public Color deepTopFogColor = new Color(0.15f, 0.3f, 0.5f);
+    public Color deepBottomFogColor = new Color(0.05f, 0.1f, 0.2f);
+    public float heightFogStrength = 0.4f;
+    public float heightGradientRange = 40f;
+    public float heightGradientPower = 1.5f;
 
 
     private float initialLightIntensity;
@@ -123,7 +131,7 @@ public class UnderwaterDepthController : MonoBehaviour
         UpdateColorGrading(normalizedDepth);
         if (enableHeightFog)
         {
-            UpdateHeightFog();
+            UpdateHeightFogGradient(normalizedDepth);
         }
         //UpdateLightShafts(normalizedDepth);
 
@@ -159,17 +167,26 @@ public class UnderwaterDepthController : MonoBehaviour
         }
     }
 
-    void UpdateHeightFog()
+    void UpdateHeightFogGradient(float depth)
     {
         if (player == null || bottomMarker == null) return;
 
-        float bottomY = bottomMarker.position.y;
-        float topY = bottomY + heightFogRange;
+        //float bottomY = bottomMarker.position.y;
+        //float topY = bottomY + heightFogRange;
+        Color topColor = Color.Lerp(surfaceTopFogColor, deepTopFogColor, depth);
+        Color bottomColor = Color.Lerp(surfaceBottomFogColor, deepBottomFogColor, depth);
 
-        Shader.SetGlobalFloat("_HeightFogBottom", bottomY);
-        Shader.SetGlobalFloat("_HeightFogTop", topY);
-        Shader.SetGlobalColor("_HeightFogColorTop", topHeightFogColor);
-        Shader.SetGlobalColor("_HeightFogColorBottom", bottomHeightFogColor);
+        Shader.SetGlobalColor("_HeightFogTopColor", topColor);
+        Shader.SetGlobalColor("_HeightFogBottomColor", bottomColor);
+        Shader.SetGlobalFloat("_HeightFogGradientHeight", heightGradientRange);
+        Shader.SetGlobalFloat("_HeightFogGradientPower", heightGradientPower);
+        Shader.SetGlobalFloat("_HeightFogStrength", heightFogStrength);
+
+
+        //Shader.SetGlobalFloat("_HeightFogBottom", bottomY);
+        //Shader.SetGlobalFloat("_HeightFogTop", topY);
+        //Shader.SetGlobalColor("_HeightFogColorTop", topHeightFogColor);
+        //Shader.SetGlobalColor("_HeightFogColorBottom", bottomHeightFogColor);
     }
     //void UpdateLightShafts(float depth)
     //{

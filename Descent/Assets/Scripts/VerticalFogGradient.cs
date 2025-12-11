@@ -87,12 +87,29 @@ public class VerticalFogGradient : ScriptableRendererFeature
             TextureHandle source = resourceData.activeColorTexture;
             if (!source.IsValid()) return;
 
+            // Read from global shader properties set by UnderwaterDepthController
+            Color topColor = Shader.GetGlobalColor("_HeightFogTopColor");
+            Color bottomColor = Shader.GetGlobalColor("_HeightFogBottomColor");
+            float gradientHeight = Shader.GetGlobalFloat("_HeightFogGradientHeight");
+            float gradientPower = Shader.GetGlobalFloat("_HeightFogGradientPower");
+            float fogStrength = Shader.GetGlobalFloat("_HeightFogStrength");
+
+            // Fallback to settings if globals not set
+            if (topColor == Color.clear) topColor = settings.topFogColor;
+            if (bottomColor == Color.clear) bottomColor = settings.bottomFogColor;
+            if (gradientHeight == 0) gradientHeight = settings.gradientHeight;
+            if (gradientPower == 0) gradientPower = settings.gradientPower;
+            if (fogStrength == 0) fogStrength = settings.fogStrength;
+
+            settings.fogMaterial.SetColor("_TopColor", topColor);
+            settings.fogMaterial.SetColor("_BottomColor", bottomColor);
+            settings.fogMaterial.SetFloat("_GradientHeight", gradientHeight);
+            settings.fogMaterial.SetFloat("_GradientPower", gradientPower);
+            settings.fogMaterial.SetFloat("_FogStrength", fogStrength);
+
             // Update material properties
-            settings.fogMaterial.SetColor("_TopColor", settings.topFogColor);
-            settings.fogMaterial.SetColor("_BottomColor", settings.bottomFogColor);
-            settings.fogMaterial.SetFloat("_GradientHeight", settings.gradientHeight);
-            settings.fogMaterial.SetFloat("_GradientPower", settings.gradientPower);
-            settings.fogMaterial.SetFloat("_FogStrength", settings.fogStrength);
+            //settings.fogMaterial.SetColor("_TopColor", settings.topFogColor);
+            //settings.fogMaterial.SetColor("_BottomColor", settings.bottomFogColor);
 
             var desc = cameraData.cameraTargetDescriptor;
             desc.depthBufferBits = 0;

@@ -19,7 +19,7 @@ MonoBehaviour:
     bottomFogColor: {r: 0, g: 0.18181816, b: 0.5283019, a: 0.9372549}
     gradientHeight: 200
     gradientPower: 1.4
-    fogStrength: 0.06
+    fogStrength: 0.02
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
