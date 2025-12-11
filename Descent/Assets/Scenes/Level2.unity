@@ -1587,7 +1587,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &453375272
 Transform:
   m_ObjectHideFlags: 0
@@ -2498,6 +2498,10 @@ PrefabInstance:
     - target: {fileID: 1142090059205748999, guid: ea046dbbbb5a34991b8b7b2a527fca77, type: 3}
       propertyPath: m_Name
       value: PLAYER_SYSTEM
+      objectReference: {fileID: 0}
+    - target: {fileID: 1526809109643683571, guid: ea046dbbbb5a34991b8b7b2a527fca77, type: 3}
+      propertyPath: mouseSensitivity
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2894494177292003140, guid: ea046dbbbb5a34991b8b7b2a527fca77, type: 3}
       propertyPath: m_LocalPosition.x
