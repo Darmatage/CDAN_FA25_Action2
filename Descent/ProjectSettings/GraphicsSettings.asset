@@ -40,6 +40,7 @@ GraphicsSettings:
   - {fileID: -6465566751694194690, guid: 26f17c7b55853ab4c8a231682e8cce9e, type: 3}
   - {fileID: -6465566751694194690, guid: 9796cbd951d702b4bad570e2fcf37543, type: 3}
   - {fileID: -6465566751694194690, guid: d5187a2794734e24da3b15335c4b31cc, type: 3}
+  - {fileID: -6465566751694194690, guid: d5187a2794734e24da3b15335c4b31cc, type: 3}
   m_PreloadedShaders: []
   m_PreloadShadersBatchTimeLimit: -1
   m_SpritesDefaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
@@ -65,7 +66,7 @@ GraphicsSettings:
   m_AlbedoSwatchInfos: []
   m_RenderPipelineGlobalSettingsMap:
     UnityEngine.Rendering.Universal.UniversalRenderPipeline: {fileID: 11400000, guid: 18dc0cd2c080841dea60987a38ce93fa, type: 2}
-  m_LightsUseLinearIntensity: 1
+  m_LightsUseLinearIntensity: 0
   m_LightsUseColorTemperature: 1
   m_LogWhenShaderIsCompiled: 0
   m_LightProbeOutsideHullStrategy: 0
