@@ -111,7 +111,10 @@ public class GameHandler : MonoBehaviour
 
     void Start()
     {
-        updateStatsDisplay();
+        if (sceneName =! "EndLose" || "EndWin"){
+          updateStatsDisplay();  
+        }
+        
 
         //make sure weapons are loaded properly
         if (MeleeType == 0)
