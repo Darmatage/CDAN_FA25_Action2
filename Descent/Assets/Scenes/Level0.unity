@@ -2985,6 +2985,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GATE_SYSTEM
       objectReference: {fileID: 0}
+    - target: {fileID: 7902192961150506439, guid: bf34544452a22f44298cdfa5293ba935, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 19.66
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

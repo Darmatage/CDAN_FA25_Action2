@@ -109,6 +109,7 @@ public class PlayerBehavior : MonoBehaviour
     {
         //Debug.Log("Player Attacks");
 
+        StartCoroutine(FlashHitbox());
 
         Collider[] hitEnemies = Physics.OverlapSphere(Hitbox.transform.position, Hitbox.GetComponent<SphereCollider>().radius * GameHandler.attackRadius, enemyLayers);
         
@@ -161,5 +162,15 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
     */
+
+    IEnumerator FlashHitbox()
+    {
+
+        Hitbox.SetActive(true);
+
+        yield return new WaitForSeconds(0.5f);
+
+        Hitbox.SetActive(false);
+    }
 
 }

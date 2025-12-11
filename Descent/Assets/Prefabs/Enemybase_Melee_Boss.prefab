@@ -391,7 +391,7 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 128
-  damageMelee: 10
+  damageMelee: 5
   isAggro: 0
   aggroRange: 21.51
   isAttackWindup: 0
@@ -404,7 +404,7 @@ MonoBehaviour:
   ApproachSpeed: 0.01
   AttackRange: 5.65
   Hitbox: {fileID: 2211854982219645767}
-  specialCD: 15
+  specialCD: 38.1
   pillarCD: 1
   meleeSummonedEnemy: {fileID: 4420768128652202809, guid: fa02c2b8c2bc56a46bad5cf0908dec5d, type: 3}
   rangedSummonedEnemy: {fileID: 4420768128652202809, guid: 6c2251f62cda43443b04cf01b0b95fd5, type: 3}

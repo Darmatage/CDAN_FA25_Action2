@@ -200,6 +200,7 @@ MonoBehaviour:
   enemyArmor: 0.5
   enemyReward: 20
   isBoss: 0
+  isImmune: 0
   isDying: 0
   enemyRenderer: {fileID: 8575281888749840148}
   whiteColor: {r: 1, g: 1, b: 1, a: 1}
@@ -217,7 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyStatHandler: {fileID: 3763452132473662630}
-  moveSpeed: 0.91
+  moveSpeed: 0.15
   patrolSpeed: 0.33
   patrolFailsafe: 0
   isOnPatrol: 1
@@ -226,7 +227,6 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 128
-  enemyLocation: {fileID: 9032897564143075174}
   damageMelee: 10
   isAggro: 0
   aggroRange: 20.9
@@ -235,7 +235,7 @@ MonoBehaviour:
   isAttackActive: 0
   windupTime: 0.1
   attackTime: 0.3
-  cooldownTime: 4
+  cooldownTime: 4.06
   ApproachSpeed: 0.01
   AttackRange: 5.96
   Hitbox: {fileID: 2211854982219645767}

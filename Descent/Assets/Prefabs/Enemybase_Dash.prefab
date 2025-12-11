@@ -146,6 +146,7 @@ MonoBehaviour:
   enemyArmor: 1
   enemyReward: 5
   isBoss: 0
+  isImmune: 0
   isDying: 0
   enemyRenderer: {fileID: 954415550853990658}
   whiteColor: {r: 1, g: 1, b: 1, a: 1}
@@ -163,7 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyStatHandler: {fileID: 3763452132473662630}
-  moveSpeed: 1.51
+  moveSpeed: 0.49
   patrolSpeed: 0.21
   patrolFailsafe: 0
   isOnPatrol: 0

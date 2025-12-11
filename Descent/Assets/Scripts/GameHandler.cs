@@ -368,6 +368,7 @@ public class GameHandler : MonoBehaviour
     }
     public void LoadLevel() //exiting shop, entering level
     {
+        playerCurrentHealth += 20;
         SceneManager.LoadScene("Level" + (currentLevel + 1));
         //SceneManager.LoadScene("WORK_Rennie");
         inShop = false;

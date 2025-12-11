@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyStatHandler: {fileID: 3763452132473662630}
-  moveSpeed: 0.49
+  moveSpeed: 0.4
   patrolSpeed: 0.21
   patrolFailsafe: 0
   isOnPatrol: 0
@@ -183,7 +183,7 @@ MonoBehaviour:
   isAttackActive: 0
   windupTime: 0.1
   attackTime: 0.3
-  cooldownTime: 3
+  cooldownTime: 5.69
   ApproachSpeed: 0.01
   AttackRange: 3.58
   Hitbox: {fileID: 2211854982219645767}
