@@ -157,13 +157,13 @@ public class ShopButton : MonoBehaviour
                 desc = "Increase damage resistance by 5% per stack.";
                 break;
             case 26: //DASH CD
-                gameObject.GetComponent<Image>().sprite = upgrade_armor;
+                gameObject.GetComponent<Image>().sprite = upgrade_dashCD;
                 label.text = "Dash+";
                 price = 30;
                 desc = "Reduce the dash cooldown by 10% per stack.";
                 break;
             case 27: //CRIT DMG
-                gameObject.GetComponent<Image>().sprite = upgrade_armor;
+                gameObject.GetComponent<Image>().sprite = upgrade_crit;
                 label.text = "Crit+";
                 price = 30;
                 desc = "Increase damage from criticals by 5% per stack.";

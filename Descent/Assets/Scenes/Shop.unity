@@ -973,7 +973,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb74d78fe7fa4ed49a4dc10be379ef8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameHandler: {fileID: 1169616835}
+  gameHandler: {fileID: 1854360551}
   description: {fileID: 815862780}
   upgradeTypeText: {fileID: 2028364190}
   priceText: {fileID: 1834309118}
@@ -1957,7 +1957,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1169616835}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameHandler, Assembly-CSharp
         m_MethodName: LoadLevel
         m_Mode: 1
@@ -2007,17 +2007,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1143820161}
   m_CullTransparentMesh: 1
---- !u!114 &1169616835 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 14633655722992928, guid: 23bc09f4ead44274a8f7b005bb856174, type: 3}
-  m_PrefabInstance: {fileID: 1642837404}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c730ca0703716b44aacf668b9bd056ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1297584798
 GameObject:
   m_ObjectHideFlags: 0
@@ -2962,6 +2951,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1834309116}
   m_CullTransparentMesh: 1
+--- !u!114 &1854360551 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3478296069315369012, guid: 23bc09f4ead44274a8f7b005bb856174, type: 3}
+  m_PrefabInstance: {fileID: 1642837404}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c730ca0703716b44aacf668b9bd056ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1924701609
 GameObject:
   m_ObjectHideFlags: 0

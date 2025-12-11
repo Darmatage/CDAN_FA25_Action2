@@ -87,6 +87,24 @@ public class GameHandler : MonoBehaviour
     public static int extraDashCD = 0; //stacks of extra dash cooldown
     public static int extraCritDMG = 0; //stacks of extra crit DMG
 
+    private void Awake()
+    {
+        if (SceneManager.GetActiveScene().name != "Shop")
+        {
+            sceneName = SceneManager.GetActiveScene().name;
+        }
+
+        //make sure currentlevel is accurate
+        switch (sceneName)
+        {
+            case "Level0": currentLevel = 1; break;
+            case "Level1": currentLevel = 2; break;
+            case "Level2": currentLevel = 3; break;
+            case "Level3": currentLevel = 4; break;
+        }
+
+        Debug.Log("current level: " + currentLevel);
+    }
 
     void Start()
     {
@@ -111,21 +129,6 @@ public class GameHandler : MonoBehaviour
             UpdateProjectile(RangedType);
         }
 
-        if (SceneManager.GetActiveScene().name != "Shop")
-        {
-            sceneName = SceneManager.GetActiveScene().name;
-        }
-        
-        //make sure currentlevel is accurate
-        switch (sceneName)
-        {
-            case "Level0": currentLevel = 1; break;
-            case "Level1": currentLevel = 2; break;
-            case "Level2": currentLevel = 3; break;
-            case "Level3": currentLevel = 4; break;
-        }
-
-        Debug.Log("current level: " + currentLevel);
     }
 
     private void Update()
@@ -336,7 +339,7 @@ public class GameHandler : MonoBehaviour
                 dashCD *= 0.95f;
                 break;
             case 27: //CRIT DAMAGE
-                extraDashCD++;
+                extraCritDMG++;
                 break;
         }
     }
