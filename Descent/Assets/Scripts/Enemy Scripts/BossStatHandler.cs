@@ -20,6 +20,7 @@ public class BossStatHandler : MonoBehaviour
     void Start(){
          enemyCurrentHealth = enemyMaxHealth;
          gate = GameObject.FindWithTag("door").GetComponent<GateScript>();
+         
          //anim = GetComponentInChildren<Animator>();
          //Renderer enemyRenderer = GetComponent<Renderer>();
     }
@@ -57,8 +58,12 @@ public class BossStatHandler : MonoBehaviour
     IEnumerator EnemyDeath()
     {
         gate.defeatABoss();
+        GameHandler.bossesDefeated++;
         yield return new WaitForSeconds(1f);
+        
         Destroy(gameObject);
+        
+
     }
 
     IEnumerator EnemyHurtFlash()

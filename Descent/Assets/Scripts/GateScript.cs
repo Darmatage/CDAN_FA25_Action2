@@ -96,6 +96,8 @@ public class GateScript : MonoBehaviour
   	public void defeatABoss()
 	{
 		bossesToDefeat--;
+		GameHandler.bossesDefeated++;
+		Debug.Log("Boss defeated! Total bosses: " + GameHandler.bossesDefeated);
 		CheckGate();
 	}
 

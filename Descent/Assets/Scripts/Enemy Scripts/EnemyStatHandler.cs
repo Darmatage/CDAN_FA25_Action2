@@ -155,6 +155,7 @@ public class EnemyStatHandler : MonoBehaviour
         GameObject coinPS = Instantiate(coins, transform.position, Quaternion.identity);
         coinPS.GetComponent<ParticleSystem>().Emit(emitParams, enemyReward);
         GameHandler.playerGetCoins(enemyReward);
+        GameHandler.enemiesKilled++;
         Destroy(gameObject);
     }
 

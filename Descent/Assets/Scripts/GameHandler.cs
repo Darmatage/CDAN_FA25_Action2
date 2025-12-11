@@ -13,8 +13,11 @@ public class GameHandler : MonoBehaviour
     public float maxTime = 180f; //time limit for level
 	private string sceneName;
     public static int enemiesKilled = 0; //current enemies killed
+    public static int totalCoinsGained = 0;
+    public static int bossesDefeated = 0;
     public int enemyGoal = 25; //enemies to kill for gate unlocking
 	public static string lastLevelDied;  //allows replaying the Level where you died
+    
 
     public static bool inShop = false;
 
@@ -155,6 +158,7 @@ public class GameHandler : MonoBehaviour
     public void playerGetCoins(int newCoins){ //gettin coins
             gotCoins += Mathf.RoundToInt(newCoins * (1 + (extraGreed * 0.05f))); //multiply gained coins by 5% per greed stack
             updateStatsDisplay();
+            totalCoinsGained = totalCoinsGained + Mathf.RoundToInt(newCoins * (1 + (extraGreed * 0.05f)));
     }
 
     public void playerLoseCoins(int newCoins) //losin coins
@@ -376,7 +380,7 @@ public class GameHandler : MonoBehaviour
       public void RestartGame() {
             Time.timeScale = 1f;
             SceneManager.LoadScene("MainMenu");
-             // Reset all static variables here, for new games:
+            ResetStats(); // Reset all static variables here, for new games:
             playerCurrentHealth = playerMaxHealth;
       }
 
@@ -384,7 +388,7 @@ public class GameHandler : MonoBehaviour
       public void ReplayLastLevel() {
             Time.timeScale = 1f;
             SceneManager.LoadScene(lastLevelDied);
-             // Reset all static variables here, for new games:
+            ResetStats(); // Reset all static variables here, for new games:
             playerCurrentHealth = playerMaxHealth;
       }
 
@@ -399,6 +403,34 @@ public class GameHandler : MonoBehaviour
       public void Credits() {
             SceneManager.LoadScene("Credits");
       } 
+
+      public void ResetStats()
+      {
+        currentLevel = 0; //current level
+    float levelTimer = 0; //current time elapsed in level
+    enemiesKilled = 0; //current enemies killed
+    totalCoinsGained = 0;
+    bossesDefeated = 0;
+    inShop = false;
+    gotCoins = 100;
+    playerCurrentHealth = 100f;
+    playerMaxHealth = 100f;
+    playerMaxHealthBase = 100f;
+    playerArmor = 1f; //direct multiplier to damage taken
+    playerArmorBase = 1f; //default armor value
+    IFrames = 30f; //frames of immunity after taking damage
+    isImmune = false;
+    immuneTimer = 0f;
+    float meleeDamage = 30f; //damage of bite
+    meleeCD = 1f; //cooldown of bite
+    projectileDamage = 20f; //damage of projectile
+    projectileCD = 1f; //cooldown of projectile
+    critRate = 0.2f; //critical rate, 1 = 100%, 0.5 = 50% etc
+    critDamage = 1.5f; //critical damage multiplier
+    attackRadius = 1f;
+    dashCD = 3f; //cooldown between dashes
+    speedMultiplier = 1f; //multiplier to speed
+      }
 
       //item info on hover
       
