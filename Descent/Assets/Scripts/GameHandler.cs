@@ -111,7 +111,7 @@ public class GameHandler : MonoBehaviour
 
     void Start()
     {
-        if (sceneName =! "EndLose" || "EndWin"){
+        if (sceneName != "EndLose" || "EndWin"){
           updateStatsDisplay();  
         }
         
