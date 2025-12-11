@@ -67,7 +67,6 @@ public class GateScript : MonoBehaviour
 				{
 					SpawnBosses();
 					gateTriggered = true;
-					gateOpenSFX.Play();
 				}
 				else //enter shop
 				{
