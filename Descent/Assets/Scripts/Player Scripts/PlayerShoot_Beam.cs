@@ -27,6 +27,6 @@ public class PlayerShoot_Beam : MonoBehaviour
 
     public void playerFireShot()
     {
-
+        //cast ray
     }
 }

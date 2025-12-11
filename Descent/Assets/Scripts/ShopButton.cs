@@ -75,7 +75,7 @@ public class ShopButton : MonoBehaviour
                 UpgradeNum = Random.Range(1, 3);
                 break;
             case 2: //PROJECTILES
-                UpgradeNum = Random.Range(11, 13);
+                UpgradeNum = Random.Range(11, 12); //disabled beam temporarily
                 break;
             case 3: //PASSIVES
                 UpgradeNum = Random.Range(21, 28);
