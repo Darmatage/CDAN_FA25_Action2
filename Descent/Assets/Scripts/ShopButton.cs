@@ -203,4 +203,12 @@ public class ShopButton : MonoBehaviour
         }
             
     }
+
+    public void RefreshUpgrade()
+    {
+            getUpgradeNum();
+            DisplayUpgrade(UpgradeNum);
+            //GameHandler.playerLoseCoins(25); //subtract price
+
+    }
 }

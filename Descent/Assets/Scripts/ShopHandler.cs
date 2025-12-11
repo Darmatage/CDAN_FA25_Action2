@@ -124,15 +124,15 @@ public class ShopHandler : MonoBehaviour
             {
                 case 1: //button1
 					//Debug.Log("am I called? Trying to switch a button off1");
-                    button1.GetComponent<ShopButton>().RerollUpgrade();
+                    button1.GetComponent<ShopButton>().RefreshUpgrade();
                     break;
                 case 2: //button2
 				    //Debug.Log("am I called? Trying to switch a button off2");
-                    button2.GetComponent<ShopButton>().RerollUpgrade();
+                    button2.GetComponent<ShopButton>().RefreshUpgrade();
                     break;
                 case 3: //button3
 				    //Debug.Log("am I called? Trying to switch a button off3");
-                    button3.GetComponent<ShopButton>().RerollUpgrade();
+                    button3.GetComponent<ShopButton>().RefreshUpgrade();
                     break;
             }
             ResetDescription(); //reset description

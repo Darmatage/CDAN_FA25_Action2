@@ -420,5 +420,5 @@ MonoBehaviour:
   attackTime: 2
   moveSpeed: 10
   moveDrag: 0.5
-  turnSpeed: 2.99
+  turnSpeed: 1.75
   isAttacking: 0

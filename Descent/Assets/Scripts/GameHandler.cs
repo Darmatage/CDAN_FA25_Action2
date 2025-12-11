@@ -226,7 +226,7 @@ public class GameHandler : MonoBehaviour
     public float MeleeCalc(bool isCrit) //calculates player's melee damage
     {
         float totalDamage = meleeDamage * //base damage 
-            ((extraAttack * 0.1f) + 1); //attack passive modifier
+            ((extraAttack * 0.2f) + 1); //attack passive modifier
 
         if (isCrit)
         {
@@ -249,7 +249,7 @@ public class GameHandler : MonoBehaviour
         switch (RangedType) //Get stats of current weapon
         {
             case 11: //shot
-                projectileDamage = 20f;
+                projectileDamage = 10f;
                 projectileCD = 2f;
                 break;
             case 12: //beam
@@ -286,7 +286,7 @@ public class GameHandler : MonoBehaviour
         {
             case 1: //BITE
                 MeleeType = 1;
-                meleeDamage = 30f;
+                meleeDamage = 20f;
                 meleeCD = 2f;
                 critRate = 0.1f;
                 attackRadius = 1f;
@@ -294,9 +294,9 @@ public class GameHandler : MonoBehaviour
                 break;
             case 2: //CLAW
                 MeleeType = 2;
-                meleeDamage = 15f;
+                meleeDamage = 10f;
                 meleeCD = 3f;
-                critRate = 0.3f;
+                critRate = 0.6f;
                 attackRadius = 0.8f;
                 weaponIcon.GetComponent<Image>().sprite = weapon_claw;
                 break;
