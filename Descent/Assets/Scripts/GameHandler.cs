@@ -32,7 +32,7 @@ public class GameHandler : MonoBehaviour
     public static float playerArmor = 1f; //direct multiplier to damage taken
     public static float playerArmorBase = 1f; //default armor value
     public static float IFrames = 30f; //frames of immunity after taking damage
-    private bool isImmune = false;
+    public bool isImmune = false;
     private float immuneTimer = 0f;
 
     //attacks

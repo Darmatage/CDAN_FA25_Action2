@@ -29,6 +29,7 @@ public class EnemyStatHandler : MonoBehaviour
     public float enemyArmor = 0.5f; //multiplier to damage taken!
     public int enemyReward = 5; //amount of coins dropped
     public bool isBoss = false;
+    public bool isImmune = false;
     public bool isDying = false;
 
     
@@ -68,6 +69,8 @@ public class EnemyStatHandler : MonoBehaviour
 
     public void EnemyDamage(float damageSource, bool isCrit)
     {
+        if (!isImmune)
+        { 
         //Debug.Log(damageSource);
         //Debug.Log(enemyArmor);
 
@@ -118,13 +121,13 @@ public class EnemyStatHandler : MonoBehaviour
                 }
             }
             GameObject deathPS = Instantiate(deathParticles, transform.position, Quaternion.identity);
-                
+
             StartCoroutine(EnemyDeath());
 
             isDying = true;
         }
         else
-        {   
+        {
             if (isCrit) //change particles based on criticals
             {
                 GameObject critPS = Instantiate(criticalParticles, transform.position, Quaternion.identity);
@@ -134,11 +137,11 @@ public class EnemyStatHandler : MonoBehaviour
                 GameObject hitPS = Instantiate(hitParticles, transform.position, Quaternion.identity);
             }
 
-                
+
             StartCoroutine(EnemyHurtFlash());
         }
 
-            
+    }
     }
 
     IEnumerator EnemyDeath()
