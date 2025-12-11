@@ -97,10 +97,10 @@ public class GameHandler : MonoBehaviour
         //make sure currentlevel is accurate
         switch (sceneName)
         {
-            case "Level0": currentLevel = 1; break;
-            case "Level1": currentLevel = 2; break;
-            case "Level2": currentLevel = 3; break;
-            case "Level3": currentLevel = 4; break;
+            case "Level0": currentLevel = 0; break;
+            case "Level1": currentLevel = 1; break;
+            case "Level2": currentLevel = 2; break;
+            case "Level3": currentLevel = 3; break;
         }
 
         Debug.Log("current level: " + currentLevel);

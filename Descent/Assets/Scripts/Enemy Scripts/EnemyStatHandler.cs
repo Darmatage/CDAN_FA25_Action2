@@ -49,13 +49,13 @@ public class EnemyStatHandler : MonoBehaviour
 
         switch (GameHandler.currentLevel)
         {
-            case 1: healthMult = 1; break;
+            case 0: healthMult = 1; break;
 
-            case 2: healthMult = 1.3f; break;
+            case 1: healthMult = 1.3f; break;
 
-            case 3: healthMult = 1.5f; break;
+            case 2: healthMult = 1.5f; break;
 
-            case 4: healthMult = 1.7f; break;
+            case 3: healthMult = 2f; break;
 
         }
 

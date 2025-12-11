@@ -195,7 +195,7 @@ MonoBehaviour:
   healthBarText: {fileID: 7498914086896498703}
   healthyColor: {r: 0.3, g: 0.8, b: 0.3, a: 1}
   unhealthyColor: {r: 0.8, g: 0.3, b: 0.3, a: 1}
-  enemyMaxHealth: 500
+  enemyMaxHealth: 300
   enemyCurrentHealth: 0
   enemyArmor: 0.5
   enemyReward: 20

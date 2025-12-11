@@ -6,7 +6,7 @@ using System.Threading;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using static UnityEditor.Experimental.GraphView.GraphView;
+//using static UnityEditor.Experimental.GraphView.GraphView;
 using static UnityEngine.Rendering.DebugUI;
 
 public class EnemyBehavior_Ranged : MonoBehaviour
@@ -90,13 +90,13 @@ public class EnemyBehavior_Ranged : MonoBehaviour
 
         switch (GameHandler.currentLevel)
         {
-            case 1: damageMult = 1; break;
+            case 0: damageMult = 1; break;
 
-            case 2: damageMult = 1.3f; break;
+            case 1: damageMult = 1.3f; break;
 
-            case 3: damageMult = 1.5f; break;
+            case 2: damageMult = 1.5f; break;
 
-            case 4: damageMult = 1.7f; break;
+            case 3: damageMult = 1.7f; break;
 
         }
 
