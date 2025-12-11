@@ -14,7 +14,7 @@ public class PlayerSonar : MonoBehaviour
 
     void Start()
     {
-        drawBehind.rendererFeatures[^2].SetActive(false);
+        drawBehind.rendererFeatures[^3].SetActive(false);
 
         if (GameObject.FindWithTag("Door")!=null){
             gate = GameObject.FindWithTag("Door").GetComponent<Transform>();
@@ -42,9 +42,9 @@ public class PlayerSonar : MonoBehaviour
 
     IEnumerator Sonar()
     {
-        drawBehind.rendererFeatures[^2].SetActive(true);
+        drawBehind.rendererFeatures[^3].SetActive(true);
         yield return new WaitForSeconds(sonarTime);
-        drawBehind.rendererFeatures[^2].SetActive(false);
+        drawBehind.rendererFeatures[^3].SetActive(false);
 
     }
 }
