@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 5909163245901873662}
   - component: {fileID: 7272014215315900257}
   - component: {fileID: 3763452132473662630}
-  - component: {fileID: 3745409360446228052}
+  - component: {fileID: 5577272542602228487}
   m_Layer: 9
   m_Name: Enemybase_Melee_Boss
   m_TagString: Hurtbox
@@ -199,12 +199,13 @@ MonoBehaviour:
   enemyCurrentHealth: 0
   enemyArmor: 0.5
   enemyReward: 20
-  isBoss: 1
+  isBoss: 0
+  isImmune: 0
   isDying: 0
   enemyRenderer: {fileID: 8575281888749840148}
   whiteColor: {r: 1, g: 1, b: 1, a: 1}
   redColor: {r: 1, g: 0, b: 0, a: 1}
---- !u!114 &3745409360446228052
+--- !u!114 &5577272542602228487
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -213,34 +214,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 4420768128652202809}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54eb2cf860bd10e498c5521305a4e2b4, type: 3}
+  m_Script: {fileID: 11500000, guid: f7213cfef8cabc1418d4c6511a0cde38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyStatHandler: {fileID: 3763452132473662630}
-  moveSpeed: 0.91
-  patrolSpeed: 0.33
+  Pillar: {fileID: 6792029880698557053, guid: fb2caf69158b97a43aed5e36578d6d6f, type: 3}
+  moveSpeed: 0.49
+  patrolSpeed: 0.29
   patrolFailsafe: 0
-  isOnPatrol: 1
+  isOnPatrol: 0
   isIdlePatrol: 0
   player: {fileID: 0}
   playerMask:
     serializedVersion: 2
     m_Bits: 128
-  enemyLocation: {fileID: 9032897564143075174}
   damageMelee: 10
   isAggro: 0
-  aggroRange: 20.9
+  aggroRange: 21.51
   isAttackWindup: 0
   isAttackCooldown: 0
   isAttackActive: 0
   windupTime: 0.1
+  specialWindupTime: 1
   attackTime: 0.3
-  cooldownTime: 4
+  cooldownTime: 3
   ApproachSpeed: 0.01
-  AttackRange: 5.96
+  AttackRange: 5.65
   Hitbox: {fileID: 2211854982219645767}
-  CDTimer: 0
-  MaxHomeDist: 10.8
+  specialCD: 15
+  pillarCD: 1
+  meleeSummonedEnemy: {fileID: 4420768128652202809, guid: fa02c2b8c2bc56a46bad5cf0908dec5d, type: 3}
+  rangedSummonedEnemy: {fileID: 4420768128652202809, guid: 6c2251f62cda43443b04cf01b0b95fd5, type: 3}
+  MaxHomeDist: 10
 --- !u!1 &5072640520908492465
 GameObject:
   m_ObjectHideFlags: 0

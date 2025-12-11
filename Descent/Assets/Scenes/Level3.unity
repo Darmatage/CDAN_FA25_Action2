@@ -725,6 +725,67 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd241b30b0ee12b4cb0369e7ab514b66, type: 3}
+--- !u!1001 &329626625
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4420768128652202809, guid: 0b1c81180f9024d88b2f93115662d766, type: 3}
+      propertyPath: m_Name
+      value: Enemybase_Melee_Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 5577272542602228487, guid: 0b1c81180f9024d88b2f93115662d766, type: 3}
+      propertyPath: AttackRange
+      value: 5.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 9032897564143075174, guid: 0b1c81180f9024d88b2f93115662d766, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 467.6865
+      objectReference: {fileID: 0}
+    - target: {fileID: 9032897564143075174, guid: 0b1c81180f9024d88b2f93115662d766, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 11.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 9032897564143075174, guid: 0b1c81180f9024d88b2f93115662d766, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 111.21553
+      objectReference: {fileID: 0}
+    - target: {fileID: 9032897564143075174, guid: 0b1c81180f9024d88b2f93115662d766, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9032897564143075174, guid: 0b1c81180f9024d88b2f93115662d766, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9032897564143075174, guid: 0b1c81180f9024d88b2f93115662d766, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9032897564143075174, guid: 0b1c81180f9024d88b2f93115662d766, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9032897564143075174, guid: 0b1c81180f9024d88b2f93115662d766, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9032897564143075174, guid: 0b1c81180f9024d88b2f93115662d766, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9032897564143075174, guid: 0b1c81180f9024d88b2f93115662d766, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0b1c81180f9024d88b2f93115662d766, type: 3}
 --- !u!1001 &347836330
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2384,6 +2445,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PillarHitbox
       objectReference: {fileID: 0}
+    - target: {fileID: 6792029880698557053, guid: fb2caf69158b97a43aed5e36578d6d6f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8578855838120221625, guid: fb2caf69158b97a43aed5e36578d6d6f, type: 3}
       propertyPath: turnSpeed
       value: 29.46
@@ -3029,6 +3094,14 @@ PrefabInstance:
     - target: {fileID: 1142090059205748999, guid: ea046dbbbb5a34991b8b7b2a527fca77, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1526809109643683571, guid: ea046dbbbb5a34991b8b7b2a527fca77, type: 3}
+      propertyPath: verticalSpeed
+      value: 23.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1526809109643683571, guid: ea046dbbbb5a34991b8b7b2a527fca77, type: 3}
+      propertyPath: mouseSensitivity
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2099483679596890197, guid: ea046dbbbb5a34991b8b7b2a527fca77, type: 3}
       propertyPath: m_IsActive
@@ -4788,3 +4861,4 @@ SceneRoots:
   - {fileID: 937365980}
   - {fileID: 1161300927}
   - {fileID: 1058566053}
+  - {fileID: 329626625}

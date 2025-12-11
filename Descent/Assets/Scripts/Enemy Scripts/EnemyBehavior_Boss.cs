@@ -12,6 +12,7 @@ public class EnemyBehavior_Boss : MonoBehaviour
 
     private GameHandler gameHandler;
     public EnemyStatHandler enemyStatHandler;
+    public GameObject Pillar;
     //public AttackHandler AttackHandler;
 
     [Header("Movement")]
@@ -40,17 +41,24 @@ public class EnemyBehavior_Boss : MonoBehaviour
     public bool isAttackActive = false;
 
     public float windupTime = 0.1f; //time to initiate attack
+    public float specialWindupTime = 1f; //time to initiate attack
     public float attackTime = 0.3f; //time to pause while attacking
     public float cooldownTime = 3f; //time until attack can be executed again
 
     private bool isAttacking = false; //in the middle of the attack
+    private bool isSpecialAttacking = false; //in the middle of a special attack (pillars or summoning)
     public float ApproachSpeed = 0.01f; //movespeed while attacking
     public float AttackRange = 1f; //distance when attack will be executed
     public GameObject Hitbox; //attack collider guide
     //private Collider hitCollider;
     //private float AttackTimer; //controls attack length
-    public float CDTimer = 0f; //controls attack cooldown
-    public float PillarTimer = 0f;
+    //public float CDTimer = 0f; //controls attack cooldown
+    private bool onSpecialCD; //controls special cooldown
+    public float specialCD = 15f; //time until next special attack in seconds
+    public float pillarCD = 1f; //time between pillar attacks
+
+    public GameObject meleeSummonedEnemy;
+    public GameObject rangedSummonedEnemy;
 
     private Vector3 EnemyHome;
     public float MaxHomeDist = 10f;
@@ -102,16 +110,20 @@ public class EnemyBehavior_Boss : MonoBehaviour
         float distToPlayer = Vector3.Distance(transform.position, player.transform.position); //get distance to player
         float distToHome = Vector3.Distance(transform.position, EnemyHome); //get distance from home point
 
+
         //MOVEMENT
 
         if (enemyStatHandler.isDying) //Dying
         {
             
-
             Vector3 LERPposition = Vector3.Lerp(transform.position, player.transform.position, -ApproachSpeed * Time.deltaTime);
             transform.position = LERPposition;
             //transform.rotation = transform.rotation;
             transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+        }
+        else if (isSpecialAttacking) //boss is in the middle of a special attack
+        {
+            //do nothing
         }
         else if (isAttacking) //Actively executing attack
         {       
@@ -143,21 +155,38 @@ public class EnemyBehavior_Boss : MonoBehaviour
         }
 
         //DETECTION
-        if(distToPlayer <= AttackRange) //player is in attack range
+
+        if (isSpecialAttacking) //boss is in the middle of a special attack
+        {
+            //do nothing
+        }
+        else if (!onSpecialCD)
+        {
+            switch (UnityEngine.Random.Range(1, 3))
+            {
+                case 1:
+                    StartCoroutine(PillarAttack());
+                    break;
+                case 2:
+                    StartCoroutine(SummonEnemies());
+                    break;
+            }
+        }
+        else if (distToPlayer <= AttackRange) //player is in attack range
         {
             if (!isAttackCooldown && !enemyStatHandler.isDying)
             {
                 Debug.Log("Attacking!");
                 isAttackCooldown = true;
                 StartCoroutine(BasicAttack());
-                CDTimer = 0;
+                //CDTimer = 0;
             }
         }
         else if (distToPlayer <= aggroRange) //player is in aggro range
         {
             isAggro = true;
             isOnPatrol = false;
-            isIdlePatrol= false;
+            isIdlePatrol = false;
             //Debug.Log("Distance to player: " + distToPlayer);
         }
         else if (isAttacking)
@@ -277,7 +306,7 @@ public class EnemyBehavior_Boss : MonoBehaviour
     */
 
 
-    void OnCollisionEnter(Collision other){ //ATTACKING
+    void OnCollisionEnter(Collision other){ //Contact damage?
         if (other.gameObject.tag=="Player")
             if (isAttackActive){
                 gameHandler.playerGetHit(damageMelee); 
@@ -321,40 +350,69 @@ public class EnemyBehavior_Boss : MonoBehaviour
         isAttackCooldown = false;
     }
 
+    IEnumerator SpecialCooldown()
+    {
+        yield return new WaitForSeconds(specialCD);
+
+        onSpecialCD = false;
+    }
+
     IEnumerator PillarAttack()
     {
         //Debug.Log("Starting pillar coroutine!");
 
-
-        isAttacking = true;
-
+        isSpecialAttacking = true;
         
-        yield return new WaitForSeconds(windupTime);
+        yield return new WaitForSeconds(specialWindupTime);
 
-        //Debug.Log("done winding up, checking for player!");
-        //check if player is in hitbox
-        bool hitDetect = Physics.CheckSphere(Hitbox.transform.position, Hitbox.GetComponent<SphereCollider>().radius * GameHandler.attackRadius, playerMask);
-        Hitbox.SetActive(true);
-        if (hitDetect)
+        //SUMMON THE PILLARS (3x)
+        for (int i = 0; i < 3; i++) 
         {
-            //Debug.Log("found player!");
-            gameHandler.playerGetHit(damageMelee); //damage player
-            //meleeHurtSFX.Play(); //play hitsound
-            EnemyHome = transform.position; //set home to current location
+            Vector3 summonLocation;
+            //randomize pillar location
+            summonLocation = (UnityEngine.Random.insideUnitSphere * UnityEngine.Random.Range(5f, 15f)); //pick direction
+            summonLocation += transform.position; //center vector on self
+            //instantiate pillar!!!!
+            Instantiate(Pillar, summonLocation, quaternion.identity);
+            yield return new WaitForSeconds(pillarCD);
         }
 
-        yield return new WaitForSeconds(attackTime);
-        //Debug.Log("done attacking.");
-        Hitbox.SetActive(false);
-        isAttacking = false;
-
-        yield return new WaitForSeconds(cooldownTime);
-
-        isAttackCooldown = false;
+        StartCoroutine(SpecialCooldown());
+        isSpecialAttacking = false;
+        onSpecialCD = true;
     }
 
-    void SummonEnemies()
+    IEnumerator SummonEnemies()
     {
+        isSpecialAttacking = true;
 
+        yield return new WaitForSeconds(specialWindupTime);
+
+        //SUMMON THE ENEMIES
+        for (int i = 0; i < UnityEngine.Random.Range(3, 6); i++) //3-5 enemies
+        {
+
+            Vector3 summonLocation;
+            //randomize enemy location
+            summonLocation = (UnityEngine.Random.insideUnitSphere * UnityEngine.Random.Range(5f, 15f)); //pick direction
+            summonLocation += transform.position; //center vector on self
+
+            //randomize enemytype
+            
+            switch (UnityEngine.Random.Range(1, 3))
+            {
+                //instantiate enemies!!!!
+                case 1:
+                    Instantiate(meleeSummonedEnemy, summonLocation, quaternion.identity);
+                    break;
+                case 2:
+                    Instantiate(rangedSummonedEnemy, summonLocation, quaternion.identity);
+                    break;
+            }
+        }
+
+        StartCoroutine(SpecialCooldown());
+        isSpecialAttacking = false;
+        onSpecialCD = true;
     }
 }
