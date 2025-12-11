@@ -33,7 +33,7 @@ public class GameHandler : MonoBehaviour
     public static float playerArmorBase = 1f; //default armor value
     public static float IFrames = 30f; //frames of immunity after taking damage
     public bool isImmune = false;
-    private float immuneTimer = 0f;
+    public float immuneTimer = 0f;
 
     //attacks
     public static float meleeDamage; //damage of bite
@@ -61,7 +61,7 @@ public class GameHandler : MonoBehaviour
     public Sprite proj_shot;
     public Sprite proj_beam;
 
-    public AudioSource SFX_Damage;
+    //public AudioSource SFX_Damage;
 
     [Header("Mutation handler")]
 
@@ -110,7 +110,22 @@ public class GameHandler : MonoBehaviour
         {
             UpdateProjectile(RangedType);
         }
+
+        if (SceneManager.GetActiveScene().name != "Shop")
+        {
+            sceneName = SceneManager.GetActiveScene().name;
+        }
         
+        //make sure currentlevel is accurate
+        switch (sceneName)
+        {
+            case "Level0": currentLevel = 1; break;
+            case "Level1": currentLevel = 2; break;
+            case "Level2": currentLevel = 3; break;
+            case "Level3": currentLevel = 4; break;
+        }
+
+        Debug.Log("current level: " + currentLevel);
     }
 
     private void Update()
@@ -165,7 +180,7 @@ public class GameHandler : MonoBehaviour
             isImmune = false;
         }
 
-        
+        //Debug.Log("immunity: " + isImmune);
 
         if (!isImmune)
         {
@@ -173,11 +188,12 @@ public class GameHandler : MonoBehaviour
                   if (playerCurrentHealth >=0){
                         updateStatsDisplay();
                   }
-                  if (damage > 0){{SFX_Damage.Play();}
+                //  if (damage > 0){{SFX_Damage.Play();}
                         //play GetHit animation:
                         //player.GetComponent<PlayerHurt>().playerHit();
-                  }
+                 // }
             immuneTimer = 0; //reset immunity timer
+            
          }
 
            if (playerCurrentHealth > playerMaxHealth){

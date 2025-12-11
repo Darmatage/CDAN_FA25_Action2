@@ -18,8 +18,8 @@ public class PillarAttack : MonoBehaviour
     public float warningTime = 3f; //time warning is displayed
     public float attackTime = 2f; //time attack is active
     public float moveSpeed = 10f; //current speed
-    public float moveAccel = 0f; //current acceleration
-    public float moveDrag = 0.5f; //drag
+    //public float moveAccel = 0f; //current acceleration
+    public float moveDrag = 0.1f; //drag
     public float turnSpeed = 1f; //speed of turn
 
     Vector3 target;
@@ -61,6 +61,10 @@ public class PillarAttack : MonoBehaviour
         Debug.DrawRay(transform.position, playerDirection, Color.green);
         //transform.LookAt(target);
         transform.Translate(target * moveSpeed * Time.deltaTime);
+
+        //moveSpeed -= moveDrag;
+
+        //if (moveSpeed < 0) { moveSpeed = 0; } //if below 0, set to 0
     }
 
     IEnumerator Activate()
@@ -84,8 +88,9 @@ public class PillarAttack : MonoBehaviour
 
     private void OnTriggerStay(Collider other) //when hitbox impacts an object
     {
-        if (other.gameObject.tag == "Player" && !gameHandlerObj.isImmune)
+        if (other.gameObject.tag == "Player"  && isAttacking)
         {
+            gameHandlerObj.immuneTimer = 100; //ignores player immunity
             gameHandlerObj.playerGetHit(damage);
         }
         

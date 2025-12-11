@@ -88,7 +88,7 @@ public class EnemyBehavior_Ranged : MonoBehaviour
 
         float damageMult = 1; //damage scaling
 
-        switch (GameHandler.currentLevel + 1)
+        switch (GameHandler.currentLevel)
         {
             case 1: damageMult = 1; break;
 
@@ -100,6 +100,7 @@ public class EnemyBehavior_Ranged : MonoBehaviour
 
         }
 
+        //Debug.Log("damage multiplier: " + damageMult);
         damage *= Mathf.RoundToInt(damageMult);
     }
 

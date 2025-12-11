@@ -47,7 +47,7 @@ public class EnemyStatHandler : MonoBehaviour
         //Health scaling
         float healthMult = 1;
 
-        switch (GameHandler.currentLevel + 1)
+        switch (GameHandler.currentLevel)
         {
             case 1: healthMult = 1; break;
 
@@ -61,6 +61,8 @@ public class EnemyStatHandler : MonoBehaviour
 
         enemyMaxHealth *= healthMult;
         enemyCurrentHealth = enemyMaxHealth;
+
+        Debug.Log("health multiplier: " + healthMult + "\nmaxhealth: " + enemyMaxHealth);
     }
     public void SetColor(Color newColor) //set healthbar color
     {
