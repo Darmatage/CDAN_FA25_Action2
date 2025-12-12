@@ -1754,7 +1754,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Renee Jee
+  m_text: Rennie Jee
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c90ca6cdb7859174299dd4249771c4fc, type: 2}
   m_sharedMaterial: {fileID: 6316009626190747120, guid: c90ca6cdb7859174299dd4249771c4fc, type: 2}
