@@ -102,7 +102,7 @@ public class PauseMenuHandler : MonoBehaviour
         Time.timeScale = 1f;
         GameisPaused = false;
 
-        if(GameHandler.inShop == false)
+        if(GameHandler.inMenu == false)
         {
             Cursor.lockState = CursorLockMode.Locked; //Moved from flight controller due to conflict
             Cursor.visible = false;

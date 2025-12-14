@@ -19,7 +19,7 @@ public class GameHandler : MonoBehaviour
 	public static string lastLevelDied;  //allows replaying the Level where you died
     
 
-    public static bool inShop = false;
+    public static bool inMenu = false;
 
     [Header("Player Stats")]
 
@@ -145,9 +145,10 @@ public class GameHandler : MonoBehaviour
     {
         levelTimer = Time.timeSinceLevelLoad; //seconds since scene load
 
-        if ((levelTimer > maxTime || playerCurrentHealth <= 0) && !inShop) //like 3 minutes or death
+        if ((playerCurrentHealth <= 0 && !inMenu) || Input.GetKeyDown(KeyCode.V)) //like 3 minutes or death
         {
             SceneManager.LoadScene("EndLose");
+            EnterMenu();
             //game over!!
             //probably play an animation before this in the final game
         }
@@ -171,9 +172,11 @@ public class GameHandler : MonoBehaviour
     }
 
     public void updateStatsDisplay(){ //update totals
+        if (!inMenu)
+        {
             healthText.text = playerCurrentHealth + "/" + playerMaxHealth;
             coinsText.text = gotCoins.ToString();
-            
+        }
     }
     
     //DAMAGE CALCULATION
@@ -362,10 +365,10 @@ public class GameHandler : MonoBehaviour
 
     //STATE CHANGES
     
-    public void EnterShop() //entering a shop
+    public void EnterMenu() //entering a shop
     {
-		Debug.Log("In a shop am I");
-        inShop = true;
+		//Debug.Log("In a shop am I");
+        inMenu = true;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
@@ -374,10 +377,11 @@ public class GameHandler : MonoBehaviour
         playerCurrentHealth += 20;
         SceneManager.LoadScene("Level" + (currentLevel + 1));
         //SceneManager.LoadScene("WORK_Rennie");
-        inShop = false;
+        inMenu = false;
     }
     public void StartGame() {
             SceneManager.LoadScene("Level0");
+        inMenu = false;
       }
 
       // Return to MainMenu
@@ -386,7 +390,8 @@ public class GameHandler : MonoBehaviour
             SceneManager.LoadScene("MainMenu");
             ResetStats(); // Reset all static variables here, for new games:
             playerCurrentHealth = playerMaxHealth;
-      }
+            EnterMenu();
+    }
 
       // Replay the Level where you died
       public void ReplayLastLevel() {
@@ -394,6 +399,7 @@ public class GameHandler : MonoBehaviour
             SceneManager.LoadScene(lastLevelDied);
             ResetStats(); // Reset all static variables here, for new games:
             playerCurrentHealth = playerMaxHealth;
+        inMenu = false;
       }
 
       public void QuitGame() {
@@ -411,11 +417,11 @@ public class GameHandler : MonoBehaviour
       public void ResetStats()
       {
         currentLevel = 0; //current level
-    float levelTimer = 0; //current time elapsed in level
+    //float levelTimer = 0; //current time elapsed in level
     enemiesKilled = 0; //current enemies killed
     totalCoinsGained = 0;
     bossesDefeated = 0;
-    inShop = false;
+    inMenu = false;
     gotCoins = 100;
     playerCurrentHealth = 100f;
     playerMaxHealth = 100f;
@@ -425,7 +431,7 @@ public class GameHandler : MonoBehaviour
     IFrames = 30f; //frames of immunity after taking damage
     isImmune = false;
     immuneTimer = 0f;
-    float meleeDamage = 30f; //damage of bite
+    meleeDamage = 30f; //damage of bite
     meleeCD = 1f; //cooldown of bite
     projectileDamage = 20f; //damage of projectile
     projectileCD = 1f; //cooldown of projectile

@@ -5,9 +5,13 @@ using TMPro;
 public class EndScreenText : MonoBehaviour
 {
     public TextMeshProUGUI explainText;
+    public GameHandler gameHandlerObj;
 
     void OnEnable()
     {
+        gameHandlerObj = GameObject.FindWithTag("GameHandler").GetComponent<GameHandler>();
+
+        gameHandlerObj.EnterMenu();
         UpdateStats();
     }
     void UpdateStats()

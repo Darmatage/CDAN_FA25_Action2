@@ -31,7 +31,7 @@ public class ShopHandler : MonoBehaviour
     private void Start()
     {
         ResetDescription();
-        gameHandler.EnterShop();
+        gameHandler.EnterMenu();
     }
 
     void ResetDescription() //sets description to default
