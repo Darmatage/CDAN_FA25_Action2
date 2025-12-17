@@ -19,7 +19,7 @@ public class GameHandler : MonoBehaviour
 	public static string lastLevelDied;  //allows replaying the Level where you died
     
 
-    public static bool inMenu = false;
+    public static bool inMenu = true;
 
     [Header("Player Stats")]
 
@@ -111,30 +111,29 @@ public class GameHandler : MonoBehaviour
 
     void Start()
     {
-        if (SceneManager.GetActiveScene().name != "EndLose" && SceneManager.GetActiveScene().name != "Endwin"&& SceneManager.GetActiveScene().name != "Credits"){
-          updateStatsDisplay();  
-        }
+        if (SceneManager.GetActiveScene().name != "EndLose" && SceneManager.GetActiveScene().name != "EndWin"&& SceneManager.GetActiveScene().name != "Credits" && SceneManager.GetActiveScene().name != "MainMenu")
+        {
+            updateStatsDisplay();  
         
+            //make sure weapons are loaded properly
+            if (MeleeType == 0)
+            {
+                UpdateWeapon(1);
+            }
+            else
+            {
+                UpdateWeapon(MeleeType);
+            }
 
-        //make sure weapons are loaded properly
-        if (MeleeType == 0)
-        {
-            UpdateWeapon(1);
+            if (RangedType == 10)
+            {
+                UpdateProjectile(11);
+            }
+            else
+            {
+                UpdateProjectile(RangedType);
+            }
         }
-        else
-        {
-            UpdateWeapon(MeleeType);
-        }
-
-        if (RangedType == 10)
-        {
-            UpdateProjectile(11);
-        }
-        else
-        {
-            UpdateProjectile(RangedType);
-        }
-
     }
 
     private void Update()
@@ -172,7 +171,7 @@ public class GameHandler : MonoBehaviour
     }
 
     public void updateStatsDisplay(){ //update totals
-        if (!inMenu)
+        if (!inMenu || SceneManager.GetActiveScene().name == "Shop")
         {
             healthText.text = playerCurrentHealth + "/" + playerMaxHealth;
             coinsText.text = gotCoins.ToString();
@@ -412,7 +411,8 @@ public class GameHandler : MonoBehaviour
 
       public void Credits() {
             SceneManager.LoadScene("Credits");
-      } 
+        inMenu = true;
+    } 
 
       public void ResetStats()
       {
